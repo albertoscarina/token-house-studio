@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Properties - PropertyToken GapuraPrima</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo-icon.png">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #f8fafc;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: var(--text-primary);
+        }
+
+        /* Sidebar Styles - Same as dashboard.html */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: var(--sidebar-width);
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .sidebar-logo {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .sidebar-logo img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .sidebar-brand h4 {
+            font-weight: 700;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-brand p {
+            margin: 0;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .sidebar-menu {
+            padding: 1rem 0;
+        }
+
+        .menu-item {
+            margin-bottom: 0.25rem;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu-link:hover,
+        .menu-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-link i {
+            width: 20px;
+            margin-right: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .menu-text {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .menu-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .menu-arrow.rotated {
+            transform: rotate(90deg);
+        }
+
+        .submenu {
+            background: rgba(0, 0, 0, 0.2);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .submenu.show {
+            max-height: 300px;
+        }
+
+        .submenu-link {
+            display: block;
+            padding: 0.6rem 1.5rem 0.6rem 3.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .submenu-link:hover,
+        .submenu-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Crowdfunding Promo */
+        .crowdfunding-promo {
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            color: white;
+            margin: 0.5rem 1rem;
+            border-radius: 12px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .crowdfunding-promo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .promo-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .promo-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.25rem;
+        }
+
+        .promo-subtitle {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-bottom: 0.75rem;
+        }
+
+        .promo-features {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.75rem;
+        }
+
+        .promo-feature {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+        }
+
+        .promo-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .promo-text {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .promo-arrow {
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .crowdfunding-promo:hover .promo-arrow {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(3px);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+
+        .top-navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+
+        .content-area {
+            padding: 2rem;
+        }
+
+        /* Language Switch */
+        .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-option {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .lang-option.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .lang-divider {
+            color: var(--text-secondary);
+        }
+
+        /* My Properties Specific Styles */
+        .properties-header {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+        }
+
+        .properties-filters {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .property-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .property-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+
+        .property-badge.owned {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .property-badge.pending {
+            background: var(--warning-color);
+            color: white;
+        }
+
+        .property-content {
+            padding: 1.5rem;
+        }
+
+        .property-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-location {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .property-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .property-stat {
+            text-align: center;
+        }
+
+        .property-stat-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .property-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .property-metrics {
+            margin-bottom: 1rem;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .metric-value {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .metric-value.positive {
+            color: var(--success-color);
+        }
+
+        .property-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-1px);
+        }
+
+        .portfolio-summary {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .summary-stat {
+            text-align: center;
+        }
+
+        .summary-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.25rem;
+                color: var(--text-primary);
+                cursor: pointer;
+                padding: 0.5rem;
+                border-radius: 4px;
+            }
+
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <img src="images/logo-icon.png" alt="Logo">
+            </div>
+            <div class="sidebar-brand">
+                <h4>PropertyToken</h4>
+                <p>Investor Dashboard</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-menu">
+            <!-- Dashboard -->
+            <div class="menu-item">
+                <a href="dashboard.html" class="menu-link">
+                    <i class="fas fa-home"></i>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </div>
+
+            <!-- Portfolio -->
+            <div class="menu-item">
+                <a href="#" class="menu-link active" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="menu-text">Portfolio</span>
+                    <i class="fas fa-chevron-right menu-arrow rotated"></i>
+                </a>
+                <div class="submenu show">
+                    <a href="my-properties.html" class="submenu-link active">My Properties</a>
+                    <a href="#" class="submenu-link">Dividends</a>
+                    <a href="#" class="submenu-link">Transactions</a>
+                    <a href="#" class="submenu-link">Usage Rights</a>
+                </div>
+            </div>
+
+            <!-- Owner Perks -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-crown"></i>
+                    <span class="menu-text">Owner Perks</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Stay Reservations</a>
+                    <a href="#" class="submenu-link">Redeem Discounts</a>
+                    <a href="#" class="submenu-link">Yield Trade-Off Calculator</a>
+                </div>
+            </div>
+
+            <!-- Marketplace -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-store"></i>
+                    <span class="menu-text">Marketplace</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Browse Listings</a>
+                    <a href="#" class="submenu-link">My Listings</a>
+                    <a href="#" class="submenu-link">Perk-Enhanced Listings</a>
+                </div>
+            </div>
+
+            <!-- Wallet -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-wallet"></i>
+                    <span class="menu-text">Wallet</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Top Up</a>
+                    <a href="#" class="submenu-link">Withdraw</a>
+                    <a href="#" class="submenu-link">Transaction History</a>
+                </div>
+            </div>
+
+            <!-- Referrals -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-users"></i>
+                    <span class="menu-text">Referrals</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Referral Overview</a>
+                    <a href="#" class="submenu-link">Earnings Report</a>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="menu-text">Education</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">GapuraPrima Academy</a>
+                    <a href="#" class="submenu-link">FAQ</a>
+                </div>
+            </div>
+
+            <!-- Events -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="menu-text">Events</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Upcoming Events</a>
+                    <a href="#" class="submenu-link">My Event Tickets</a>
+                </div>
+            </div>
+
+            <!-- Security -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="menu-text">Security</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Change Password</a>
+                    <a href="#" class="submenu-link">Change PIN</a>
+                    <a href="#" class="submenu-link">2FA Settings</a>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-cog"></i>
+                    <span class="menu-text">Settings</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Profile & Preferences</a>
+                </div>
+            </div>
+
+            <!-- Crowdfunding Promo -->
+            <div class="crowdfunding-promo" onclick="window.location.href='crowdfunding.html'">
+                <div class="promo-content">
+                    <div class="promo-badge">🔥 HIGH-RISK</div>
+                    <div class="promo-title">Proyek Crowdfunding Villa Development</div>
+                    <div class="promo-subtitle">Dapatkan keuntungan lebih tinggi dengan risiko pengembangan</div>
+                    <div class="promo-features">
+                        <span class="promo-feature">⚠️ Higher Returns</span>
+                        <span class="promo-feature">🏗️ Development Risk</span>
+                        <span class="promo-feature">🏆 15-20% IRR</span>
+                    </div>
+                    <div class="promo-cta">
+                        <span class="promo-text">Explore Now</span>
+                        <div class="promo-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <button class="sidebar-toggle me-3" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h5 class="mb-0">
+                        <i class="fas fa-briefcase text-primary me-2"></i>
+                        <span data-en="My Properties" data-id="Properti Saya">My Properties</span>
+                    </h5>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="language-switch me-3">
+                        <span class="lang-option active" data-lang="en">EN</span>
+                        <span class="lang-divider">|</span>
+                        <span class="lang-option" data-lang="id">ID</span>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown">
+                            <img src="images/people.jpg" alt="Profile" class="profile-avatar me-2">
+                            Albert Oscarina
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Portfolio Summary -->
+            <div class="portfolio-summary">
+                <h3 class="mb-4" data-en="Portfolio Summary" data-id="Ringkasan Portofolio">Portfolio Summary</h3>
+                <div class="summary-stats">
+                    <div class="summary-stat">
+                        <div class="summary-stat-value">5</div>
+                        <div class="summary-stat-label" data-en="Total Properties" data-id="Total Properti">Total Properties</div>
+                    </div>
+                    <div class="summary-stat">
+                        <div class="summary-stat-value">$127,500</div>
+                        <div class="summary-stat-label" data-en="Total Investment" data-id="Total Investasi">Total Investment</div>
+                    </div>
+                    <div class="summary-stat">
+                        <div class="summary-stat-value">$14,750</div>
+                        <div class="summary-stat-label" data-en="Total Dividends" data-id="Total Dividen">Total Dividends</div>
+                    </div>
+                    <div class="summary-stat">
+                        <div class="summary-stat-value">11.6%</div>
+                        <div class="summary-stat-label" data-en="Avg. Annual Return" data-id="Rata-rata Return Tahunan">Avg. Annual Return</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Properties Header -->
+            <div class="properties-header">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="mb-0" data-en="My Property Portfolio" data-id="Portofolio Properti Saya">My Property Portfolio</h4>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>
+                        <span data-en="Add Property" data-id="Tambah Properti">Add Property</span>
+                    </button>
+                </div>
+                
+                <!-- Filters -->
+                <div class="properties-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <span data-en="All Properties" data-id="Semua Properti">All Properties</span>
+                    </button>
+                    <button class="filter-btn" data-filter="owned">
+                        <span data-en="Fully Owned" data-id="Milik Penuh">Fully Owned</span>
+                    </button>
+                    <button class="filter-btn" data-filter="partial">
+                        <span data-en="Partial Ownership" data-id="Kepemilikan Sebagian">Partial Ownership</span>
+                    </button>
+                    <button class="filter-btn" data-filter="pending">
+                        <span data-en="Pending" data-id="Tertunda">Pending</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Properties Grid -->
+            <div class="properties-grid">
+                <!-- Property 1 -->
+                <div class="property-card" data-category="owned">
+                    <div class="property-image" style="background-image: url('images/villa-serene-bali.jpg');">
+                        <div class="property-badge owned">
+                            <span data-en="Fully Owned" data-id="Milik Penuh">Fully Owned</span>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h5 class="property-title">Villa Serene Bali</h5>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            Seminyak, Bali, Indonesia
+                        </div>
+                        
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-value">100%</div>
+                                <div class="property-stat-label" data-en="Ownership" data-id="Kepemilikan">Ownership</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">12.5%</div>
+                                <div class="property-stat-label" data-en="Annual Return" data-id="Return Tahunan">Annual Return</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">$45,000</div>
+                                <div class="property-stat-label" data-en="Investment" data-id="Investasi">Investment</div>
+                            </div>
+                        </div>
+                        
+                        <div class="property-metrics">
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Monthly Dividend" data-id="Dividen Bulanan">Monthly Dividend</span>
+                                <span class="metric-value positive">$468.75</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Total Dividends" data-id="Total Dividen">Total Dividends</span>
+                                <span class="metric-value positive">$5,625</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Property Value" data-id="Nilai Properti">Property Value</span>
+                                <span class="metric-value">$52,500</span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-actions">
+                            <button class="btn-action btn-primary">
+                                <span data-en="View Details" data-id="Lihat Detail">View Details</span>
+                            </button>
+                            <button class="btn-action btn-outline">
+                                <span data-en="Sell Shares" data-id="Jual Saham">Sell Shares</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 2 -->
+                <div class="property-card" data-category="partial">
+                    <div class="property-image" style="background-image: url('images/mont-blanc-apartment.jpg');">
+                        <div class="property-badge">
+                            <span data-en="25% Owned" data-id="25% Dimiliki">25% Owned</span>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h5 class="property-title">Mont Blanc Apartment</h5>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            Chamonix, France
+                        </div>
+                        
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-value">25%</div>
+                                <div class="property-stat-label" data-en="Ownership" data-id="Kepemilikan">Ownership</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">10.8%</div>
+                                <div class="property-stat-label" data-en="Annual Return" data-id="Return Tahunan">Annual Return</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">$25,000</div>
+                                <div class="property-stat-label" data-en="Investment" data-id="Investasi">Investment</div>
+                            </div>
+                        </div>
+                        
+                        <div class="property-metrics">
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Monthly Dividend" data-id="Dividen Bulanan">Monthly Dividend</span>
+                                <span class="metric-value positive">$225</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Total Dividends" data-id="Total Dividen">Total Dividends</span>
+                                <span class="metric-value positive">$2,700</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Property Value" data-id="Nilai Properti">Property Value</span>
+                                <span class="metric-value">$27,500</span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-actions">
+                            <button class="btn-action btn-primary">
+                                <span data-en="View Details" data-id="Lihat Detail">View Details</span>
+                            </button>
+                            <button class="btn-action btn-outline">
+                                <span data-en="Buy More" data-id="Beli Lagi">Buy More</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 3 -->
+                <div class="property-card" data-category="partial">
+                    <div class="property-image" style="background-image: url('images/jakarta-office.jpg');">
+                        <div class="property-badge">
+                            <span data-en="40% Owned" data-id="40% Dimiliki">40% Owned</span>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h5 class="property-title">Jakarta Commercial Office</h5>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            SCBD, Jakarta, Indonesia
+                        </div>
+                        
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-value">40%</div>
+                                <div class="property-stat-label" data-en="Ownership" data-id="Kepemilikan">Ownership</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">11.2%</div>
+                                <div class="property-stat-label" data-en="Annual Return" data-id="Return Tahunan">Annual Return</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">$32,500</div>
+                                <div class="property-stat-label" data-en="Investment" data-id="Investasi">Investment</div>
+                            </div>
+                        </div>
+                        
+                        <div class="property-metrics">
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Monthly Dividend" data-id="Dividen Bulanan">Monthly Dividend</span>
+                                <span class="metric-value positive">$303.33</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Total Dividends" data-id="Total Dividen">Total Dividends</span>
+                                <span class="metric-value positive">$3,640</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Property Value" data-id="Nilai Properti">Property Value</span>
+                                <span class="metric-value">$36,750</span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-actions">
+                            <button class="btn-action btn-primary">
+                                <span data-en="View Details" data-id="Lihat Detail">View Details</span>
+                            </button>
+                            <button class="btn-action btn-outline">
+                                <span data-en="Buy More" data-id="Beli Lagi">Buy More</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 4 -->
+                <div class="property-card" data-category="pending">
+                    <div class="property-image" style="background-image: url('images/villa-kulibul.jpg');">
+                        <div class="property-badge pending">
+                            <span data-en="Pending" data-id="Tertunda">Pending</span>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h5 class="property-title">Villa Kulibul</h5>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            Ubud, Bali, Indonesia
+                        </div>
+                        
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-value">15%</div>
+                                <div class="property-stat-label" data-en="Target Ownership" data-id="Target Kepemilikan">Target Ownership</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">13.1%</div>
+                                <div class="property-stat-label" data-en="Expected Return" data-id="Return Diharapkan">Expected Return</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">$15,000</div>
+                                <div class="property-stat-label" data-en="Investment" data-id="Investasi">Investment</div>
+                            </div>
+                        </div>
+                        
+                        <div class="property-metrics">
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Investment Status" data-id="Status Investasi">Investment Status</span>
+                                <span class="metric-value" style="color: var(--warning-color);">
+                                    <span data-en="Under Review" data-id="Sedang Ditinjau">Under Review</span>
+                                </span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Expected Monthly" data-id="Diharapkan Bulanan">Expected Monthly</span>
+                                <span class="metric-value">$163.75</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Processing Time" data-id="Waktu Proses">Processing Time</span>
+                                <span class="metric-value">
+                                    <span data-en="3-5 days" data-id="3-5 hari">3-5 days</span>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-actions">
+                            <button class="btn-action btn-primary">
+                                <span data-en="Track Status" data-id="Lacak Status">Track Status</span>
+                            </button>
+                            <button class="btn-action btn-outline">
+                                <span data-en="Cancel Order" data-id="Batalkan Pesanan">Cancel Order</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 5 -->
+                <div class="property-card" data-category="partial">
+                    <div class="property-image" style="background-image: url('images/bassura-apartment.jpg');">
+                        <div class="property-badge">
+                            <span data-en="8% Owned" data-id="8% Dimiliki">8% Owned</span>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <h5 class="property-title">Bassura City Apartment</h5>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            East Jakarta, Indonesia
+                        </div>
+                        
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-value">8%</div>
+                                <div class="property-stat-label" data-en="Ownership" data-id="Kepemilikan">Ownership</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">9.8%</div>
+                                <div class="property-stat-label" data-en="Annual Return" data-id="Return Tahunan">Annual Return</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">$10,000</div>
+                                <div class="property-stat-label" data-en="Investment" data-id="Investasi">Investment</div>
+                            </div>
+                        </div>
+                        
+                        <div class="property-metrics">
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Monthly Dividend" data-id="Dividen Bulanan">Monthly Dividend</span>
+                                <span class="metric-value positive">$81.67</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Total Dividends" data-id="Total Dividen">Total Dividends</span>
+                                <span class="metric-value positive">$2,785</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label" data-en="Property Value" data-id="Nilai Properti">Property Value</span>
+                                <span class="metric-value">$10,800</span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-actions">
+                            <button class="btn-action btn-primary">
+                                <span data-en="View Details" data-id="Lihat Detail">View Details</span>
+                            </button>
+                            <button class="btn-action btn-outline">
+                                <span data-en="Buy More" data-id="Beli Lagi">Buy More</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="scripts/dashboard.js"></script>
+    <script>
+        // Language switcher functionality
+        function initLanguageSwitcher() {
+            const langOptions = document.querySelectorAll('.lang-option');
+            const elementsWithLang = document.querySelectorAll('[data-en][data-id]');
+
+            langOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedLang = this.dataset.lang;
+                    
+                    // Update active language
+                    langOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update text content
+                    elementsWithLang.forEach(element => {
+                        if (selectedLang === 'en') {
+                            element.textContent = element.dataset.en;
+                        } else {
+                            element.textContent = element.dataset.id;
+                        }
+                    });
+                    
+                    // Store preference in sessionStorage
+                    sessionStorage.setItem('preferredLanguage', selectedLang);
+                });
+            });
+
+            // Load saved language preference
+            const savedLang = sessionStorage.getItem('preferredLanguage') || 'en';
+            const savedLangOption = document.querySelector(`[data-lang="${savedLang}"]`);
+            if (savedLangOption) {
+                savedLangOption.click();
+            }
+        }
+
+        // Filter functionality
+        function initPropertyFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const propertyCards = document.querySelectorAll('.property-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+                    
+                    // Update active filter
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter properties
+                    propertyCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            if (card.dataset.category === filter) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initLanguageSwitcher();
+            initPropertyFilters();
+        });
+    </script>
+</body>
+</html>
