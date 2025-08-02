@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PropertyToken GapuraPrima - Property Investment Starting from $1</title>
+    <meta name="description" content="Blockchain-based property investment platform. Start investing in premium properties with minimal capital of $1.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/auth-modal.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <div class="logo">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="brand-text">PropertyToken</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#properties" class="nav-link">Properties</a>
+                    <a href="#how-it-works" class="nav-link">How It Works</a>
+                    <a href="#about" class="nav-link">About</a>
+                </div>
+                
+                <!-- Auth Buttons -->
+                <div class="nav-auth">
+                    <button class="btn btn-outline" data-auth="login">Login</button>
+                    <button class="btn btn-primary" data-auth="register">Sign Up</button>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <a href="#home" class="mobile-nav-link">Home</a>
+            <a href="#properties" class="mobile-nav-link">Properties</a>
+            <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <div class="mobile-auth">
+                <button class="btn btn-outline btn-block" data-auth="login">Login</button>
+                <button class="btn btn-primary btn-block" data-auth="register">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Property Investment<br>
+                        <span class="text-gradient">Starting from $1</span>
+                    </h1>
+                    <p class="hero-description">
+                        Indonesia's first blockchain-based property investment platform. 
+                        Buy premium property tokens with minimal capital and earn passive income up to 15% annually.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">145K+</div>
+                            <div class="stat-label">Investors</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">$3.5M+</div>
+                            <div class="stat-label">Assets Under Management</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15%</div>
+                            <div class="stat-label">Average Yield</div>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-large" data-auth="register">
+                            <i class="fas fa-rocket"></i>
+                            Start Investing
+                        </button>
+                        <button class="btn btn-outline btn-large">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="property-carousel">
+                        <div class="carousel-container">
+                            <div class="property-slide active">
+                                <div class="carousel-image villa-kulibul-bg">
+                                    <div class="image-overlay"></div>
+                                </div>
+                                <div class="slide-info">
+                                    <h3>Villa Kulibul Canggu</h3>
+                                    <p>ERY: 11% | ECA: 2%</p>
+                                </div>
+                            </div>
+                            <div class="property-slide">
+                                <div class="carousel-image bassura-apartment-bg">
+                                    <div class="image-overlay"></div>
+                                </div>
+                                <div class="slide-info">
+                                    <h3>Mont Blanc Apartment</h3>
+                                    <p>ERY: 15% | ECA: 5%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-indicators">
+                            <span class="indicator active"></span>
+                            <span class="indicator"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>OJK Registered</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-users"></i>
+                    <span>145K+ Investors</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>$3.5M+ AUM</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-lock"></i>
+                    <span>Blockchain Secure</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="featured-properties" id="properties">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Properties</h2>
+                <p class="section-subtitle">Premium property selections with high yields</p>
+            </div>
+            
+            <div class="properties-grid">
+                <!-- Property Card 1 -->
+                <div class="property-card">
+                    <div class="property-image villa-kulibul-bg">
+                        <div class="property-badge">
+                            <span class="badge-hot">Hot</span>
+                        </div>
+                        <div class="property-overlay">
+                            <i class="fas fa-home property-icon"></i>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-header">
+                            <h3 class="property-title">Villa Kulibul</h3>
+                            <p class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Canggu, Bali
+                            </p>
+                        </div>
+                        
+                        <div class="property-progress">
+                            <div class="progress-info">
+                                <span>Sold</span>
+                                <span class="progress-percent">68.8%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 68.8%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="property-metrics">
+                            <div class="metric">
+                                <span class="metric-label">ERY</span>
+                                <span class="metric-value">11%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">ECA</span>
+                                <span class="metric-value">2%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">IRR</span>
+                                <span class="metric-value">13%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-price">
+                            <span class="price-label">Starting from</span>
+                            <span class="price-value">$0.70</span>
+                            <span class="price-unit">per token</span>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block" data-auth="register">
+                            Invest Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Property Card 2 -->
+                <div class="property-card">
+                    <div class="property-image bassura-apartment-bg">
+                        <div class="property-badge">
+                            <span class="badge-new">New</span>
+                        </div>
+                        <div class="property-overlay">
+                            <i class="fas fa-building property-icon"></i>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-header">
+                            <h3 class="property-title">Mont Blanc Apartment</h3>
+                            <p class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Jatinegara, East Jakarta
+                            </p>
+                        </div>
+                        
+                        <div class="property-progress">
+                            <div class="progress-info">
+                                <span>Sold</span>
+                                <span class="progress-percent">0.5%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0.5%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="property-metrics">
+                            <div class="metric">
+                                <span class="metric-label">ERY</span>
+                                <span class="metric-value">15%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">ECA</span>
+                                <span class="metric-value">5%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">IRR</span>
+                                <span class="metric-value">20%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-price">
+                            <span class="price-label">Starting from</span>
+                            <span class="price-value">$0.14</span>
+                            <span class="price-unit">per token</span>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block" data-auth="register">
+                            Invest Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Property Card 3 -->
+                <div class="property-card">
+                    <div class="property-image jakarta-office-bg">
+                        <div class="property-badge">
+                            <span class="badge-coming">Coming Soon</span>
+                        </div>
+                        <div class="property-overlay">
+                            <i class="fas fa-city property-icon"></i>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-header">
+                            <h3 class="property-title">Jakarta Premium Office</h3>
+                            <p class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                SCBD, South Jakarta
+                            </p>
+                        </div>
+                        
+                        <div class="property-progress">
+                            <div class="progress-info">
+                                <span>Launching Soon</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="property-metrics">
+                            <div class="metric">
+                                <span class="metric-label">ERY</span>
+                                <span class="metric-value">12%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">ECA</span>
+                                <span class="metric-value">8%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">IRR</span>
+                                <span class="metric-value">18%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="property-price">
+                            <span class="price-label">Estimated from</span>
+                            <span class="price-value">$0.35</span>
+                            <span class="price-unit">per token</span>
+                        </div>
+                        
+                        <button class="btn btn-outline btn-block">
+                            Register Interest
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-footer">
+                <button class="btn btn-outline btn-large">
+                    View All Properties
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">3 simple steps to start property investment</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-icon">
+                        <div class="step-number">1</div>
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Register & Verify</h3>
+                        <p class="step-description">
+                            Create a free account and complete KYC verification for secure investment
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <div class="step-number">2</div>
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Choose Property</h3>
+                        <p class="step-description">
+                            Explore premium properties with high yields and select according to your investment profile
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <div class="step-number">3</div>
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Buy Tokens & Receive Dividends</h3>
+                        <p class="step-description">
+                            Purchase property tokens starting from $1 and receive monthly dividends from property rentals
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why PropertyToken?</h2>
+                <p class="section-subtitle">Leading property investment platform with blockchain technology</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Safe & Trusted</h3>
+                    <p class="feature-description">
+                        Registered with OJK and uses blockchain technology for full transparency
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="feature-title">Minimal Capital</h3>
+                    <p class="feature-description">
+                        Start investing in premium properties with only $1 minimum capital
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">High Yield</h3>
+                    <p class="feature-description">
+                        Earn passive income up to 15% annually from property dividends
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Liquid</h3>
+                    <p class="feature-description">
+                        Buy and sell tokens anytime on our internal marketplace
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Easy to Use</h3>
+                    <p class="feature-description">
+                        User-friendly platform accessible from your smartphone
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Large Community</h3>
+                    <p class="feature-description">
+                        Join 145K+ investors who have already experienced the benefits
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Start Property Investment?</h2>
+                <p class="cta-description">
+                    Get exclusive access to premium properties with minimal capital. 
+                    Sign up now and start your investment journey!
+                </p>
+                <div class="cta-actions">
+                    <button class="btn btn-primary btn-large" data-auth="register">
+                        <i class="fas fa-rocket"></i>
+                        Sign Up Now
+                    </button>
+                    <button class="btn btn-outline-white btn-large">
+                        <i class="fas fa-phone"></i>
+                        Contact Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span class="footer-brand-text">PropertyToken</span>
+                    </div>
+                    <p class="footer-description">
+                        Blockchain-based property investment platform that enables 
+                        premium property investment with minimal capital.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Platform</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Properties</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Marketplace</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Help</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Guide</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Legal</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Contact</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> support@propertytokens.com</p>
+                        <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 PropertyToken GapuraPrima. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Risk Disclosure</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Authentication Modal Component -->
+    <div id="authModal" class="auth-modal">
+        <div class="auth-modal-overlay">
+            <div class="auth-modal-content">
+                <!-- Close Button -->
+                <button class="auth-modal-close" id="closeAuthModal">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <!-- Modal Header -->
+                <div class="auth-modal-header">
+                    <div class="auth-logo">
+                        <div class="logo">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span class="brand-text">PropertyToken</span>
+                    </div>
+                    <p class="auth-subtitle">Trusted property investment platform</p>
+                </div>
+                
+                <!-- Login Form -->
+                <div id="loginForm" class="auth-form active">
+                    <h2 class="auth-title">Sign In to Your Account</h2>
+                    <p class="auth-description">Access your portfolio and start investing in premium properties</p>
+                    
+                    <form class="auth-form-content">
+                        <div class="form-group">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <div class="form-input-group">
+                                <i class="fas fa-envelope form-icon"></i>
+                                <input 
+                                    type="email" 
+                                    id="loginEmail" 
+                                    class="form-input" 
+                                    placeholder="name@email.com"
+                                    required
+                                >
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <div class="form-input-group">
+                                <i class="fas fa-lock form-icon"></i>
+                                <input 
+                                    type="password" 
+                                    id="loginPassword" 
+                                    class="form-input" 
+                                    placeholder="Enter password"
+                                    required
+                                >
+                                <button type="button" class="password-toggle" id="toggleLoginPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="rememberMe">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Remember me</span>
+                            </label>
+                            <a href="#" class="forgot-password" id="showForgotPassword">Forgot password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-large auth-submit">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Sign In
+                        </button>
+                    </form>
+                    
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button class="btn btn-outline btn-block social-btn">
+                            <i class="fab fa-google"></i>
+                            Sign in with Google
+                        </button>
+                    </div>
+                    
+                    <div class="auth-switch">
+                        <p>Don't have an account? <a href="#" id="showRegister">Sign up now</a></p>
+                    </div>
+                </div>
+                
+                <!-- Register Form -->
+                <div id="registerForm" class="auth-form">
+                    <h2 class="auth-title">Create New Account</h2>
+                    <p class="auth-description">Join 145K+ property investors</p>
+                    
+                    <form class="auth-form-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <div class="form-input-group">
+                                    <i class="fas fa-user form-icon"></i>
+                                    <input 
+                                        type="text" 
+                                        id="firstName" 
+                                        class="form-input" 
+                                        placeholder="First name"
+                                        required
+                                    >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <div class="form-input-group">
+                                    <i class="fas fa-user form-icon"></i>
+                                    <input 
+                                        type="text" 
+                                        id="lastName" 
+                                        class="form-input" 
+                                        placeholder="Last name"
+                                        required
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <div class="form-input-group">
+                                <i class="fas fa-envelope form-icon"></i>
+                                <input 
+                                    type="email" 
+                                    id="registerEmail" 
+                                    class="form-input" 
+                                    placeholder="name@email.com"
+                                    required
+                                >
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phoneNumber" class="form-label">WhatsApp Number</label>
+                            <div class="form-input-group">
+                                <i class="fas fa-phone form-icon"></i>
+                                <input 
+                                    type="tel" 
+                                    id="phoneNumber" 
+                                    class="form-input" 
+                                    placeholder="+62 812 3456 7890"
+                                    required
+                                >
+                                <span class="input-hint">For OTP verification</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <div class="form-input-group">
+                                <i class="fas fa-lock form-icon"></i>
+                                <input 
+                                    type="password" 
+                                    id="registerPassword" 
+                                    class="form-input" 
+                                    placeholder="Minimum 8 characters"
+                                    required
+                                >
+                                <button type="button" class="password-toggle" id="toggleRegisterPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill"></div>
+                                </div>
+                                <span class="strength-text">Weak</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="referralCode" class="form-label">Referral Code (Optional)</label>
+                            <div class="form-input-group">
+                                <i class="fas fa-gift form-icon"></i>
+                                <input 
+                                    type="text" 
+                                    id="referralCode" 
+                                    class="form-input" 
+                                    placeholder="ALBERT.OSCARINA.ZPGG"
+                                >
+                                <span class="input-hint">Get 3 free tokens!</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreeTerms" required>
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">
+                                    I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreeMarketing">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">
+                                    I want to receive investment updates and attractive promotions
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-large auth-submit">
+                            <i class="fas fa-user-plus"></i>
+                            Create Account
+                        </button>
+                    </form>
+                    
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button class="btn btn-outline btn-block social-btn">
+                            <i class="fab fa-google"></i>
+                            Sign up with Google
+                        </button>
+                    </div>
+                    
+                    <div class="auth-switch">
+                        <p>Already have an account? <a href="#" id="showLogin">Sign in now</a></p>
+                    </div>
+                </div>
+                
+                <!-- OTP Verification Form -->
+                <div id="otpForm" class="auth-form">
+                    <div class="otp-header">
+                        <div class="otp-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h2 class="auth-title">WhatsApp Verification</h2>
+                        <p class="auth-description">
+                            We have sent an OTP code to<br>
+                            <strong id="otpPhoneDisplay">+62 812 ****7890</strong>
+                        </p>
+                    </div>
+                    
+                    <form class="auth-form-content">
+                        <div class="otp-input-group">
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                        </div>
+                        
+                        <div class="otp-timer">
+                            <p>Resend code in <span id="otpTimer">60</span> seconds</p>
+                            <button type="button" class="btn btn-outline resend-otp" id="resendOtp" disabled>
+                                <i class="fas fa-redo"></i>
+                                Resend
+                            </button>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-large auth-submit">
+                            <i class="fas fa-check"></i>
+                            Verify
+                        </button>
+                    </form>
+                    
+                    <div class="auth-switch">
+                        <p><a href="#" id="changePhoneNumber">Change WhatsApp number</a></p>
+                    </div>
+                </div>
+                
+                <!-- Forgot Password Form -->
+                <div id="forgotPasswordForm" class="auth-form">
+                    <div class="forgot-header">
+                        <div class="forgot-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h2 class="auth-title">Reset Password</h2>
+                        <p class="auth-description">
+                            Enter your email and we will send you a password reset link
+                        </p>
+                    </div>
+                    
+                    <form class="auth-form-content">
+                        <div class="form-group">
+                            <label for="resetEmail" class="form-label">Email</label>
+                            <div class="form-input-group">
+                                <i class="fas fa-envelope form-icon"></i>
+                                <input 
+                                    type="email" 
+                                    id="resetEmail" 
+                                    class="form-input" 
+                                    placeholder="name@email.com"
+                                    required
+                                >
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-large auth-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Reset Link
+                        </button>
+                    </form>
+                    
+                    <div class="auth-switch">
+                        <p><a href="#" id="backToLogin">Back to login</a></p>
+                    </div>
+                </div>
+                
+                <!-- Success Message -->
+                <div id="successMessage" class="auth-form">
+                    <div class="success-header">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h2 class="auth-title">Success!</h2>
+                        <p class="auth-description" id="successText">
+                            Your account has been successfully created. Welcome to PropertyToken!
+                        </p>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-block btn-large" id="continueToApp">
+                        <i class="fas fa-arrow-right"></i>
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/auth-modal.js"></script>
+</body>
+</html>

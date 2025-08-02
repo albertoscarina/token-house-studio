@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowdfund Villa Development - PropertyToken GapuraPrima</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo-icon.png">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/crowdfunding.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <img src="images/logo-icon.png" alt="Logo">
+            </div>
+            <div class="sidebar-brand">
+                <h4>PropertyToken</h4>
+                <p>Investor Dashboard</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-menu">
+            <!-- Dashboard -->
+            <div class="menu-item">
+                <a href="dashboard.html" class="menu-link">
+                    <i class="fas fa-home"></i>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </div>
+
+            <!-- Portfolio -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="menu-text">Portfolio</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">My Properties</a>
+                    <a href="#" class="submenu-link">Dividends</a>
+                    <a href="#" class="submenu-link">Transactions</a>
+                    <a href="#" class="submenu-link">Usage Rights</a>
+                </div>
+            </div>
+
+            <!-- Owner Perks -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-crown"></i>
+                    <span class="menu-text">Owner Perks</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Stay Reservations</a>
+                    <a href="#" class="submenu-link">Redeem Discounts</a>
+                    <a href="#" class="submenu-link">Yield Trade-Off Calculator</a>
+                </div>
+            </div>
+
+            <!-- Marketplace -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-store"></i>
+                    <span class="menu-text">Marketplace</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Browse Listings</a>
+                    <a href="#" class="submenu-link">My Listings</a>
+                    <a href="#" class="submenu-link">Perk-Enhanced Listings</a>
+                </div>
+            </div>
+
+            <!-- Wallet -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-wallet"></i>
+                    <span class="menu-text">Wallet</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Top Up</a>
+                    <a href="#" class="submenu-link">Withdraw</a>
+                    <a href="#" class="submenu-link">Transaction History</a>
+                </div>
+            </div>
+
+            <!-- Referrals -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-users"></i>
+                    <span class="menu-text">Referrals</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Referral Overview</a>
+                    <a href="#" class="submenu-link">Earnings Report</a>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="menu-text">Education</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">GapuraPrima Academy</a>
+                    <a href="#" class="submenu-link">FAQ</a>
+                </div>
+            </div>
+
+            <!-- Events -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="menu-text">Events</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Upcoming Events</a>
+                    <a href="#" class="submenu-link">My Event Tickets</a>
+                </div>
+            </div>
+
+            <!-- Security -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="menu-text">Security</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Change Password</a>
+                    <a href="#" class="submenu-link">Change PIN</a>
+                    <a href="#" class="submenu-link">2FA Settings</a>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-cog"></i>
+                    <span class="menu-text">Settings</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Profile & Preferences</a>
+                </div>
+            </div>
+
+            <!-- HIGH-RISK CROWDFUNDING PROMO - Active State -->
+            <div class="crowdfunding-promo active">
+                <div class="promo-content">
+                    <div class="promo-badge">🔥 ANDA DI SINI</div>
+                    <div class="promo-title">Proyek Crowdfunding Villa Development</div>
+                    <div class="promo-subtitle">You are now viewing high-risk development opportunities</div>
+                    <div class="promo-features">
+                        <span class="promo-feature">⚠️ Higher Returns</span>
+                        <span class="promo-feature">🏗️ Development Risk</span>
+                        <span class="promo-feature">🏆 15-20% IRR</span>
+                    </div>
+                    <div class="promo-cta">
+                        <span class="promo-text">Currently Viewing</span>
+                        <div class="promo-arrow">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <button class="sidebar-toggle me-3" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h5 class="mb-0">
+                        <i class="fas fa-fire text-danger me-2"></i>
+                        Crowdfund Villa Development
+                    </h5>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="language-switch me-3">
+                        <span class="lang-option active" data-lang="en">EN</span>
+                        <span class="lang-divider">|</span>
+                        <span class="lang-option" data-lang="id">ID</span>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown">
+                            <img src="images/people.jpg" alt="Profile" class="profile-avatar me-2">
+                            Albert Oscarina
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Hero Section -->
+            <div class="hero-section mb-5">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="hero-content">
+                                <div class="hero-badge">
+                                    <i class="fas fa-fire"></i>
+                                    <span data-en="HIGH OPPORTUNITY" data-id="PELUANG TINGGI">HIGH OPPORTUNITY</span>
+                                </div>
+                                <h1 class="hero-title" data-en="Crowdfund Villa Developments in Bali: Higher Returns with Development Risks" data-id="Crowdfund Pengembangan Villa di Bali: Keuntungan Lebih Tinggi dengan Risiko Pembangunan">
+                                    Crowdfund Villa Developments in Bali: Higher Returns with Development Risks
+                                </h1>
+                                <p class="hero-subtitle" data-en="Access premium development opportunities with potential 15-20% IRR through our vetted contractor network" data-id="Akses peluang pengembangan premium dengan potensi IRR 15-20% melalui jaringan kontraktor terverifikasi kami">
+                                    Access premium development opportunities with potential 15-20% IRR through our vetted contractor network
+                                </p>
+                                
+                                <div class="hero-stats">
+                                    <div class="stat-item">
+                                        <div class="stat-number">15-20%</div>
+                                        <div class="stat-label" data-en="Expected IRR" data-id="IRR yang Diharapkan">Expected IRR</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number">4-18</div>
+                                        <div class="stat-label" data-en="Month Build" data-id="Bulan Pembangunan">Month Build</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number">100K</div>
+                                        <div class="stat-label" data-en="Min Investment" data-id="Investasi Min">Min Investment</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="hero-actions">
+                                    <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#proposeProjectModal">
+                                        <i class="fas fa-upload me-2"></i>
+                                        <span data-en="Propose Your Project" data-id="Ajukan Proyek Anda">Propose Your Project</span>
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-lg" onclick="scrollToSection('featured-project')">
+                                        <i class="fas fa-search me-2"></i>
+                                        <span data-en="Browse Projects" data-id="Jelajahi Proyek">Browse Projects</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-7">
+                            <div class="hero-visual">
+                                <div class="property-showcase">
+                                    <div class="showcase-card large active" data-property="1">
+                                        <img src="images/ungasan-land1.jpg" alt="Ungasan Development Site" class="showcase-image">
+                                        <div class="showcase-info">
+                                            <h4>Ungasan Villa Development</h4>
+                                            <p>500sqm • 4 Villas • 15-20% IRR</p>
+                                        </div>
+                                    </div>
+                                    <div class="showcase-card large" data-property="2">
+                                        <img src="images/construction-foundation.jpg" alt="Construction Progress" class="showcase-image">
+                                        <div class="showcase-info">
+                                            <h4>Construction Progress</h4>
+                                            <p>Real-time Updates • Milestone Tracking</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits Section -->
+            <div class="benefits-section py-5">
+                <div class="container-fluid">
+                    <div class="section-header text-center mb-5">
+                        <h2 data-en="Why Invest in Development Projects?" data-id="Mengapa Investasi di Proyek Pengembangan?">Why Invest in Development Projects?</h2>
+                        <p class="text-muted" data-en="Unlock higher returns with our carefully vetted development opportunities" data-id="Buka potensi keuntungan lebih tinggi dengan peluang pengembangan yang telah diverifikasi dengan cermat">Unlock higher returns with our carefully vetted development opportunities</p>
+                    </div>
+                    
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h4 data-en="Higher Potential Returns" data-id="Potensi Keuntungan Lebih Tinggi">Higher Potential Returns</h4>
+                                <p data-en="15-20% IRR vs 11-13% standard properties. Ground-up development appreciation and premium location access." data-id="IRR 15-20% vs 11-13% properti standar. Apresiasi pengembangan dari nol dan akses lokasi premium.">15-20% IRR vs 11-13% standard properties. Ground-up development appreciation and premium location access.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <h4 data-en="Exclusive Access" data-id="Akses Eksklusif">Exclusive Access</h4>
+                                <p data-en="Prime Bali development sites, pre-market investment opportunities, and direct developer partnerships." data-id="Lokasi pengembangan utama di Bali, peluang investasi pra-pasar, dan kemitraan langsung dengan pengembang.">Prime Bali development sites, pre-market investment opportunities, and direct developer partnerships.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <h4 data-en="Full Transparency" data-id="Transparansi Penuh">Full Transparency</h4>
+                                <p data-en="Real-time construction updates, milestone-based fund releases, and professional project management." data-id="Update konstruksi real-time, pelepasan dana berbasis milestone, dan manajemen proyek profesional.">Real-time construction updates, milestone-based fund releases, and professional project management.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h4 data-en="Early Entry Advantage" data-id="Keuntungan Masuk Awal">Early Entry Advantage</h4>
+                                <p data-en="Below-market entry prices, appreciation from development start, and first access to rental income." data-id="Harga masuk di bawah pasar, apresiasi dari awal pengembangan, dan akses pertama ke pendapatan sewa.">Below-market entry prices, appreciation from development start, and first access to rental income.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-umbrella-beach"></i>
+                                </div>
+                                <h4 data-en="Personal Use Benefits" data-id="Manfaat Penggunaan Pribadi">Personal Use Benefits</h4>
+                                <p data-en="Stay at your investment property, exclusive owner booking rates, and Bali lifestyle access." data-id="Menginap di properti investasi Anda, tarif booking eksklusif pemilik, dan akses gaya hidup Bali.">Stay at your investment property, exclusive owner booking rates, and Bali lifestyle access.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4 data-en="Diversification" data-id="Diversifikasi">Diversification</h4>
+                                <p data-en="Different risk/return profile, development vs existing property, and geographic diversification." data-id="Profil risiko/keuntungan yang berbeda, pengembangan vs properti yang ada, dan diversifikasi geografis.">Different risk/return profile, development vs existing property, and geographic diversification.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Project Section -->
+            <div id="featured-project" class="featured-project-section py-5 bg-light">
+                <div class="container-fluid">
+                    <div class="section-header text-center mb-5">
+                        <h2 data-en="Featured Development Project" data-id="Proyek Pengembangan Unggulan">Featured Development Project</h2>
+                        <p class="text-muted" data-en="Ungasan Bali Premium Villa Development" data-id="Pengembangan Villa Premium Ungasan Bali">Ungasan Bali Premium Villa Development</p>
+                    </div>
+                    
+                    <!-- Main Project Info Row -->
+                    <div class="row align-items-start mb-4">
+                        <div class="col-lg-5 mb-4">
+                            <div class="project-gallery">
+                                <div class="main-gallery">
+                                    <img src="images/ungasan-land1.jpg" alt="Ungasan Development Site" class="main-image active" data-gallery="1">
+                                    <img src="images/ungasan-land2.jpg" alt="Land Overview" class="main-image" data-gallery="2">
+                                    <img src="images/construction-foundation.jpg" alt="Foundation Progress" class="main-image" data-gallery="3">
+                                    <img src="images/construction-framing.jpg" alt="Construction Framing" class="main-image" data-gallery="4">
+                                    <div class="gallery-overlay">
+                                        <button class="btn btn-light btn-sm">
+                                            <i class="fas fa-expand-arrows-alt me-1"></i>
+                                            <span data-en="360° View" data-id="Tampilan 360°">360° View</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="thumbnail-gallery">
+                                    <img src="images/ungasan-land1.jpg" alt="Site 1" class="thumbnail active" data-target="1">
+                                    <img src="images/ungasan-land2.jpg" alt="Site 2" class="thumbnail" data-target="2">
+                                    <img src="images/construction-foundation.jpg" alt="Foundation" class="thumbnail" data-target="3">
+                                    <img src="images/construction-framing.jpg" alt="Framing" class="thumbnail" data-target="4">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-7">
+                            <div class="project-details">
+                                <h3 class="mb-4" data-en="Ungasan Bali Villa Development" data-id="Pengembangan Villa Ungasan Bali">Ungasan Bali Villa Development</h3>
+                                
+                                <div class="detail-grid">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="detail-item">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                </div>
+                                                <div class="detail-content">
+                                                   <strong data-en="Location:" data-id="Lokasi:">Location:</strong>
+                                                   <span>Ungasan, near Green Bowl Beach</span>
+                                               </div>
+
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="detail-item">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-ruler-combined"></i>
+                                                </div>
+                                                <div class="detail-content">
+                                                    <strong data-en="Land Size:" data-id="Ukuran Tanah:">Land Size:</strong>
+                                                    <span>33.3m × 15m (~500 sqm)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="detail-item">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-certificate"></i>
+                                                </div>
+                                                <div class="detail-content">
+                                                    <strong data-en="Certificate:" data-id="Sertifikat:">Certificate:</strong>
+                                                    <span>SHM (Freehold equivalent)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="detail-item">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-building"></i>
+                                                </div>
+                                                <div class="detail-content">
+                                                    <strong data-en="Development Plan:" data-id="Rencana Pengembangan:">Development Plan:</strong>
+                                                    <span data-en="4 luxury villas" data-id="4 villa mewah">4 luxury villas</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="detail-item">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                </div>
+                                                <div class="detail-content">
+                                                    <strong data-en="Total Funding:" data-id="Total Pendanaan:">Total Funding:</strong>
+                                                    <span>IDR 5,000,000,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="detail-item">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-coins"></i>
+                                                </div>
+                                                <div class="detail-content">
+                                                    <strong data-en="Min Investment:" data-id="Investasi Min:">Min Investment:</strong>
+                                                    <span>IDR 100,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="detail-item">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-calendar-alt"></i>
+                                                </div>
+                                                <div class="detail-content">
+                                                    <strong data-en="Ownership:" data-id="Kepemilikan:">Ownership:</strong>
+                                                    <span data-en="25-year leasehold tokens" data-id="Token leasehold 25 tahun">25-year leasehold tokens</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="detail-item">
+                                                <div class="detail-icon">
+                                                    <i class="fas fa-chart-line"></i>
+                                                </div>
+                                                <div class="detail-content">
+                                                    <strong data-en="Projected ROI:" data-id="ROI yang Diproyeksikan:">Projected ROI:</strong>
+                                                    <span data-en="15% rental + 5% appreciation" data-id="15% sewa + 5% apresiasi">15% rental + 5% appreciation</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Investment Calculator Row -->
+                    <div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <div class="investment-calculator">
+                                <h5 data-en="Calculate Your Potential Returns" data-id="Hitung Potensi Keuntungan Anda">Calculate Your Potential Returns</h5>
+                                <div class="calculator-form">
+                                    <div class="form-group">
+                                        <label data-en="Investment Amount (IDR)" data-id="Jumlah Investasi (IDR)">Investment Amount (IDR)</label>
+                                        <input type="number" id="investmentAmount" class="form-control" value="1000000" min="100000" step="100000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-en="Expected Annual Return (%)" data-id="Keuntungan Tahunan yang Diharapkan (%)">Expected Annual Return (%)</label>
+                                        <div class="slider-container">
+                                            <input type="range" id="returnRate" class="form-range" min="15" max="25" value="20" step="1">
+                                            <span class="slider-value">20%</span>
+                                        </div>
+                                    </div>
+                                    <div class="calculator-results">
+                                        <div class="result-item">
+                                            <span data-en="Your Investment:" data-id="Investasi Anda:">Your Investment:</span>
+                                            <span class="amount" id="displayInvestment">IDR 1,000,000</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span data-en="Projected Annual Return:" data-id="Keuntungan Tahunan yang Diproyeksikan:">Projected Annual Return:</span>
+                                            <span class="amount text-success" id="displayAnnualReturn">IDR 200,000</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span data-en="5-Year Total Value:" data-id="Total Nilai 5 Tahun:">5-Year Total Value:</span>
+                                            <span class="amount text-primary" id="displayTotalValue">IDR 2,488,320</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Token Lock Information -->
+                                <div class="token-lock-info mt-4 p-3 bg-warning bg-opacity-10 border border-warning rounded">
+                                    <div class="d-flex align-items-start">
+                                        <i class="fas fa-lock text-warning me-2 mt-1"></i>
+                                        <div>
+                                            <h6 class="mb-2 text-warning" data-en="Token Lock Period" data-id="Periode Kunci Token">Token Lock Period</h6>
+                                            <p class="small mb-0" data-en="Your tokens will be locked until the villa is ready for rental to ensure uninterrupted construction progress. Estimated unlock: 18 months from investment date." data-id="Token Anda akan dikunci sampai villa siap untuk disewakan untuk memastikan kemajuan konstruksi yang tidak terganggu. Perkiraan unlock: 18 bulan dari tanggal investasi.">
+                                                Your tokens will be locked until the villa is ready for rental to ensure uninterrupted construction progress. Estimated unlock: 18 months from investment date.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 mb-4">
+                            <div class="project-highlights">
+                                <h5 class="mb-4">
+                                    <i class="fas fa-star text-warning me-2"></i>
+                                    <span data-en="Project Highlights" data-id="Highlight Proyek">Project Highlights</span>
+                                </h5>
+                                <div class="highlight-grid">
+                                    <div class="highlight-item">
+                                        <div class="highlight-icon">
+                                            <i class="fas fa-trophy text-warning"></i>
+                                        </div>
+                                        <div class="highlight-content">
+                                            <h6 data-en="Prime Location" data-id="Lokasi Prima">Prime Location</h6>
+                                            <p data-en="Ungasan is Bali's fastest growing luxury area" data-id="Ungasan adalah area mewah dengan pertumbuhan tercepat di Bali">Ungasan is Bali's fastest growing luxury area</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="highlight-item">
+                                        <div class="highlight-icon">
+                                            <i class="fas fa-shield-alt text-success"></i>
+                                        </div>
+                                        <div class="highlight-content">
+                                            <h6 data-en="Secure Investment" data-id="Investasi Aman">Secure Investment</h6>
+                                            <p data-en="Freehold equivalent certificate with legal guarantee" data-id="Sertifikat setara freehold dengan jaminan hukum">Freehold equivalent certificate with legal guarantee</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="highlight-item">
+                                        <div class="highlight-icon">
+                                            <i class="fas fa-chart-line text-primary"></i>
+                                        </div>
+                                        <div class="highlight-content">
+                                            <h6 data-en="High Returns" data-id="Keuntungan Tinggi">High Returns</h6>
+                                            <p data-en="15-20% IRR with strong rental demand" data-id="IRR 15-20% dengan permintaan sewa yang kuat">15-20% IRR with strong rental demand</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="highlight-item">
+                                        <div class="highlight-icon">
+                                            <i class="fas fa-users text-info"></i>
+                                        </div>
+                                        <div class="highlight-content">
+                                            <h6 data-en="Professional Team" data-id="Tim Profesional">Professional Team</h6>
+                                            <p data-en="Experienced developers with proven track record" data-id="Developer berpengalaman dengan rekam jejak terbukti">Experienced developers with proven track record</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-money-bill-wave me-2"></i>
+                                        <span data-en="Invest Now" data-id="Investasi Sekarang">Invest Now</span>
+                                    </button>
+                                    <button class="btn btn-outline-primary visible">
+                                        <i class="fas fa-download me-2"></i>
+                                        <span data-en="Download Prospectus" data-id="Download Prospektus">Download Prospectus</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Google Maps Embed with corrected coordinates -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="map-container">
+                                <h5 class="mb-3" data-en="Project Location" data-id="Lokasi Proyek">Project Location</h5>
+                                <div class="map-wrapper">
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.8265!2d115.1619!3d-8.8391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd25b0455555555%3A0x5555555555555555!2sGreen%20Bowl%20Beach%2C%20Ungasan%2C%20South%20Kuta%2C%20Badung%20Regency%2C%20Bali!5e0!3m2!1sen!2sid!4v1698765432123!5m2!1sen!2sid"
+                                        width="100%" 
+                                        height="300" 
+                                        style="border:0;" 
+                                        allowfullscreen="" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Construction Progress Section -->
+            <div class="construction-progress-section py-5">
+                <div class="container-fluid">
+                    <div class="section-header text-center mb-5">
+                        <h2 data-en="Construction Timeline" data-id="Timeline Konstruksi">Construction Timeline</h2>
+                        <p class="text-muted" data-en="Track your investment progress through every development phase" data-id="Lacak progres investasi Anda melalui setiap fase pengembangan">Track your investment progress through every development phase</p>
+                    </div>
+                    
+                    <div class="timeline-container">
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="fas fa-hard-hat"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5 data-en="Foundation" data-id="Pondasi">Foundation</h5>
+                                <p data-en="Months 1-2" data-id="Bulan 1-2">Months 1-2</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                                <span class="progress-text">100% Complete</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item active">
+                            <div class="timeline-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5 data-en="Structure" data-id="Struktur">Structure</h5>
+                                <p data-en="Months 3-8" data-id="Bulan 3-8">Months 3-8</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                                <span class="progress-text">60% Complete</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item pending">
+                            <div class="timeline-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5 data-en="Finishing" data-id="Penyelesaian">Finishing</h5>
+                                <p data-en="Months 9-14" data-id="Bulan 9-14">Months 9-14</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text">0% Complete</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item pending">
+                            <div class="timeline-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h5 data-en="Handover" data-id="Serah Terima">Handover</h5>
+                                <p data-en="Months 15-18" data-id="Bulan 15-18">Months 15-18</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text">0% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Management Section -->
+            <div class="management-section py-5 bg-light">
+                <div class="container-fluid">
+                    <div class="section-header text-center mb-5">
+                        <h2 data-en="Professional Management" data-id="Manajemen Profesional">Professional Management</h2>
+                        <p class="text-muted" data-en="Your investment is managed by Bali's most trusted property management companies" data-id="Investasi Anda dikelola oleh perusahaan manajemen properti terpercaya di Bali">Your investment is managed by Bali's most trusted property management companies</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="management-card">
+                                <h5 class="text-center mb-4">
+                                    <i class="fas fa-shield-alt text-primary me-2"></i>
+                                    <span data-en="Trusted Partners" data-id="Mitra Terpercaya">Trusted Partners</span>
+                                </h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="partner-item">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>Bali Management Villas</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="partner-item">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>ELLD Bali Property Management</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="partner-item">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>House of Reservations</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="partner-item">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>Better Place Bali</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="partner-item">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <span>Bali Management Solutions</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <small class="text-muted" data-en="All partners are licensed, insured, and have 5+ years experience in Bali property management" data-id="Semua mitra berlisensi, berasuransi, dan memiliki pengalaman 5+ tahun dalam manajemen properti Bali">
+                                        All partners are licensed, insured, and have 5+ years experience in Bali property management
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Disclosure Section -->
+            <div class="risk-disclosure-section py-5">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="risk-disclosure-card">
+                                <h4 class="text-danger mb-3">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    <span data-en="RISK DISCLOSURE" data-id="PENGUNGKAPAN RISIKO">RISK DISCLOSURE</span>
+                                </h4>
+                                <p class="mb-4" data-en="Development projects carry higher risks than completed properties. Please carefully consider these factors:" data-id="Proyek pengembangan memiliki risiko lebih tinggi dibandingkan properti yang sudah selesai. Harap pertimbangkan faktor-faktor berikut dengan cermat:">
+                                    Development projects carry higher risks than completed properties. Please carefully consider these factors:
+                                </p>
+                                
+                                <div class="risk-grid">
+                                    <div class="risk-item">
+                                        <i class="fas fa-clock text-danger"></i>
+                                        <span data-en="Construction delays may extend project timeline beyond 18 months" data-id="Keterlambatan konstruksi dapat memperpanjang timeline proyek lebih dari 18 bulan">Construction delays may extend project timeline beyond 18 months</span>
+                                    </div>
+                                    <div class="risk-item">
+                                        <i class="fas fa-chart-line text-danger"></i>
+                                        <span data-en="Market conditions may affect rental demand and pricing" data-id="Kondisi pasar dapat mempengaruhi permintaan sewa dan harga">Market conditions may affect rental demand and pricing</span>
+                                    </div>
+                                    <div class="risk-item">
+                                        <i class="fas fa-gavel text-danger"></i>
+                                        <span data-en="Regulatory changes may impact property development permissions" data-id="Perubahan regulasi dapat mempengaruhi izin pengembangan properti">Regulatory changes may impact property development permissions</span>
+                                    </div>
+                                    <div class="risk-item">
+                                        <i class="fas fa-cloud-rain text-danger"></i>
+                                        <span data-en="Natural disasters or force majeure events may delay construction" data-id="Bencana alam atau kejadian force majeure dapat menunda konstruksi">Natural disasters or force majeure events may delay construction</span>
+                                    </div>
+                                    <div class="risk-item">
+                                        <i class="fas fa-ban text-danger"></i>
+                                        <span data-en="No guarantee of projected returns or completion timeline" data-id="Tidak ada jaminan keuntungan yang diproyeksikan atau timeline penyelesaian">No guarantee of projected returns or completion timeline</span>
+                                    </div>
+                                    <div class="risk-item">
+                                        <i class="fas fa-dollar-sign text-danger"></i>
+                                        <span data-en="Investment principal may be at risk" data-id="Pokok investasi mungkin berisiko">Investment principal may be at risk</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mitigation-measures mt-4">
+                                    <h6 class="text-primary">
+                                        <i class="fas fa-shield-alt me-2"></i>
+                                        <span data-en="MITIGATION MEASURES" data-id="LANGKAH MITIGASI">MITIGATION MEASURES</span>
+                                    </h6>
+                                    <div class="mitigation-grid">
+                                        <div class="mitigation-item">
+                                            <i class="fas fa-check text-success"></i>
+                                            <span data-en="Professional project insurance coverage" data-id="Cakupan asuransi proyek profesional">Professional project insurance coverage</span>
+                                        </div>
+                                        <div class="mitigation-item">
+                                            <i class="fas fa-check text-success"></i>
+                                            <span data-en="Milestone-based funding release" data-id="Pelepasan dana berbasis milestone">Milestone-based funding release</span>
+                                        </div>
+                                        <div class="mitigation-item">
+                                            <i class="fas fa-check text-success"></i>
+                                            <span data-en="Regular independent progress audits" data-id="Audit progres independen reguler">Regular independent progress audits</span>
+                                        </div>
+                                        <div class="mitigation-item">
+                                            <i class="fas fa-check text-success"></i>
+                                            <span data-en="Experienced contractor selection" data-id="Pemilihan kontraktor berpengalaman">Experienced contractor selection</span>
+                                        </div>
+                                        <div class="mitigation-item">
+                                            <i class="fas fa-check text-success"></i>
+                                            <span data-en="Legal due diligence on all properties" data-id="Uji tuntas hukum pada semua properti">Legal due diligence on all properties</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section py-5 bg-light">
+                <div class="container-fluid">
+                    <div class="section-header text-center mb-5">
+                        <h2 data-en="Frequently Asked Questions" data-id="Pertanyaan yang Sering Diajukan">Frequently Asked Questions</h2>
+                        <p class="text-muted" data-en="Get answers to common questions about development project investments" data-id="Dapatkan jawaban untuk pertanyaan umum tentang investasi proyek pengembangan">Get answers to common questions about development project investments</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="accordion" id="faqAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="faq1">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                            <span data-en="What makes development projects different from regular property investments?" data-id="Apa yang membuat proyek pengembangan berbeda dari investasi properti biasa?">What makes development projects different from regular property investments?</span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <span data-en="Development projects offer higher potential returns (15-20% IRR) but come with construction and completion risks. You're investing in properties from the ground up, allowing for lower entry prices and appreciation throughout the development process." data-id="Proyek pengembangan menawarkan potensi keuntungan yang lebih tinggi (IRR 15-20%) tetapi memiliki risiko konstruksi dan penyelesaian. Anda berinvestasi pada properti dari awal, memungkinkan harga masuk yang lebih rendah dan apresiasi selama proses pengembangan.">Development projects offer higher potential returns (15-20% IRR) but come with construction and completion risks. You're investing in properties from the ground up, allowing for lower entry prices and appreciation throughout the development process.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="faq2">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                            <span data-en="How is my investment protected during construction?" data-id="Bagaimana investasi saya dilindungi selama konstruksi?">How is my investment protected during construction?</span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <span data-en="We implement milestone-based funding releases, comprehensive project insurance, regular independent audits, and work only with vetted, experienced contractors. All funds are held in escrow and released based on verified construction progress." data-id="Kami menerapkan pelepasan dana berbasis milestone, asuransi proyek komprehensif, audit independen reguler, dan hanya bekerja dengan kontraktor berpengalaman yang telah diverifikasi. Semua dana disimpan dalam escrow dan dilepaskan berdasarkan progres konstruksi yang terverifikasi.">We implement milestone-based funding releases, comprehensive project insurance, regular independent audits, and work only with vetted, experienced contractors. All funds are held in escrow and released based on verified construction progress.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="faq3">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                            <span data-en="What happens if construction is delayed?" data-id="Apa yang terjadi jika konstruksi tertunda?">What happens if construction is delayed?</span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <span data-en="While delays can occur due to weather, permits, or other factors, we maintain transparent communication with regular updates. Our insurance policies and contractor agreements include provisions for delay compensation where applicable." data-id="Meskipun penundaan dapat terjadi karena cuaca, izin, atau faktor lain, kami mempertahankan komunikasi transparan dengan update reguler. Polis asuransi dan perjanjian kontraktor kami mencakup ketentuan untuk kompensasi penundaan yang berlaku.">While delays can occur due to weather, permits, or other factors, we maintain transparent communication with regular updates. Our insurance policies and contractor agreements include provisions for delay compensation where applicable.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="faq4">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                            <span data-en="Can I visit the construction site?" data-id="Bisakah saya mengunjungi lokasi konstruksi?">Can I visit the construction site?</span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <span data-en="Yes! We organize monthly site visits for investors, with safety equipment provided. We also provide regular photo and video updates, virtual tours, and detailed progress reports through our investor portal." data-id="Ya! Kami mengorganisir kunjungan lokasi bulanan untuk investor, dengan peralatan keselamatan yang disediakan. Kami juga menyediakan update foto dan video reguler, tur virtual, dan laporan progres detail melalui portal investor kami.">Yes! We organize monthly site visits for investors, with safety equipment provided. We also provide regular photo and video updates, virtual tours, and detailed progress reports through our investor portal.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action Section -->
+            <div class="cta-section">
+                <div class="container-fluid">
+                    <div class="cta-content text-center">
+                        <h2 data-en="Ready to Start Your Development Investment Journey?" data-id="Siap Memulai Perjalanan Investasi Pengembangan Anda?">Ready to Start Your Development Investment Journey?</h2>
+                        <p data-en="Join hundreds of investors who are already earning higher returns through our development projects" data-id="Bergabunglah dengan ratusan investor yang sudah meraih keuntungan lebih tinggi melalui proyek pengembangan kami">Join hundreds of investors who are already earning higher returns through our development projects</p>
+                        
+                        <div class="cta-buttons">
+                            <button class="btn btn-primary btn-lg">
+                                <i class="fas fa-money-bill-wave me-2"></i>
+                                <span data-en="INVEST NOW" data-id="INVESTASI SEKARANG">INVEST NOW</span>
+                            </button>
+                        </div>
+                        
+                        <div class="contact-info mt-4">
+                            <small data-en="Need help? Contact our investment advisors at" data-id="Butuh bantuan? Hubungi penasihat investasi kami di">Need help? Contact our investment advisors at</small>
+                            <strong> support@propertytoken.id</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Proposal Modal -->
+    <div class="modal fade" id="proposeProjectModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-upload me-2"></i>
+                        <span data-en="Submit Project Proposal" data-id="Ajukan Proposal Proyek">Submit Project Proposal</span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="projectProposalForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" data-en="Project Name" data-id="Nama Proyek">Project Name</label>
+                                <input type="text" class="form-control" id="projectName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" data-en="Location" data-id="Lokasi">Location</label>
+                                <input type="text" class="form-control" id="projectLocation" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" data-en="Total Funding Needed (IDR)" data-id="Total Dana yang Dibutuhkan (IDR)">Total Funding Needed (IDR)</label>
+                                <input type="number" class="form-control" id="fundingAmount" min="1000000" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" data-en="Expected Return (%)" data-id="Keuntungan yang Diharapkan (%)">Expected Return (%)</label>
+                                <input type="number" class="form-control" id="expectedReturn" min="10" max="30" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" data-en="Project Description" data-id="Deskripsi Proyek">Project Description</label>
+                            <textarea class="form-control" id="projectDescription" rows="4" required></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" data-en="Developer/Contractor Name" data-id="Nama Developer/Kontraktor">Developer/Contractor Name</label>
+                                <input type="text" class="form-control" id="developerName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" data-en="Contact Email" data-id="Email Kontak">Contact Email</label>
+                                <input type="email" class="form-control" id="contactEmail" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" data-en="Project Documents" data-id="Dokumen Proyek">Project Documents</label>
+                            <input type="file" class="form-control" id="projectDocuments" multiple accept=".pdf,.doc,.docx,.jpg,.png">
+                            <div class="form-text" data-en="Upload land certificates, architectural plans, permits, etc." data-id="Upload sertifikat tanah, rencana arsitektural, izin, dll.">Upload land certificates, architectural plans, permits, etc.</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-en="Cancel" data-id="Batal">Cancel</button>
+                    <button type="submit" form="projectProposalForm" class="btn btn-primary">
+                        <i class="fas fa-paper-plane me-2"></i>
+                        <span data-en="Submit Proposal" data-id="Kirim Proposal">Submit Proposal</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="scripts/crowdfunding.js"></script>
+</body>
+</html>
