@@ -3,14 +3,578 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dividends - PropertyToken Investor Dashboard</title>
-    <link rel="icon" href="images/logo-icon.png" type="image/png">
+    <title>Dividends - PropertyToken GapuraPrima</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo-icon.png">
+    
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="styles/dividends.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #f8fafc;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: var(--text-primary);
+        }
+
+        /* Sidebar Styles - Same as Dashboard */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: var(--sidebar-width);
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .sidebar-logo {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .sidebar-logo img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .sidebar-brand h4 {
+            font-weight: 700;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-brand p {
+            margin: 0;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .sidebar-menu {
+            padding: 1rem 0;
+        }
+
+        .menu-item {
+            margin-bottom: 0.25rem;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu-link:hover,
+        .menu-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-link i {
+            width: 20px;
+            margin-right: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .menu-text {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .menu-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .menu-arrow.rotated {
+            transform: rotate(90deg);
+        }
+
+        .submenu {
+            background: rgba(0, 0, 0, 0.2);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .submenu.show {
+            max-height: 300px;
+        }
+
+        .submenu-link {
+            display: block;
+            padding: 0.6rem 1.5rem 0.6rem 3.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .submenu-link:hover,
+        .submenu-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* HIGH-RISK CROWDFUNDING PROMO */
+        .crowdfunding-promo {
+            background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            color: white;
+            margin: 0.5rem 1rem;
+            border-radius: 12px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .crowdfunding-promo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .promo-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .promo-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.25rem;
+        }
+
+        .promo-subtitle {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-bottom: 0.75rem;
+        }
+
+        .promo-features {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.75rem;
+        }
+
+        .promo-feature {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+        }
+
+        .promo-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .promo-text {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .promo-arrow {
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+
+        .top-navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            background: #f1f5f9;
+            border-radius: 6px;
+            padding: 2px;
+            margin-right: 1rem;
+        }
+
+        .lang-btn {
+            padding: 0.25rem 0.75rem;
+            background: none;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-area {
+            padding: 2rem;
+        }
+
+        /* Dividends Content Styles */
+        .dividends-overview {
+            margin-bottom: 2rem;
+        }
+
+        .overview-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            color: white;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+        }
+
+        .overview-stat h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .overview-stat p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .growth {
+            font-size: 0.9rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+            background-color: rgba(72, 187, 120, 0.2);
+            color: #48bb78;
+        }
+
+        .action-buttons {
+            margin-top: 1rem;
+        }
+
+        .action-buttons .btn {
+            margin-right: 0.75rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .withdraw-btn {
+            background-color: white;
+            color: #667eea;
+            border: none;
+        }
+
+        .share-btn {
+            border-color: white;
+            color: white;
+        }
+
+        .next-payout-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .payout-date .date {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+
+        .payout-date .countdown {
+            display: block;
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+
+        .property-breakdown {
+            margin-bottom: 2rem;
+        }
+
+        .property-dividend-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .property-header h5 {
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .property-header .location {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .dividend-stats {
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-item .label {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .stat-item .value {
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        /* Chart & History Styles */
+        .chart-section, .history-section {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .chart-header, .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .chart-container {
+            height: 400px;
+            position: relative;
+        }
+
+        .table-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 200px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .filter-select {
+            width: 180px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .dividend-history-table th {
+            background-color: #f7fafc;
+            color: #4a5568;
+            font-weight: 600;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .dividend-history-table td {
+            padding: 1rem;
+            vertical-align: middle;
+            border-color: #e2e8f0;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.paid {
+            background-color: rgba(72, 187, 120, 0.1);
+            color: #48bb78;
+        }
+
+        .status-badge.pending {
+            background-color: rgba(237, 137, 54, 0.1);
+            color: #ed8936;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .content-area {
+                padding: 1rem;
+            }
+
+            .sidebar-toggle {
+                display: block !important;
+            }
+
+            .overview-card {
+                padding: 1.5rem;
+            }
+            
+            .overview-stat h3 {
+                font-size: 2rem;
+            }
+            
+            .table-controls {
+                width: 100%;
+                flex-direction: column;
+            }
+            
+            .search-input,
+            .filter-select {
+                width: 100%;
+            }
+        }
+
+        .sidebar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+    </style>
 </head>
-<body class="dashboard-body">
-    <!-- Sidebar -->
+<body>
+    <!-- Sidebar - Same as Dashboard -->
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo">
@@ -33,12 +597,12 @@
 
             <!-- Portfolio -->
             <div class="menu-item">
-                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                <a href="#" class="menu-link active" onclick="toggleSubmenu(this)">
                     <i class="fas fa-briefcase"></i>
                     <span class="menu-text">Portfolio</span>
-                    <i class="fas fa-chevron-right menu-arrow"></i>
+                    <i class="fas fa-chevron-right menu-arrow rotated"></i>
                 </a>
-                <div class="submenu">
+                <div class="submenu show">
                     <a href="my-properties.html" class="submenu-link">My Properties</a>
                     <a href="dividends.html" class="submenu-link active">Dividends</a>
                     <a href="#" class="submenu-link">Transactions</a>
@@ -62,10 +626,16 @@
 
             <!-- Marketplace -->
             <div class="menu-item">
-                <a href="crowdfunding.html" class="menu-link">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
                     <i class="fas fa-store"></i>
                     <span class="menu-text">Marketplace</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Browse Listings</a>
+                    <a href="#" class="submenu-link">My Listings</a>
+                    <a href="#" class="submenu-link">Perk-Enhanced Listings</a>
+                </div>
             </div>
 
             <!-- Wallet -->
@@ -143,55 +713,67 @@
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
                 <div class="submenu">
-                    <a href="#" class="submenu-link">Profile Settings</a>
-                    <a href="#" class="submenu-link">Notification Preferences</a>
-                    <a href="#" class="submenu-link">Privacy Settings</a>
+                    <a href="#" class="submenu-link">Profile & Preferences</a>
                 </div>
             </div>
-
-            <!-- Crowdfunding Promotion -->
-            <div class="crowdfunding-promo">
-                <h6>Join Our Crowdfunding</h6>
-                <p>Discover new investment opportunities</p>
-                <a href="crowdfunding.html" class="btn btn-primary btn-sm">Explore Now</a>
+            
+            <!-- HIGH-RISK CROWDFUNDING PROMO -->
+            <div class="crowdfunding-promo" onclick="window.location.href='crowdfunding.html'">
+                <div class="promo-content">
+                    <div class="promo-badge">🔥 PELUANG TINGGI</div>
+                    <div class="promo-title">Mau mengambil untung lebih tapi lebih beresiko?</div>
+                    <div class="promo-subtitle">Want higher profits but with more risk? Click here.</div>
+                    <div class="promo-features">
+                        <span class="promo-feature">⚠️ Higher Returns</span>
+                        <span class="promo-feature">🏗️ Development Risk</span>
+                        <span class="promo-feature">🏆 15-20% IRR</span>
+                    </div>
+                    <div class="promo-cta">
+                        <span class="promo-text">Crowdfund Villa Development</span>
+                        <div class="promo-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
         </div>
     </nav>
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Top Header -->
-        <div class="top-header">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="page-title-header mb-0">
-                        <i class="fas fa-chart-line me-2"></i>
-                        Dividends
-                    </h5>
-                    <div class="d-flex align-items-center">
-                        <div class="language-switch me-3">
-                            <span class="lang-option active" data-lang="en">EN</span>
-                            <span class="lang-divider">|</span>
-                            <span class="lang-option" data-lang="id">ID</span>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn-link dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown">
-                                <img src="images/people.jpg" alt="Profile" class="profile-avatar me-2">
-                                John Doe
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                            </ul>
-                        </div>
+        <!-- Top Navbar with Language Switcher -->
+        <div class="top-navbar">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <button class="sidebar-toggle me-3" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h5 class="mb-0">Dividends</h5>
+                </div>
+                <div class="d-flex align-items-center">
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="id">ID</button>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown">
+                            <img src="images/people.jpg" alt="Profile" class="profile-avatar me-2">
+                            John Doe
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        
         <!-- Content Area -->
         <div class="content-area">
             <!-- Dividends Overview -->
@@ -396,9 +978,190 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="scripts/dividends.js"></script>
+
+    <script>
+        // Toggle Sidebar (Mobile)
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+
+        // Toggle Submenu
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            const arrow = element.querySelector('.menu-arrow');
+            
+            // Close other submenus
+            document.querySelectorAll('.submenu.show').forEach(menu => {
+                if (menu !== submenu) {
+                    menu.classList.remove('show');
+                    menu.previousElementSibling.querySelector('.menu-arrow').classList.remove('rotated');
+                }
+            });
+            
+            // Toggle current submenu
+            submenu.classList.toggle('show');
+            arrow.classList.toggle('rotated');
+        }
+
+        // Language Switcher
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    langButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const lang = btn.dataset.lang;
+                    switchLanguage(lang);
+                });
+            });
+        });
+
+        function switchLanguage(lang) {
+            const translations = {
+                en: {
+                    pageTitle: 'Dividends',
+                    totalDividends: 'Total Dividends Received',
+                    currentBalance: 'Current Dividend Balance',
+                    withdraw: 'Withdraw',
+                    share: 'Share',
+                    nextPayout: 'Next Payout Date'
+                },
+                id: {
+                    pageTitle: 'Dividen',
+                    totalDividends: 'Total Dividen Diterima',
+                    currentBalance: 'Saldo Dividen Saat Ini',
+                    withdraw: 'Tarik',
+                    share: 'Bagikan',
+                    nextPayout: 'Tanggal Pembayaran Berikutnya'
+                }
+            };
+
+            // Update page title
+            const pageTitle = document.querySelector('.top-navbar h5');
+            if (pageTitle) {
+                pageTitle.textContent = translations[lang].pageTitle;
+            }
+
+            showToast(`Language switched to ${lang.toUpperCase()}`, 'info');
+        }
+
+        // Chart Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('dividendChart');
+            if (!ctx) return;
+
+            const chartData = {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Monthly Dividends (IDR)',
+                    data: [1800000, 2100000, 1950000, 2200000, 2400000, 2145000],
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderColor: '#667eea',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6
+                }]
+            };
+
+            new Chart(ctx, {
+                type: 'line',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleColor: '#ffffff',
+                            bodyColor: '#ffffff',
+                            borderColor: '#667eea',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return `IDR ${context.parsed.y.toLocaleString('id-ID')}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return 'IDR ' + (value / 1000000).toFixed(1) + 'M';
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        // Toast notification function
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'info'} position-fixed`;
+            toast.style.cssText = `
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                min-width: 250px;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            `;
+            toast.textContent = message;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = '1';
+            }, 100);
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Close sidebar when clicking outside (mobile)
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.querySelector('.sidebar-toggle');
+            
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+                    sidebar.classList.remove('show');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
