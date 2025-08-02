@@ -1116,10 +1116,56 @@
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom JS -->
-    <script src="scripts/dashboard.js"></script>
     <script>
-        // Language switcher functionality
+        // My Properties Page JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all components
+            initLanguageSwitcher();
+            initSidebar();
+            initPropertyFilters();
+            initAnimations();
+        });
+
+        // Sidebar Management - Same as dashboard.html
+        function initSidebar() {
+            // Toggle Sidebar (Mobile)
+            window.toggleSidebar = function() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('show');
+            }
+
+            // Toggle Submenu
+            window.toggleSubmenu = function(element) {
+                const submenu = element.nextElementSibling;
+                const arrow = element.querySelector('.menu-arrow');
+                
+                // Close other submenus
+                document.querySelectorAll('.submenu.show').forEach(menu => {
+                    if (menu !== submenu) {
+                        menu.classList.remove('show');
+                        menu.previousElementSibling.querySelector('.menu-arrow').classList.remove('rotated');
+                    }
+                });
+                
+                // Toggle current submenu
+                submenu.classList.toggle('show');
+                arrow.classList.toggle('rotated');
+            }
+
+            // Close sidebar when clicking outside (mobile)
+            document.addEventListener('click', function(event) {
+                const sidebar = document.getElementById('sidebar');
+                const toggleBtn = document.querySelector('.sidebar-toggle');
+                
+                if (window.innerWidth <= 768) {
+                    if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+                        sidebar.classList.remove('show');
+                    }
+                }
+            });
+        }
+
+        // Language Switcher
         function initLanguageSwitcher() {
             const langOptions = document.querySelectorAll('.lang-option');
             const elementsWithLang = document.querySelectorAll('[data-en][data-id]');
@@ -1154,7 +1200,7 @@
             }
         }
 
-        // Filter functionality
+        // Property Filter functionality
         function initPropertyFilters() {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const propertyCards = document.querySelectorAll('.property-card');
@@ -1183,10 +1229,53 @@
             });
         }
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            initLanguageSwitcher();
-            initPropertyFilters();
+        // Animations
+        function initAnimations() {
+            // Add loading animation to buttons
+            document.querySelectorAll('.btn-action').forEach(button => {
+                button.addEventListener('click', function() {
+                    if (!this.classList.contains('no-animation')) {
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 150);
+                    }
+                });
+            });
+
+            // Property card hover animations
+            document.querySelectorAll('.property-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.top-navbar');
+            if (window.scrollY > 100) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.backgroundColor = 'white';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Error handling
+        window.addEventListener('error', function(e) {
+            console.error('JavaScript error:', e.error);
+        });
+
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            console.log(`My Properties page loaded in ${loadTime.toFixed(2)}ms`);
         });
     </script>
 </body>
