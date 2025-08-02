@@ -1,0 +1,387 @@
+/* Dividends Page Styles */
+
+/* Overview Section */
+.dividends-overview {
+    margin-bottom: 2rem;
+}
+
+.overview-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    color: white;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+}
+
+.overview-stat {
+    text-align: left;
+}
+
+.overview-stat h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.overview-stat p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+.growth {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.growth.positive {
+    background-color: rgba(72, 187, 120, 0.2);
+    color: #48bb78;
+}
+
+.action-buttons {
+    margin-top: 1rem;
+}
+
+.action-buttons .btn {
+    margin-right: 0.75rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.withdraw-btn {
+    background-color: white;
+    color: #667eea;
+    border: none;
+}
+
+.withdraw-btn:hover {
+    background-color: #f8f9fa;
+    color: #667eea;
+}
+
+.share-btn {
+    border-color: white;
+    color: white;
+}
+
+.share-btn:hover {
+    background-color: white;
+    color: #667eea;
+}
+
+/* Next Payout Card */
+.next-payout-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    height: 100%;
+}
+
+.next-payout-card h5 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.payout-date .date {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 0.25rem;
+}
+
+.payout-date .countdown {
+    display: block;
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 1rem;
+}
+
+.next-payout-card p {
+    color: #4a5568;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Property Breakdown Section */
+.property-breakdown {
+    margin-bottom: 2rem;
+}
+
+.property-breakdown h4 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.property-dividend-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 1rem;
+    border-left: 4px solid #667eea;
+}
+
+.property-header h5 {
+    color: #2d3748;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.property-header .location {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.dividend-stats {
+    margin-top: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.stat-item:last-child {
+    border-bottom: none;
+}
+
+.stat-item .label {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.stat-item .value {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+/* Chart Section */
+.chart-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.chart-header h4 {
+    color: #2d3748;
+    margin: 0;
+    font-weight: 600;
+}
+
+.chart-controls .btn {
+    margin-left: 0.5rem;
+    border-radius: 6px;
+}
+
+.chart-controls .btn.active {
+    background-color: #667eea;
+    border-color: #667eea;
+    color: white;
+}
+
+.chart-container {
+    height: 400px;
+    position: relative;
+}
+
+/* History Section */
+.history-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.section-header h4 {
+    color: #2d3748;
+    margin: 0;
+    font-weight: 600;
+}
+
+.table-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.search-input {
+    width: 200px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.filter-select {
+    width: 180px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+/* Table Styles */
+.dividend-history-table {
+    margin-bottom: 0;
+}
+
+.dividend-history-table th {
+    background-color: #f7fafc;
+    color: #4a5568;
+    font-weight: 600;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dividend-history-table th:hover {
+    background-color: #edf2f7;
+}
+
+.dividend-history-table th i {
+    margin-left: 0.5rem;
+    opacity: 0.5;
+}
+
+.dividend-history-table td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-color: #e2e8f0;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.paid {
+    background-color: rgba(72, 187, 120, 0.1);
+    color: #48bb78;
+}
+
+.status-badge.pending {
+    background-color: rgba(237, 137, 54, 0.1);
+    color: #ed8936;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 1.5rem;
+}
+
+.page-link {
+    color: #667eea;
+    border-color: #e2e8f0;
+    border-radius: 6px !important;
+    margin: 0 0.25rem;
+}
+
+.page-link:hover {
+    background-color: #667eea;
+    border-color: #667eea;
+    color: white;
+}
+
+.page-item.active .page-link {
+    background-color: #667eea;
+    border-color: #667eea;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .overview-card {
+        padding: 1.5rem;
+    }
+    
+    .overview-stat h3 {
+        font-size: 2rem;
+    }
+    
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .table-controls {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .search-input,
+    .filter-select {
+        width: 100%;
+    }
+    
+    .dividend-history-table {
+        font-size: 0.9rem;
+    }
+    
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .action-buttons .btn {
+        margin-right: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .overview-stat {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .chart-container {
+        height: 300px;
+    }
+    
+    .property-dividend-card {
+        padding: 1rem;
+    }
+    
+    .dividend-history-table th,
+    .dividend-history-table td {
+        padding: 0.75rem 0.5rem;
+    }
+}
