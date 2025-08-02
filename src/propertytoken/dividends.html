@@ -11,23 +11,31 @@
 </head>
 <body class="dashboard-body">
     <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-content">
-            <!-- Logo -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
             <div class="sidebar-logo">
-                <img src="images/logo.png" alt="PropertyToken" class="logo-img">
+                <img src="images/logo-icon.png" alt="Logo">
             </div>
-            
-            <!-- Navigation Menu -->
-            <nav class="sidebar-nav">
-                <a href="dashboard.html" class="nav-link">
-                    <i class="fas fa-home nav-icon"></i>
-                    <span class="nav-text">Dashboard</span>
+            <div class="sidebar-brand">
+                <h4>PropertyToken</h4>
+                <p>Investor Dashboard</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-menu">
+            <!-- Dashboard -->
+            <div class="menu-item">
+                <a href="dashboard.html" class="menu-link">
+                    <i class="fas fa-home"></i>
+                    <span class="menu-text">Dashboard</span>
                 </a>
-                
-                <a href="#" class="nav-link has-submenu" data-submenu="portfolio">
-                    <i class="fas fa-building nav-icon"></i>
-                    <span class="nav-text">Portfolio</span>
+            </div>
+
+            <!-- Portfolio -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="menu-text">Portfolio</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
                 <div class="submenu">
@@ -36,127 +44,156 @@
                     <a href="#" class="submenu-link">Transactions</a>
                     <a href="#" class="submenu-link">Usage Rights</a>
                 </div>
-                
-                <a href="#" class="nav-link">
-                    <i class="fas fa-gift nav-icon"></i>
-                    <span class="nav-text">Owner Perks</span>
+            </div>
+
+            <!-- Owner Perks -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-crown"></i>
+                    <span class="menu-text">Owner Perks</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
-                
-                <a href="crowdfunding.html" class="nav-link">
-                    <i class="fas fa-search nav-icon"></i>
-                    <span class="nav-text">Marketplace</span>
-                </a>
-                
-                <a href="#" class="nav-link">
-                    <i class="fas fa-wallet nav-icon"></i>
-                    <span class="nav-text">Wallet</span>
-                </a>
-                
-                <a href="#" class="nav-link">
-                    <i class="fas fa-users nav-icon"></i>
-                    <span class="nav-text">Referrals</span>
-                </a>
-                
-                <a href="#" class="nav-link">
-                    <i class="fas fa-graduation-cap nav-icon"></i>
-                    <span class="nav-text">Education</span>
-                </a>
-                
-                <a href="#" class="nav-link">
-                    <i class="fas fa-calendar nav-icon"></i>
-                    <span class="nav-text">Events</span>
-                </a>
-                
-                <a href="#" class="nav-link">
-                    <i class="fas fa-shield-alt nav-icon"></i>
-                    <span class="nav-text">Security</span>
-                </a>
-                
-                <a href="#" class="nav-link">
-                    <i class="fas fa-cog nav-icon"></i>
-                    <span class="nav-text">Settings</span>
-                </a>
-            </nav>
-            
-            <!-- Crowdfunding Promotion -->
-            <div class="sidebar-promo">
-                <div class="promo-content">
-                    <h4>Join Our Crowdfunding</h4>
-                    <p>Discover new investment opportunities</p>
-                    <a href="crowdfunding.html" class="btn btn-primary btn-sm">Explore Now</a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Stay Reservations</a>
+                    <a href="#" class="submenu-link">Redeem Discounts</a>
+                    <a href="#" class="submenu-link">Yield Trade-Off Calculator</a>
                 </div>
             </div>
+
+            <!-- Marketplace -->
+            <div class="menu-item">
+                <a href="crowdfunding.html" class="menu-link">
+                    <i class="fas fa-store"></i>
+                    <span class="menu-text">Marketplace</span>
+                </a>
+            </div>
+
+            <!-- Wallet -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-wallet"></i>
+                    <span class="menu-text">Wallet</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Top Up</a>
+                    <a href="#" class="submenu-link">Withdraw</a>
+                    <a href="#" class="submenu-link">Transaction History</a>
+                </div>
+            </div>
+
+            <!-- Referrals -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-users"></i>
+                    <span class="menu-text">Referrals</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Referral Overview</a>
+                    <a href="#" class="submenu-link">Earnings Report</a>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="menu-text">Education</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">GapuraPrima Academy</a>
+                    <a href="#" class="submenu-link">FAQ</a>
+                </div>
+            </div>
+
+            <!-- Events -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="menu-text">Events</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Upcoming Events</a>
+                    <a href="#" class="submenu-link">My Event Tickets</a>
+                </div>
+            </div>
+
+            <!-- Security -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="menu-text">Security</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Change Password</a>
+                    <a href="#" class="submenu-link">Change PIN</a>
+                    <a href="#" class="submenu-link">2FA Settings</a>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-cog"></i>
+                    <span class="menu-text">Settings</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Profile Settings</a>
+                    <a href="#" class="submenu-link">Notification Preferences</a>
+                    <a href="#" class="submenu-link">Privacy Settings</a>
+                </div>
+            </div>
+
+            <!-- Crowdfunding Promotion -->
+            <div class="crowdfunding-promo">
+                <h6>Join Our Crowdfunding</h6>
+                <p>Discover new investment opportunities</p>
+                <a href="crowdfunding.html" class="btn btn-primary btn-sm">Explore Now</a>
+            </div>
         </div>
-    </div>
+    </nav>
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Top Navbar -->
-        <nav class="dashboard-navbar">
-            <div class="navbar-content">
-                <div class="navbar-left">
-                    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <h1 class="page-title">Dividends</h1>
-                </div>
-                
-                <div class="navbar-right">
-                    <!-- Language Switcher -->
-                    <div class="language-switcher">
-                        <button class="lang-btn active" data-lang="en">EN</button>
-                        <button class="lang-btn" data-lang="id">ID</button>
-                    </div>
-                    
-                    <!-- Notifications -->
-                    <div class="notification-dropdown">
-                        <button class="notification-btn" id="notification-btn">
-                            <i class="fas fa-bell"></i>
-                            <span class="notification-badge">3</span>
-                        </button>
-                        <div class="notification-menu" id="notification-menu">
-                            <div class="notification-header">
-                                <h6>Notifications</h6>
-                                <button class="mark-all-read">Mark all as read</button>
-                            </div>
-                            <div class="notification-list">
-                                <div class="notification-item">
-                                    <i class="fas fa-money-bill-wave notification-icon"></i>
-                                    <div class="notification-content">
-                                        <p>Dividend payment received from Villa Kulibul</p>
-                                        <span class="notification-time">2 hours ago</span>
-                                    </div>
-                                </div>
-                                <div class="notification-item">
-                                    <i class="fas fa-chart-line notification-icon"></i>
-                                    <div class="notification-content">
-                                        <p>Monthly performance report is ready</p>
-                                        <span class="notification-time">1 day ago</span>
-                                    </div>
-                                </div>
-                                <div class="notification-item">
-                                    <i class="fas fa-building notification-icon"></i>
-                                    <div class="notification-content">
-                                        <p>New property available for investment</p>
-                                        <span class="notification-time">3 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
+        <!-- Top Header -->
+        <div class="top-header">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="page-title-header mb-0">
+                        <i class="fas fa-chart-line me-2"></i>
+                        Dividends
+                    </h5>
+                    <div class="d-flex align-items-center">
+                        <div class="language-switch me-3">
+                            <span class="lang-option active" data-lang="en">EN</span>
+                            <span class="lang-divider">|</span>
+                            <span class="lang-option" data-lang="id">ID</span>
                         </div>
-                    </div>
-                    
-                    <!-- User Profile -->
-                    <div class="user-profile">
-                        <img src="images/people.jpg" alt="User" class="user-avatar">
-                        <span class="user-name">John Doe</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <div class="dropdown">
+                            <button class="btn btn-link dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown">
+                                <img src="images/people.jpg" alt="Profile" class="profile-avatar me-2">
+                                John Doe
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
 
-        <!-- Dividends Content -->
-        <div class="dashboard-content">
+        
+        <!-- Content Area -->
+        <div class="content-area">
             <!-- Dividends Overview -->
             <div class="dividends-overview">
                 <div class="row">

@@ -62,20 +62,7 @@ body.dashboard-body {
     width: 4px;
 }
 
-.sidebar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 2px;
-}
-
-.sidebar-content {
-    padding: 0;
-}
-
-.sidebar-logo {
+.sidebar-header {
     padding: 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
@@ -83,16 +70,45 @@ body.dashboard-body {
     gap: 0.75rem;
 }
 
-.logo-img {
+.sidebar-logo {
+    width: 40px;
     height: 40px;
-    width: auto;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
-.sidebar-nav {
+.sidebar-logo img {
+    width: 24px;
+    height: 24px;
+}
+
+.sidebar-brand h4 {
+    font-weight: 700;
+    margin: 0;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.sidebar-brand p {
+    margin: 0;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    color: white;
+}
+
+.sidebar-menu {
     padding: 1rem 0;
 }
 
-.nav-link {
+.menu-item {
+    margin-bottom: 0.25rem;
+}
+
+.menu-link {
     display: flex;
     align-items: center;
     padding: 0.75rem 1.5rem;
@@ -106,24 +122,24 @@ body.dashboard-body {
     position: relative;
 }
 
-.nav-link:hover {
+.menu-link:hover {
     background: rgba(255, 255, 255, 0.1);
     color: white;
 }
 
-.nav-link.active {
-    background: var(--primary-color);
+.menu-link.active {
+    background: rgba(37, 99, 235, 0.2);
     color: white;
 }
 
-.nav-link.has-submenu {
-    justify-content: space-between;
-}
-
-.nav-icon {
+.menu-link i {
     width: 20px;
     margin-right: 0.75rem;
     text-align: center;
+}
+
+.menu-text {
+    flex: 1;
 }
 
 .menu-arrow {
@@ -151,49 +167,109 @@ body.dashboard-body {
 }
 
 .submenu-link.active {
-    background: var(--primary-color);
+    background: rgba(37, 99, 235, 0.3);
     color: white;
 }
 
-.sidebar-promo {
+.crowdfunding-promo {
     margin: 2rem 1.5rem 1rem;
     padding: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #2563eb, #10b981);
     border-radius: 8px;
     color: white;
     text-align: center;
 }
 
-.promo-content h4 {
+.crowdfunding-promo h6 {
     margin: 0 0 0.5rem;
     font-size: 0.9rem;
     font-weight: 600;
 }
 
-.promo-content p {
+.crowdfunding-promo p {
     margin: 0 0 1rem;
     font-size: 0.8rem;
     opacity: 0.9;
 }
 
-/* Main Content */
-.main-content {
-    margin-left: 280px; /* Fixed margin for desktop */
-    min-height: 100vh;
-    transition: margin-left 0.3s ease;
-}
-
-/* Dashboard Navbar */
-.dashboard-navbar {
+/* Top Header - Same as crowdfunding.html */
+.top-header {
     background: white;
-    border-bottom: 1px solid var(--gray-200);
-    padding: 0 1.5rem;
-    height: 60px;
-    display: flex;
-    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+.page-title-header {
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.language-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lang-option {
+    color: #64748b;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.lang-option.active {
+    color: #2563eb;
+}
+
+.lang-option:hover {
+    color: #2563eb;
+}
+
+.lang-divider {
+    color: #cbd5e1;
+}
+
+.profile-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.btn-link {
+    color: #1e293b;
+    text-decoration: none;
+    border: none;
+    background: none;
+    font-weight: 500;
+}
+
+.btn-link:hover {
+    color: #2563eb;
+}
+
+.dropdown-menu {
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.dropdown-item:hover {
+    background-color: #f8fafc;
+}
+
+/* Content Area */
+.content-area {
+    padding: 1.5rem;
 }
 
 .navbar-content {
@@ -599,6 +675,20 @@ body.dashboard-body {
 
 .w-100 {
     width: 100%;
+}
+
+.me-2 {
+    margin-right: 0.5rem;
+}
+
+.me-3 {
+    margin-right: 1rem;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 /* Pagination */
