@@ -43,7 +43,7 @@
             color: var(--text-primary);
         }
 
-        /* Sidebar Styles */
+        /* Sidebar Styles - Same as Original */
         .sidebar {
             position: fixed;
             top: 0;
@@ -174,7 +174,7 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* HIGH-RISK CROWDFUNDING PROMO - NEW STYLES */
+        /* HIGH-RISK CROWDFUNDING PROMO */
         .crowdfunding-promo {
             background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
             color: white;
@@ -193,21 +193,6 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
             border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .crowdfunding-promo::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .crowdfunding-promo:hover::before {
-            left: 100%;
         }
 
         .promo-content {
@@ -279,11 +264,6 @@
             transition: all 0.3s ease;
         }
 
-        .crowdfunding-promo:hover .promo-arrow {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateX(3px);
-        }
-
         /* Main Content */
         .main-content {
             margin-left: var(--sidebar-width);
@@ -298,39 +278,42 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        /* Language Switcher */
-        .language-switcher {
-            display: flex;
-            background: #f1f5f9;
-            border-radius: 6px;
-            padding: 2px;
-            margin-right: 1rem;
-        }
-
-        .lang-btn {
-            padding: 0.25rem 0.75rem;
-            background: none;
-            border: none;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .lang-btn.active {
-            background: white;
-            color: var(--primary-color);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
         .profile-avatar {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--border-color);
+        }
+
+        /* Language Switcher - Same as Crowdfunding */
+        .language-switch {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .lang-option {
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .lang-option.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .lang-option:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
+        .lang-divider {
+            margin: 0 0.5rem;
+            color: var(--border-color);
         }
 
         .content-area {
@@ -388,7 +371,7 @@
             color: var(--danger-color);
         }
 
-        /* Property Cards - Updated like Goro */
+        /* Property Cards */
         .property-card {
             background: white;
             border-radius: 12px;
@@ -410,17 +393,6 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-        }
-
-        .property-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
-            z-index: 1;
         }
 
         .property-badge {
@@ -452,7 +424,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Property Stats - Like Goro Layout */
         .property-stats {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -479,7 +450,6 @@
             color: var(--text-secondary);
         }
 
-        /* Goro-style metrics */
         .property-metrics {
             margin-bottom: 1rem;
         }
@@ -565,16 +535,6 @@
             color: white;
         }
 
-        .quick-action.referral:hover {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            color: white;
-        }
-
-        .quick-action.help:hover {
-            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-            color: white;
-        }
-
         .quick-action.book-stay:hover {
             background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
             color: white;
@@ -638,7 +598,6 @@
             width: 100%;
         }
 
-        /* Chart Tabs */
         .chart-tabs {
             display: flex;
             gap: 0.5rem;
@@ -824,7 +783,7 @@
             </div>
             <div class="sidebar-brand">
                 <h4>PropertyToken</h4>
-                <p>Investor Dashboard</p>
+                <p data-en="Investor Dashboard" data-id="Dashboard Investor">Investor Dashboard</p>
             </div>
         </div>
         
@@ -833,7 +792,7 @@
             <div class="menu-item">
                 <a href="#" class="menu-link active">
                     <i class="fas fa-home"></i>
-                    <span class="menu-text" data-translate="dashboard">Dashboard</span>
+                    <span class="menu-text" data-en="Dashboard" data-id="Dashboard">Dashboard</span>
                 </a>
             </div>
 
@@ -841,14 +800,14 @@
             <div class="menu-item">
                 <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
                     <i class="fas fa-briefcase"></i>
-                    <span class="menu-text" data-translate="portfolio">Portfolio</span>
+                    <span class="menu-text" data-en="Portfolio" data-id="Portofolio">Portfolio</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
                 <div class="submenu">
-                    <a href="my-properties.html" class="submenu-link" data-translate="myProperties">My Properties</a>
-                    <a href="dividends.html" class="submenu-link" data-translate="dividends">Dividends</a>
-                    <a href="#" class="submenu-link" data-translate="transactions">Transactions</a>
-                    <a href="#" class="submenu-link" data-translate="usageRights">Usage Rights</a>
+                    <a href="my-properties.html" class="submenu-link" data-en="My Properties" data-id="Properti Saya">My Properties</a>
+                    <a href="dividends.html" class="submenu-link" data-en="Dividends" data-id="Dividen">Dividends</a>
+                    <a href="#" class="submenu-link" data-en="Transactions" data-id="Transaksi">Transactions</a>
+                    <a href="#" class="submenu-link" data-en="Usage Rights" data-id="Hak Penggunaan">Usage Rights</a>
                 </div>
             </div>
 
@@ -856,13 +815,13 @@
             <div class="menu-item">
                 <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
                     <i class="fas fa-crown"></i>
-                    <span class="menu-text" data-translate="ownerPerks">Owner Perks</span>
+                    <span class="menu-text" data-en="Owner Perks" data-id="Manfaat Pemilik">Owner Perks</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
                 <div class="submenu">
-                    <a href="#" class="submenu-link">Stay Reservations</a>
-                    <a href="#" class="submenu-link">Redeem Discounts</a>
-                    <a href="#" class="submenu-link">Yield Trade-Off Calculator</a>
+                    <a href="#" class="submenu-link" data-en="Stay Reservations" data-id="Reservasi Menginap">Stay Reservations</a>
+                    <a href="#" class="submenu-link" data-en="Redeem Discounts" data-id="Tukar Diskon">Redeem Discounts</a>
+                    <a href="#" class="submenu-link" data-en="Yield Trade-Off Calculator" data-id="Kalkulator Trade-Off Yield">Yield Trade-Off Calculator</a>
                 </div>
             </div>
 
@@ -870,13 +829,13 @@
             <div class="menu-item">
                 <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
                     <i class="fas fa-store"></i>
-                    <span class="menu-text">Marketplace</span>
+                    <span class="menu-text" data-en="Marketplace" data-id="Marketplace">Marketplace</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
                 <div class="submenu">
-                    <a href="#" class="submenu-link">Browse Listings</a>
-                    <a href="#" class="submenu-link">My Listings</a>
-                    <a href="#" class="submenu-link">Perk-Enhanced Listings</a>
+                    <a href="#" class="submenu-link" data-en="Browse Listings" data-id="Jelajahi Listing">Browse Listings</a>
+                    <a href="#" class="submenu-link" data-en="My Listings" data-id="Listing Saya">My Listings</a>
+                    <a href="#" class="submenu-link" data-en="Perk-Enhanced Listings" data-id="Listing dengan Manfaat">Perk-Enhanced Listings</a>
                 </div>
             </div>
 
@@ -884,13 +843,13 @@
             <div class="menu-item">
                 <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
                     <i class="fas fa-wallet"></i>
-                    <span class="menu-text">Wallet</span>
+                    <span class="menu-text" data-en="Wallet" data-id="Dompet">Wallet</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
                 <div class="submenu">
-                    <a href="#" class="submenu-link">Top Up</a>
-                    <a href="#" class="submenu-link">Withdraw</a>
-                    <a href="#" class="submenu-link">Transaction History</a>
+                    <a href="#" class="submenu-link" data-en="Top Up" data-id="Isi Saldo">Top Up</a>
+                    <a href="#" class="submenu-link" data-en="Withdraw" data-id="Tarik">Withdraw</a>
+                    <a href="#" class="submenu-link" data-en="Transaction History" data-id="Riwayat Transaksi">Transaction History</a>
                 </div>
             </div>
 
@@ -898,12 +857,12 @@
             <div class="menu-item">
                 <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
                     <i class="fas fa-users"></i>
-                    <span class="menu-text">Referrals</span>
+                    <span class="menu-text" data-en="Referrals" data-id="Referensi">Referrals</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
                 <div class="submenu">
-                    <a href="#" class="submenu-link">Referral Overview</a>
-                    <a href="#" class="submenu-link">Earnings Report</a>
+                    <a href="#" class="submenu-link" data-en="Referral Overview" data-id="Ikhtisar Referral">Referral Overview</a>
+                    <a href="#" class="submenu-link" data-en="Earnings Report" data-id="Laporan Pendapatan">Earnings Report</a>
                 </div>
             </div>
 
@@ -911,12 +870,12 @@
             <div class="menu-item">
                 <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
                     <i class="fas fa-graduation-cap"></i>
-                    <span class="menu-text">Education</span>
+                    <span class="menu-text" data-en="Education" data-id="Edukasi">Education</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
                 <div class="submenu">
-                    <a href="#" class="submenu-link">GapuraPrima Academy</a>
-                    <a href="#" class="submenu-link">FAQ</a>
+                    <a href="#" class="submenu-link" data-en="GapuraPrima Academy" data-id="GapuraPrima Academy">GapuraPrima Academy</a>
+                    <a href="#" class="submenu-link" data-en="FAQ" data-id="FAQ">FAQ</a>
                 </div>
             </div>
 
@@ -924,12 +883,12 @@
             <div class="menu-item">
                 <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
                     <i class="fas fa-calendar-alt"></i>
-                    <span class="menu-text">Events</span>
+                    <span class="menu-text" data-en="Events" data-id="Acara">Events</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
                 <div class="submenu">
-                    <a href="#" class="submenu-link">Upcoming Events</a>
-                    <a href="#" class="submenu-link">My Event Tickets</a>
+                    <a href="#" class="submenu-link" data-en="Upcoming Events" data-id="Acara Mendatang">Upcoming Events</a>
+                    <a href="#" class="submenu-link" data-en="My Event Tickets" data-id="Tiket Acara Saya">My Event Tickets</a>
                 </div>
             </div>
 
@@ -937,13 +896,13 @@
             <div class="menu-item">
                 <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
                     <i class="fas fa-shield-alt"></i>
-                    <span class="menu-text">Security</span>
+                    <span class="menu-text" data-en="Security" data-id="Keamanan">Security</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
                 <div class="submenu">
-                    <a href="#" class="submenu-link">Change Password</a>
-                    <a href="#" class="submenu-link">Change PIN</a>
-                    <a href="#" class="submenu-link">2FA Settings</a>
+                    <a href="#" class="submenu-link" data-en="Change Password" data-id="Ubah Password">Change Password</a>
+                    <a href="#" class="submenu-link" data-en="Change PIN" data-id="Ubah PIN">Change PIN</a>
+                    <a href="#" class="submenu-link" data-en="2FA Settings" data-id="Pengaturan 2FA">2FA Settings</a>
                 </div>
             </div>
 
@@ -951,28 +910,27 @@
             <div class="menu-item">
                 <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
                     <i class="fas fa-cog"></i>
-                    <span class="menu-text">Settings</span>
+                    <span class="menu-text" data-en="Settings" data-id="Pengaturan">Settings</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
                 <div class="submenu">
-                    <a href="#" class="submenu-link">Profile & Preferences</a>
+                    <a href="#" class="submenu-link" data-en="Profile & Preferences" data-id="Profil & Preferensi">Profile & Preferences</a>
                 </div>
             </div>
             
-            
-            <!-- HIGH-RISK CROWDFUNDING PROMO - NEW ADDITION -->
+            <!-- HIGH-RISK CROWDFUNDING PROMO -->
             <div class="crowdfunding-promo" onclick="window.location.href='crowdfunding.html'">
                 <div class="promo-content">
-                    <div class="promo-badge" data-translate="promoHighRisk">🔥 PELUANG TINGGI</div>
-                    <div class="promo-title" data-translate="promoTitle">Mau mengambil untung lebih tapi lebih beresiko?</div>
-                    <div class="promo-subtitle" data-translate="promoSubtitle">Want higher profits but with more risk? Click here.</div>
+                    <div class="promo-badge" data-en="🔥 HIGH OPPORTUNITY" data-id="🔥 PELUANG TINGGI">🔥 HIGH OPPORTUNITY</div>
+                    <div class="promo-title" data-en="Want higher profits but with more risk?" data-id="Mau mengambil untung lebih tapi lebih beresiko?">Want higher profits but with more risk?</div>
+                    <div class="promo-subtitle" data-en="Click here for development opportunities" data-id="Klik di sini untuk peluang pengembangan">Click here for development opportunities</div>
                     <div class="promo-features">
-                        <span class="promo-feature">⚠️ Higher Returns</span>
-                        <span class="promo-feature">🏗️ Development Risk</span>
-                        <span class="promo-feature">🏆 15-20% IRR</span>
+                        <span class="promo-feature" data-en="⚠️ Higher Returns" data-id="⚠️ Keuntungan Tinggi">⚠️ Higher Returns</span>
+                        <span class="promo-feature" data-en="🏗️ Development Risk" data-id="🏗️ Risiko Pembangunan">🏗️ Development Risk</span>
+                        <span class="promo-feature" data-en="🏆 15-20% IRR" data-id="🏆 IRR 15-20%">🏆 15-20% IRR</span>
                     </div>
                     <div class="promo-cta">
-                        <span class="promo-text" data-translate="promoCTA">Crowdfund Villa Development</span>
+                        <span class="promo-text" data-en="Crowdfund Villa Development" data-id="Crowdfund Pembangunan Villa">Crowdfund Villa Development</span>
                         <div class="promo-arrow">
                             <i class="fas fa-arrow-right"></i>
                         </div>
@@ -983,23 +941,23 @@
         </div>
     </nav>
 
-    <!-- Rest of the dashboard content remains the same -->
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Top Navbar -->
+        <!-- Top Navbar with Language Switcher -->
         <div class="top-navbar">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
                     <button class="sidebar-toggle me-3" onclick="toggleSidebar()">
                         <i class="fas fa-bars"></i>
                     </button>
-                    <h5 class="mb-0" data-translate="pageTitle">Dashboard Overview</h5>
+                    <h5 class="mb-0" data-en="Dashboard Overview" data-id="Ikhtisar Dashboard">Dashboard Overview</h5>
                 </div>
                 <div class="d-flex align-items-center">
                     <!-- Language Switcher -->
-                    <div class="language-switcher">
-                        <button class="lang-btn active" data-lang="en">EN</button>
-                        <button class="lang-btn" data-lang="id">ID</button>
+                    <div class="language-switch">
+                        <span class="lang-option active" data-lang="en" onclick="switchLanguage('en')">EN</span>
+                        <span class="lang-divider">|</span>
+                        <span class="lang-option" data-lang="id" onclick="switchLanguage('id')">ID</span>
                     </div>
                     
                     <div class="dropdown">
@@ -1008,10 +966,10 @@
                             Albert Oscarina
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i><span data-en="Profile" data-id="Profil">Profile</span></a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i><span data-en="Settings" data-id="Pengaturan">Settings</span></a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i><span data-en="Logout" data-id="Keluar">Logout</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -1024,8 +982,12 @@
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="stat-card">
-                        <h4 class="mb-2" data-translate="welcomeTitle">Welcome back, Albert! 👋</h4>
-                        <p class="text-muted mb-3" data-translate="welcomeText">Below is your property investment summary for this month. Your portfolio shows stable performance with high occupancy rates.</p>
+                        <h4 class="mb-2">
+                            <span data-en="Welcome back, Albert! 👋" data-id="Selamat datang kembali, Albert! 👋">Welcome back, Albert! 👋</span>
+                        </h4>
+                        <p class="text-muted mb-3" data-en="Below is your property investment summary for this month. Your portfolio shows stable performance with high occupancy rates." data-id="Di bawah ini adalah ringkasan investasi properti Anda untuk bulan ini. Portofolio Anda menunjukkan performa yang stabil dengan tingkat okupansi yang tinggi.">
+                            Below is your property investment summary for this month. Your portfolio shows stable performance with high occupancy rates.
+                        </p>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="d-flex align-items-center">
@@ -1033,8 +995,8 @@
                                         <i class="fas fa-chart-line text-success" style="font-size: 1.5rem;"></i>
                                     </div>
                                     <div>
-                                        <div class="fw-600"><span data-translate="activeProperties">3 Active Properties</span></div>
-                                        <small class="text-muted" data-translate="inPortfolio">In your portfolio</small>
+                                        <div class="fw-600">3 <span data-en="Active Properties" data-id="Properti Aktif">Active Properties</span></div>
+                                        <small class="text-muted" data-en="In your portfolio" data-id="Di portofolio Anda">In your portfolio</small>
                                     </div>
                                 </div>
                             </div>
@@ -1044,8 +1006,8 @@
                                         <i class="fas fa-percentage text-primary" style="font-size: 1.5rem;"></i>
                                     </div>
                                     <div>
-                                        <div class="fw-600">78% Average Occupancy</div>
-                                        <small class="text-muted">This month's performance</small>
+                                        <div class="fw-600">78% <span data-en="Average Occupancy" data-id="Okupansi Rata-rata">Average Occupancy</span></div>
+                                        <small class="text-muted" data-en="This month's performance" data-id="Performa bulan ini">This month's performance</small>
                                     </div>
                                 </div>
                             </div>
@@ -1055,8 +1017,8 @@
                                         <i class="fas fa-trophy text-warning" style="font-size: 1.5rem;"></i>
                                     </div>
                                     <div>
-                                        <div class="fw-600">Active Investor</div>
-                                        <small class="text-muted">Your status</small>
+                                        <div class="fw-600" data-en="Active Investor" data-id="Investor Aktif">Active Investor</div>
+                                        <small class="text-muted" data-en="Your status" data-id="Status Anda">Your status</small>
                                     </div>
                                 </div>
                             </div>
@@ -1064,10 +1026,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Rest of the dashboard content remains unchanged -->
-            <!-- Stats Cards, Quick Actions, Property Portfolio, Charts, etc. -->
-            <!-- I'll continue with the rest of the existing content... -->
 
             <!-- Stats Cards -->
             <div class="row mb-4">
@@ -1077,9 +1035,9 @@
                             <i class="fas fa-wallet"></i>
                         </div>
                         <div class="stat-value">IDR 1,089,658</div>
-                        <div class="stat-label" data-translate="currentAccountValue">Current Account Value</div>
+                        <div class="stat-label" data-en="Current Account Value" data-id="Nilai Akun Saat Ini">Current Account Value</div>
                         <div class="stat-change positive">
-                            <i class="fas fa-arrow-up me-1"></i>+2.8% <span data-translate="thisMonth">this month</span>
+                            <i class="fas fa-arrow-up me-1"></i>+2.8% <span data-en="this month" data-id="bulan ini">this month</span>
                         </div>
                     </div>
                 </div>
@@ -1090,9 +1048,9 @@
                             <i class="fas fa-chart-line"></i>
                         </div>
                         <div class="stat-value">IDR 1,020,000</div>
-                        <div class="stat-label" data-translate="totalPropertyValue">Total Property Value</div>
+                        <div class="stat-label" data-en="Total Property Value" data-id="Total Nilai Properti">Total Property Value</div>
                         <div class="stat-change positive">
-                            <i class="fas fa-arrow-up me-1"></i>220 <span data-translate="totalTokens">Total Tokens</span>
+                            <i class="fas fa-arrow-up me-1"></i>220 <span data-en="Total Tokens" data-id="Total Token">Total Tokens</span>
                         </div>
                     </div>
                 </div>
@@ -1103,9 +1061,9 @@
                             <i class="fas fa-coins"></i>
                         </div>
                         <div class="stat-value">IDR 177,234</div>
-                        <div class="stat-label" data-translate="totalRentEarned">Total Rent Earned</div>
+                        <div class="stat-label" data-en="Total Rent Earned" data-id="Total Sewa yang Diperoleh">Total Rent Earned</div>
                         <div class="stat-change positive">
-                            <i class="fas fa-arrow-up me-1"></i><span data-translate="annualizedReturn">Annualized return</span>
+                            <i class="fas fa-arrow-up me-1"></i><span data-en="Annualized return" data-id="Keuntungan tahunan">Annualized return</span>
                         </div>
                     </div>
                 </div>
@@ -1116,28 +1074,25 @@
                             <i class="fas fa-building"></i>
                         </div>
                         <div class="stat-value">2</div>
-                        <div class="stat-label">Properties Owned</div>
+                        <div class="stat-label" data-en="Properties Owned" data-id="Properti yang Dimiliki">Properties Owned</div>
                         <div class="stat-change positive">
-                            <i class="fas fa-arrow-up me-1"></i>Active investments
+                            <i class="fas fa-arrow-up me-1"></i><span data-en="Active investments" data-id="Investasi aktif">Active investments</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Rest of the original dashboard content follows... -->
-            <!-- I'll include the complete original content for completeness -->
-
             <!-- Quick Actions -->
             <div class="row mb-4">
                 <div class="col-12">
-                    <h5 class="mb-3">Quick Actions</h5>
+                    <h5 class="mb-3" data-en="Quick Actions" data-id="Aksi Cepat">Quick Actions</h5>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 mb-3">
                     <a href="#" class="quick-action top-up">
                         <div class="quick-action-icon">
                             <i class="fas fa-plus"></i>
                         </div>
-                        <div class="quick-action-text">Top Up Wallet</div>
+                        <div class="quick-action-text" data-en="Top Up Wallet" data-id="Isi Saldo Dompet">Top Up Wallet</div>
                     </a>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 mb-3">
@@ -1145,7 +1100,7 @@
                         <div class="quick-action-icon">
                             <i class="fas fa-minus"></i>
                         </div>
-                        <div class="quick-action-text">Withdraw</div>
+                        <div class="quick-action-text" data-en="Withdraw" data-id="Tarik">Withdraw</div>
                     </a>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 mb-3">
@@ -1153,7 +1108,7 @@
                         <div class="quick-action-icon">
                             <i class="fas fa-search"></i>
                         </div>
-                        <div class="quick-action-text">Browse Properties</div>
+                        <div class="quick-action-text" data-en="Browse Properties" data-id="Jelajahi Properti">Browse Properties</div>
                     </a>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 mb-3">
@@ -1161,7 +1116,7 @@
                         <div class="quick-action-icon">
                             <i class="fas fa-chart-bar"></i>
                         </div>
-                        <div class="quick-action-text">View Portfolio</div>
+                        <div class="quick-action-text" data-en="View Portfolio" data-id="Lihat Portofolio">View Portfolio</div>
                     </a>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 mb-3">
@@ -1169,7 +1124,7 @@
                         <div class="quick-action-icon">
                             <i class="fas fa-bed"></i>
                         </div>
-                        <div class="quick-action-text">Book Stay</div>
+                        <div class="quick-action-text" data-en="Book Stay" data-id="Pesan Menginap">Book Stay</div>
                     </a>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 mb-3">
@@ -1177,7 +1132,7 @@
                         <div class="quick-action-icon">
                             <i class="fas fa-calculator"></i>
                         </div>
-                        <div class="quick-action-text">Calculate Perks</div>
+                        <div class="quick-action-text" data-en="Calculate Perks" data-id="Hitung Manfaat">Calculate Perks</div>
                     </a>
                 </div>
             </div>
@@ -1186,22 +1141,22 @@
             <div class="row mb-4">
                 <div class="col-lg-8">
                     <div class="perks-overview">
-                        <h5><i class="fas fa-crown me-2"></i>Owner Perks Overview</h5>
+                        <h5><i class="fas fa-crown me-2"></i><span data-en="Owner Perks Overview" data-id="Ikhtisar Manfaat Pemilik">Owner Perks Overview</span></h5>
                         <div class="perks-content">
                             <div class="perks-highlight">
-                                <h6 class="mb-2">Your Stay Rights</h6>
+                                <h6 class="mb-2" data-en="Your Stay Rights" data-id="Hak Menginap Anda">Your Stay Rights</h6>
                                 <p class="mb-2">
-                                    <strong>5 free days</strong> at Villa Kulibul 
-                                    <small>(based on 220 tokens)</small>
+                                    <strong>5 <span data-en="free days" data-id="hari gratis">free days</span></strong> <span data-en="at Villa Kulibul" data-id="di Villa Kulibul">at Villa Kulibul</span>
+                                    <small>(<span data-en="based on 220 tokens" data-id="berdasarkan 220 token">based on 220 tokens</span>)</small>
                                 </p>
                                 <button class="btn btn-light btn-sm">
-                                    <i class="fas fa-calendar-plus me-1"></i>Redeem Now
+                                    <i class="fas fa-calendar-plus me-1"></i><span data-en="Redeem Now" data-id="Tukar Sekarang">Redeem Now</span>
                                 </button>
                             </div>
                             <div class="yield-slider">
-                                <div class="slider-label">Trade 1% yield for +2 extra days</div>
+                                <div class="slider-label" data-en="Trade 1% yield for +2 extra days" data-id="Tukar 1% yield untuk +2 hari ekstra">Trade 1% yield for +2 extra days</div>
                                 <input type="range" class="form-range slider-control" min="0" max="3" value="1" step="1">
-                                <div class="slider-value">Current: 1% yield trade-off (+2 extra days)</div>
+                                <div class="slider-value" data-en="Current: 1% yield trade-off (+2 extra days)" data-id="Saat ini: 1% trade-off yield (+2 hari ekstra)">Current: 1% yield trade-off (+2 extra days)</div>
                             </div>
                         </div>
                     </div>
@@ -1209,15 +1164,15 @@
                 <div class="col-lg-4">
                     <div class="promo-card">
                         <div class="promo-header">
-                            <h6><i class="fas fa-megaphone me-2"></i>Exclusive Promo</h6>
+                            <h6><i class="fas fa-megaphone me-2"></i><span data-en="Exclusive Promo" data-id="Promo Eksklusif">Exclusive Promo</span></h6>
                         </div>
                         <div class="promo-content">
-                            <div class="promo-badge">LIMITED</div>
-                            <h6 class="promo-title">Minimum Investment IDR 50K</h6>
-                            <p class="promo-description">Get 10 bonus tokens for new property purchases!</p>
-                            <div class="promo-validity">Valid until January 31, 2025</div>
+                            <div class="promo-badge" data-en="LIMITED" data-id="TERBATAS">LIMITED</div>
+                            <h6 class="promo-title" data-en="Minimum Investment IDR 50K" data-id="Investasi Minimum IDR 50K">Minimum Investment IDR 50K</h6>
+                            <p class="promo-description" data-en="Get 10 bonus tokens for new property purchases!" data-id="Dapatkan 10 bonus token untuk pembelian properti baru!">Get 10 bonus tokens for new property purchases!</p>
+                            <div class="promo-validity" data-en="Valid until January 31, 2025" data-id="Berlaku hingga 31 Januari 2025">Valid until January 31, 2025</div>
                             <button class="btn btn-warning btn-sm btn-block">
-                                <i class="fas fa-gift me-1"></i>Claim Now
+                                <i class="fas fa-gift me-1"></i><span data-en="Claim Now" data-id="Klaim Sekarang">Claim Now</span>
                             </button>
                         </div>
                     </div>
@@ -1227,7 +1182,7 @@
             <!-- Property Portfolio - Goro Style -->
             <div class="row mb-4">
                 <div class="col-12">
-                    <h5 class="mb-3">Property List</h5>
+                    <h5 class="mb-3" data-en="Property List" data-id="Daftar Properti">Property List</h5>
                 </div>
                 
                 <!-- Property 1: Villa Kulibul -->
@@ -1243,30 +1198,30 @@
                             <div class="property-stats">
                                 <div class="property-stat">
                                     <div class="property-stat-value">100</div>
-                                    <div class="property-stat-label">Total</div>
+                                    <div class="property-stat-label" data-en="Total" data-id="Total">Total</div>
                                 </div>
                                 <div class="property-stat">
                                     <div class="property-stat-value">0</div>
-                                    <div class="property-stat-label">Locked</div>
+                                    <div class="property-stat-label" data-en="Locked" data-id="Terkunci">Locked</div>
                                 </div>
                                 <div class="property-stat">
                                     <div class="property-stat-value">100</div>
-                                    <div class="property-stat-label">Available</div>
+                                    <div class="property-stat-label" data-en="Available" data-id="Tersedia">Available</div>
                                 </div>
                             </div>
 
                             <!-- Property Metrics -->
                             <div class="property-metrics">
                                 <div class="metric-row">
-                                    <span class="metric-label">Current Value</span>
+                                    <span class="metric-label" data-en="Current Value" data-id="Nilai Saat Ini">Current Value</span>
                                     <span class="metric-value">IDR 1,000,000</span>
                                 </div>
                                 <div class="metric-row">
-                                    <span class="metric-label">Last Rent</span>
+                                    <span class="metric-label" data-en="Last Rent" data-id="Sewa Terakhir">Last Rent</span>
                                     <span class="metric-value positive">IDR 6,885</span>
                                 </div>
                                 <div class="metric-row">
-                                    <span class="metric-label">Total Rent</span>
+                                    <span class="metric-label" data-en="Total Rent" data-id="Total Sewa">Total Rent</span>
                                     <span class="metric-value positive">IDR 174,266</span>
                                 </div>
                             </div>
@@ -1274,17 +1229,17 @@
                             <div class="row g-1">
                                 <div class="col-4">
                                     <button class="btn btn-outline-primary btn-action btn-sm">
-                                        <i class="fas fa-chart-line me-1"></i>Details
+                                        <i class="fas fa-chart-line me-1"></i><span data-en="Details" data-id="Detail">Details</span>
                                     </button>
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-success btn-action btn-sm">
-                                        <i class="fas fa-exchange-alt me-1"></i>Swap
+                                        <i class="fas fa-exchange-alt me-1"></i><span data-en="Swap" data-id="Tukar">Swap</span>
                                     </button>
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-primary btn-action btn-sm">
-                                        <i class="fas fa-tag me-1"></i>Sell
+                                        <i class="fas fa-tag me-1"></i><span data-en="Sell" data-id="Jual">Sell</span>
                                     </button>
                                 </div>
                             </div>
@@ -1305,30 +1260,30 @@
                             <div class="property-stats">
                                 <div class="property-stat">
                                     <div class="property-stat-value">120</div>
-                                    <div class="property-stat-label">Total</div>
+                                    <div class="property-stat-label" data-en="Total" data-id="Total">Total</div>
                                 </div>
                                 <div class="property-stat">
                                     <div class="property-stat-value">0</div>
-                                    <div class="property-stat-label">Locked</div>
+                                    <div class="property-stat-label" data-en="Locked" data-id="Terkunci">Locked</div>
                                 </div>
                                 <div class="property-stat">
                                     <div class="property-stat-value">120</div>
-                                    <div class="property-stat-label">Available</div>
+                                    <div class="property-stat-label" data-en="Available" data-id="Tersedia">Available</div>
                                 </div>
                             </div>
 
                             <!-- Property Metrics -->
                             <div class="property-metrics">
                                 <div class="metric-row">
-                                    <span class="metric-label">Current Value</span>
+                                    <span class="metric-label" data-en="Current Value" data-id="Nilai Saat Ini">Current Value</span>
                                     <span class="metric-value">IDR 20,000</span>
                                 </div>
                                 <div class="metric-row">
-                                    <span class="metric-label">Last Rent</span>
+                                    <span class="metric-label" data-en="Last Rent" data-id="Sewa Terakhir">Last Rent</span>
                                     <span class="metric-value positive">IDR 0</span>
                                 </div>
                                 <div class="metric-row">
-                                    <span class="metric-label">Total Rent</span>
+                                    <span class="metric-label" data-en="Total Rent" data-id="Total Sewa">Total Rent</span>
                                     <span class="metric-value positive">IDR 2,968</span>
                                 </div>
                             </div>
@@ -1336,17 +1291,17 @@
                             <div class="row g-1">
                                 <div class="col-4">
                                     <button class="btn btn-outline-primary btn-action btn-sm">
-                                        <i class="fas fa-chart-line me-1"></i>Details
+                                        <i class="fas fa-chart-line me-1"></i><span data-en="Details" data-id="Detail">Details</span>
                                     </button>
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-success btn-action btn-sm">
-                                        <i class="fas fa-exchange-alt me-1"></i>Swap
+                                        <i class="fas fa-exchange-alt me-1"></i><span data-en="Swap" data-id="Tukar">Swap</span>
                                     </button>
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-primary btn-action btn-sm">
-                                        <i class="fas fa-tag me-1"></i>Sell
+                                        <i class="fas fa-tag me-1"></i><span data-en="Sell" data-id="Jual">Sell</span>
                                     </button>
                                 </div>
                             </div>
@@ -1367,30 +1322,30 @@
                             <div class="property-stats">
                                 <div class="property-stat">
                                     <div class="property-stat-value">0</div>
-                                    <div class="property-stat-label">Total</div>
+                                    <div class="property-stat-label" data-en="Total" data-id="Total">Total</div>
                                 </div>
                                 <div class="property-stat">
                                     <div class="property-stat-value">0</div>
-                                    <div class="property-stat-label">Locked</div>
+                                    <div class="property-stat-label" data-en="Locked" data-id="Terkunci">Locked</div>
                                 </div>
                                 <div class="property-stat">
                                     <div class="property-stat-value">0</div>
-                                    <div class="property-stat-label">Available</div>
+                                    <div class="property-stat-label" data-en="Available" data-id="Tersedia">Available</div>
                                 </div>
                             </div>
 
                             <!-- Property Metrics -->
                             <div class="property-metrics">
                                 <div class="metric-row">
-                                    <span class="metric-label">Est. Value</span>
+                                    <span class="metric-label" data-en="Est. Value" data-id="Perkiraan Nilai">Est. Value</span>
                                     <span class="metric-value">IDR 0</span>
                                 </div>
                                 <div class="metric-row">
-                                    <span class="metric-label">Expected ERY</span>
+                                    <span class="metric-label" data-en="Expected ERY" data-id="ERY yang Diharapkan">Expected ERY</span>
                                     <span class="metric-value positive">12%</span>
                                 </div>
                                 <div class="metric-row">
-                                    <span class="metric-label">Expected IRR</span>
+                                    <span class="metric-label" data-en="Expected IRR" data-id="IRR yang Diharapkan">Expected IRR</span>
                                     <span class="metric-value positive">18%</span>
                                 </div>
                             </div>
@@ -1398,7 +1353,7 @@
                             <div class="row g-1">
                                 <div class="col-12">
                                     <button class="btn btn-outline-secondary btn-action btn-sm" disabled>
-                                        <i class="fas fa-clock me-1"></i>Coming Soon
+                                        <i class="fas fa-clock me-1"></i><span data-en="Coming Soon" data-id="Segera Hadir">Coming Soon</span>
                                     </button>
                                 </div>
                             </div>
@@ -1412,19 +1367,19 @@
                 <div class="col-lg-8 mb-4">
                     <div class="chart-container">
                         <div class="chart-header">
-                            <h6 class="chart-title">Monthly Earnings Trend</h6>
+                            <h6 class="chart-title" data-en="Monthly Earnings Trend" data-id="Tren Pendapatan Bulanan">Monthly Earnings Trend</h6>
                             <div class="chart-tabs">
-                                <div class="chart-tab active">3 Months</div>
-                                <div class="chart-tab">6 Months</div>
-                                <div class="chart-tab">1 Year</div>
-                                <div class="chart-tab">Perks Impact</div>
+                                <div class="chart-tab active" data-en="3 Months" data-id="3 Bulan">3 Months</div>
+                                <div class="chart-tab" data-en="6 Months" data-id="6 Bulan">6 Months</div>
+                                <div class="chart-tab" data-en="1 Year" data-id="1 Tahun">1 Year</div>
+                                <div class="chart-tab" data-en="Perks Impact" data-id="Dampak Manfaat">Perks Impact</div>
                             </div>
                         </div>
                         <div class="chart-wrapper">
                             <canvas id="earningsChart"></canvas>
                             <div id="perksImpactChart" style="display: none; padding: 2rem; text-align: center;">
-                                <h6>Yield after stay: +9.5%</h6>
-                                <p class="text-muted">Chart shows the impact of using perks on monthly yield</p>
+                                <h6 data-en="Yield after stay: +9.5%" data-id="Yield setelah menginap: +9.5%">Yield after stay: +9.5%</h6>
+                                <p class="text-muted" data-en="Chart shows the impact of using perks on monthly yield" data-id="Grafik menunjukkan dampak penggunaan manfaat pada yield bulanan">Chart shows the impact of using perks on monthly yield</p>
                             </div>
                         </div>
                     </div>
@@ -1433,7 +1388,7 @@
                 <div class="col-lg-4 mb-4">
                     <div class="chart-container">
                         <div class="chart-header">
-                            <h6 class="chart-title">Portfolio Distribution</h6>
+                            <h6 class="chart-title" data-en="Portfolio Distribution" data-id="Distribusi Portofolio">Portfolio Distribution</h6>
                         </div>
                         <div class="chart-wrapper">
                             <canvas id="portfolioChart"></canvas>
@@ -1447,56 +1402,56 @@
                 <div class="col-12">
                     <div class="stat-card">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h6 class="mb-0">Recent Transactions</h6>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
+                            <h6 class="mb-0" data-en="Recent Transactions" data-id="Transaksi Terbaru">Recent Transactions</h6>
+                            <a href="#" class="btn btn-sm btn-outline-primary" data-en="View All" data-id="Lihat Semua">View All</a>
                         </div>
                         
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Date</th>
-                                        <th>Property</th>
-                                        <th>Type</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
+                                        <th data-en="Date" data-id="Tanggal">Date</th>
+                                        <th data-en="Property" data-id="Properti">Property</th>
+                                        <th data-en="Type" data-id="Jenis">Type</th>
+                                        <th data-en="Amount" data-id="Jumlah">Amount</th>
+                                        <th data-en="Status" data-id="Status">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Jan 18, 2025</td>
                                         <td>Villa Kulibul</td>
-                                        <td><span class="badge bg-success">Rent Earned</span></td>
+                                        <td><span class="badge bg-success" data-en="Rent Earned" data-id="Sewa Diperoleh">Rent Earned</span></td>
                                         <td class="text-success">+IDR 6,885</td>
-                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td><span class="badge bg-success" data-en="Completed" data-id="Selesai">Completed</span></td>
                                     </tr>
                                     <tr>
                                         <td>Jan 15, 2025</td>
                                         <td>Bassura City</td>
-                                        <td><span class="badge bg-success">Rent Earned</span></td>
+                                        <td><span class="badge bg-success" data-en="Rent Earned" data-id="Sewa Diperoleh">Rent Earned</span></td>
                                         <td class="text-success">+IDR 2,450</td>
-                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td><span class="badge bg-success" data-en="Completed" data-id="Selesai">Completed</span></td>
                                     </tr>
                                     <tr>
                                         <td>Jan 12, 2025</td>
-                                        <td>Account Balance</td>
-                                        <td><span class="badge bg-danger">Withdraw</span></td>
+                                        <td><span data-en="Account Balance" data-id="Saldo Akun">Account Balance</span></td>
+                                        <td><span class="badge bg-danger" data-en="Withdraw" data-id="Tarik">Withdraw</span></td>
                                         <td class="text-danger">-IDR 50,000</td>
-                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td><span class="badge bg-success" data-en="Completed" data-id="Selesai">Completed</span></td>
                                     </tr>
                                     <tr>
                                         <td>Jan 10, 2025</td>
                                         <td>Villa Kulibul</td>
-                                        <td><span class="badge bg-info">Token Purchase</span></td>
+                                        <td><span class="badge bg-info" data-en="Token Purchase" data-id="Pembelian Token">Token Purchase</span></td>
                                         <td class="text-danger">-IDR 1,000,000</td>
-                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td><span class="badge bg-success" data-en="Completed" data-id="Selesai">Completed</span></td>
                                     </tr>
                                     <tr>
                                         <td>Jan 8, 2025</td>
                                         <td>Bassura City</td>
-                                        <td><span class="badge bg-info">Token Purchase</span></td>
+                                        <td><span class="badge bg-info" data-en="Token Purchase" data-id="Pembelian Token">Token Purchase</span></td>
                                         <td class="text-danger">-IDR 20,000</td>
-                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td><span class="badge bg-success" data-en="Completed" data-id="Selesai">Completed</span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1513,6 +1468,30 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
+        // Language Switcher Function
+        function switchLanguage(lang) {
+            // Update active language button
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-en][data-id]').forEach(element => {
+                if (lang === 'en') {
+                    element.textContent = element.getAttribute('data-en');
+                } else if (lang === 'id') {
+                    element.textContent = element.getAttribute('data-id');
+                }
+            });
+            
+            // Store language preference
+            localStorage.setItem('propertytoken_language', lang);
+            
+            // Show toast notification
+            showToast(lang === 'en' ? 'Language switched to English' : 'Bahasa diubah ke Indonesia', 'success');
+        }
+
         // Toggle Sidebar (Mobile)
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
@@ -1539,6 +1518,12 @@
 
         // Chart Tab Switching
         document.addEventListener('DOMContentLoaded', function() {
+            // Load saved language preference
+            const savedLang = localStorage.getItem('propertytoken_language') || 'en';
+            if (savedLang !== 'en') {
+                switchLanguage(savedLang);
+            }
+
             const chartTabs = document.querySelectorAll('.chart-tab');
             const earningsChart = document.getElementById('earningsChart');
             const perksImpactChart = document.getElementById('perksImpactChart');
@@ -1551,7 +1536,10 @@
                     this.classList.add('active');
                     
                     // Show/hide charts based on selection
-                    if (this.textContent === 'Perks Impact') {
+                    const currentLang = localStorage.getItem('propertytoken_language') || 'en';
+                    const tabText = currentLang === 'en' ? this.getAttribute('data-en') : this.getAttribute('data-id');
+                    
+                    if (tabText.includes('Perks') || tabText.includes('Manfaat')) {
                         earningsChart.style.display = 'none';
                         perksImpactChart.style.display = 'block';
                     } else {
@@ -1669,355 +1657,7 @@
             }
         }
 
-        // Close sidebar when clicking outside (mobile)
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
-            const toggleBtn = document.querySelector('.sidebar-toggle');
-            
-            if (window.innerWidth <= 768) {
-                if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
-                    sidebar.classList
-sidebar.classList.remove('show');
-               }
-           }
-       });
-
-        // Language Switcher Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize language switcher
-            initializeLanguageSwitcher();
-            
-            // Initialize crowdfunding promo
-            initializeCrowdfundingPromo();
-        });
-
-        function initializeLanguageSwitcher() {
-            const langButtons = document.querySelectorAll('.lang-btn');
-            
-            langButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    langButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    
-                    const lang = btn.dataset.lang;
-                    switchLanguage(lang);
-                });
-            });
-        }
-
-        function switchLanguage(lang) {
-            const translations = {
-                en: {
-                    // Page Title
-                    pageTitle: 'Dashboard Overview',
-                    
-                    // Sidebar Menu
-                    dashboard: 'Dashboard',
-                    portfolio: 'Portfolio',
-                    myProperties: 'My Properties',
-                    dividends: 'Dividends',
-                    transactions: 'Transactions',
-                    usageRights: 'Usage Rights',
-                    ownerPerks: 'Owner Perks',
-                    stayReservations: 'Stay Reservations',
-                    redeemDiscounts: 'Redeem Discounts',
-                    yieldCalculator: 'Yield Trade-Off Calculator',
-                    marketplace: 'Marketplace',
-                    browseListings: 'Browse Listings',
-                    myListings: 'My Listings',
-                    perkListings: 'Perk-Enhanced Listings',
-                    wallet: 'Wallet',
-                    topUp: 'Top Up',
-                    withdraw: 'Withdraw',
-                    transactionHistory: 'Transaction History',
-                    referrals: 'Referrals',
-                    referralOverview: 'Referral Overview',
-                    earningsReport: 'Earnings Report',
-                    education: 'Education',
-                    academy: 'GapuraPrima Academy',
-                    faq: 'FAQ',
-                    events: 'Events',
-                    upcomingEvents: 'Upcoming Events',
-                    eventTickets: 'My Event Tickets',
-                    security: 'Security',
-                    changePassword: 'Change Password',
-                    changePIN: 'Change PIN',
-                    twoFA: '2FA Settings',
-                    settings: 'Settings',
-                    profilePreferences: 'Profile & Preferences',
-                    
-                    // Promo
-                    promoHighRisk: '🔥 HIGH OPPORTUNITY',
-                    promoTitle: 'Want higher profits but with more risk?',
-                    promoSubtitle: 'Mau mengambil untung lebih tapi lebih beresiko? Klik di sini.',
-                    promoCTA: 'Crowdfund Villa Development',
-                    
-                    // Profile Dropdown
-                    profile: 'Profile',
-                    logout: 'Logout',
-                    
-                    // Welcome Section
-                    welcomeTitle: 'Welcome back, Albert! 👋',
-                    welcomeText: "Below is your property investment summary for this month. Your portfolio shows stable performance with high occupancy rates.",
-                    activeProperties: 'Active Properties',
-                    inPortfolio: 'In your portfolio',
-                    averageOccupancy: 'Average Occupancy',
-                    monthPerformance: "This month's performance",
-                    activeInvestor: 'Active Investor',
-                    yourStatus: 'Your status',
-                    
-                    // Stats Cards
-                    currentAccountValue: 'Current Account Value',
-                    thisMonth: 'this month',
-                    totalPropertyValue: 'Total Property Value',
-                    totalTokens: 'Total Tokens',
-                    totalRentEarned: 'Total Rent Earned',
-                    annualizedReturn: 'Annualized return',
-                    availableBalance: 'Available Balance',
-                    withdraw: 'Withdraw',
-                    
-                    // Quick Actions
-                    quickActions: 'Quick Actions',
-                    buyTokens: 'Buy Tokens',
-                    sellTokens: 'Sell Tokens',
-                    viewDividends: 'View Dividends',
-                    bookStay: 'Book Stay',
-                    
-                    // Property Portfolio
-                    propertyPortfolio: 'Property Portfolio',
-                    viewAll: 'View All',
-                    bassuraApartment: 'Bassura City Apartment D/32/BR',
-                    villaKulibul: 'Villa Kulibul',
-                    montBlanc: 'Mont Blanc Apartment B/15/BR',
-                    location1: 'Jatinegara, Jakarta Timur',
-                    location2: 'Canggu, Bali',
-                    location3: 'Alam Sutera, Tangerang',
-                    yourTokens: 'Your Tokens',
-                    monthlyRent: 'Monthly Rent',
-                    totalValue: 'Total Value',
-                    annualYield: 'Annual Yield',
-                    viewDetails: 'View Details',
-                    
-                    // Performance Chart
-                    performanceChart: 'Portfolio Performance',
-                    performanceSubtitle: 'Your investment returns over time',
-                    
-                    // Recent Activity
-                    recentActivity: 'Recent Activity',
-                    rentReceived: 'Rent received',
-                    tokensAcquired: 'Tokens acquired',
-                    from: 'from',
-                    for: 'for'
-                },
-                id: {
-                    // Page Title
-                    pageTitle: 'Ringkasan Dashboard',
-                    
-                    // Sidebar Menu
-                    dashboard: 'Dashboard',
-                    portfolio: 'Portofolio',
-                    myProperties: 'Properti Saya',
-                    dividends: 'Dividen',
-                    transactions: 'Transaksi',
-                    usageRights: 'Hak Penggunaan',
-                    ownerPerks: 'Privilese Pemilik',
-                    stayReservations: 'Reservasi Menginap',
-                    redeemDiscounts: 'Tukar Diskon',
-                    yieldCalculator: 'Kalkulator Tukar Yield',
-                    marketplace: 'Pasar',
-                    browseListings: 'Jelajahi Listing',
-                    myListings: 'Listing Saya',
-                    perkListings: 'Listing Privilese',
-                    wallet: 'Dompet',
-                    topUp: 'Isi Saldo',
-                    withdraw: 'Tarik Dana',
-                    transactionHistory: 'Riwayat Transaksi',
-                    referrals: 'Referral',
-                    referralOverview: 'Ringkasan Referral',
-                    earningsReport: 'Laporan Penghasilan',
-                    education: 'Edukasi',
-                    academy: 'Akademi GapuraPrima',
-                    faq: 'FAQ',
-                    events: 'Acara',
-                    upcomingEvents: 'Acara Mendatang',
-                    eventTickets: 'Tiket Acara Saya',
-                    security: 'Keamanan',
-                    changePassword: 'Ubah Password',
-                    changePIN: 'Ubah PIN',
-                    twoFA: 'Pengaturan 2FA',
-                    settings: 'Pengaturan',
-                    profilePreferences: 'Profil & Preferensi',
-                    
-                    // Promo
-                    promoHighRisk: '🔥 PELUANG TINGGI',
-                    promoTitle: 'Mau mengambil untung lebih tapi lebih beresiko?',
-                    promoSubtitle: 'Want higher profits but with more risk? Click here.',
-                    promoCTA: 'Crowdfund Pengembangan Villa',
-                    
-                    // Profile Dropdown
-                    profile: 'Profil',
-                    logout: 'Keluar',
-                    
-                    // Welcome Section
-                    welcomeTitle: 'Selamat datang kembali, Albert! 👋',
-                    welcomeText: 'Berikut adalah ringkasan investasi properti Anda untuk bulan ini. Portofolio Anda menunjukkan kinerja stabil dengan tingkat hunian yang tinggi.',
-                    activeProperties: 'Properti Aktif',
-                    inPortfolio: 'Dalam portofolio Anda',
-                    averageOccupancy: 'Rata-rata Hunian',
-                    monthPerformance: 'Kinerja bulan ini',
-                    activeInvestor: 'Investor Aktif',
-                    yourStatus: 'Status Anda',
-                    
-                    // Stats Cards
-                    currentAccountValue: 'Nilai Akun Saat Ini',
-                    thisMonth: 'bulan ini',
-                    totalPropertyValue: 'Total Nilai Properti',
-                    totalTokens: 'Total Token',
-                    totalRentEarned: 'Total Sewa Diterima',
-                    annualizedReturn: 'Return tahunan',
-                    availableBalance: 'Saldo Tersedia',
-                    withdraw: 'Tarik Dana',
-                    
-                    // Quick Actions
-                    quickActions: 'Aksi Cepat',
-                    buyTokens: 'Beli Token',
-                    sellTokens: 'Jual Token',
-                    viewDividends: 'Lihat Dividen',
-                    bookStay: 'Pesan Menginap',
-                    
-                    // Property Portfolio
-                    propertyPortfolio: 'Portofolio Properti',
-                    viewAll: 'Lihat Semua',
-                    bassuraApartment: 'Apartemen Bassura City D/32/BR',
-                    villaKulibul: 'Villa Kulibul',
-                    montBlanc: 'Apartemen Mont Blanc B/15/BR',
-                    location1: 'Jatinegara, Jakarta Timur',
-                    location2: 'Canggu, Bali',
-                    location3: 'Alam Sutera, Tangerang',
-                    yourTokens: 'Token Anda',
-                    monthlyRent: 'Sewa Bulanan',
-                    totalValue: 'Total Nilai',
-                    annualYield: 'Yield Tahunan',
-                    viewDetails: 'Lihat Detail',
-                    
-                    // Performance Chart
-                    performanceChart: 'Kinerja Portofolio',
-                    performanceSubtitle: 'Return investasi Anda dari waktu ke waktu',
-                    
-                    // Recent Activity
-                    recentActivity: 'Aktivitas Terbaru',
-                    rentReceived: 'Sewa diterima',
-                    tokensAcquired: 'Token diperoleh',
-                    from: 'dari',
-                    for: 'untuk'
-                }
-            };
-
-            // Update page title
-            updateElement('.top-navbar h5', translations[lang].pageTitle);
-            
-            // Update sidebar menu
-            updateElement('[data-translate="dashboard"]', translations[lang].dashboard);
-            updateElement('[data-translate="portfolio"]', translations[lang].portfolio);
-            updateElement('[data-translate="myProperties"]', translations[lang].myProperties);
-            updateElement('[data-translate="dividends"]', translations[lang].dividends);
-            updateElement('[data-translate="transactions"]', translations[lang].transactions);
-            updateElement('[data-translate="usageRights"]', translations[lang].usageRights);
-            updateElement('[data-translate="ownerPerks"]', translations[lang].ownerPerks);
-            updateElement('[data-translate="stayReservations"]', translations[lang].stayReservations);
-            updateElement('[data-translate="redeemDiscounts"]', translations[lang].redeemDiscounts);
-            updateElement('[data-translate="yieldCalculator"]', translations[lang].yieldCalculator);
-            updateElement('[data-translate="marketplace"]', translations[lang].marketplace);
-            updateElement('[data-translate="browseListings"]', translations[lang].browseListings);
-            updateElement('[data-translate="myListings"]', translations[lang].myListings);
-            updateElement('[data-translate="perkListings"]', translations[lang].perkListings);
-            updateElement('[data-translate="wallet"]', translations[lang].wallet);
-            updateElement('[data-translate="topUp"]', translations[lang].topUp);
-            updateElement('[data-translate="withdraw"]', translations[lang].withdraw);
-            updateElement('[data-translate="transactionHistory"]', translations[lang].transactionHistory);
-            updateElement('[data-translate="referrals"]', translations[lang].referrals);
-            updateElement('[data-translate="referralOverview"]', translations[lang].referralOverview);
-            updateElement('[data-translate="earningsReport"]', translations[lang].earningsReport);
-            updateElement('[data-translate="education"]', translations[lang].education);
-            updateElement('[data-translate="academy"]', translations[lang].academy);
-            updateElement('[data-translate="faq"]', translations[lang].faq);
-            updateElement('[data-translate="events"]', translations[lang].events);
-            updateElement('[data-translate="upcomingEvents"]', translations[lang].upcomingEvents);
-            updateElement('[data-translate="eventTickets"]', translations[lang].eventTickets);
-            updateElement('[data-translate="security"]', translations[lang].security);
-            updateElement('[data-translate="changePassword"]', translations[lang].changePassword);
-            updateElement('[data-translate="changePIN"]', translations[lang].changePIN);
-            updateElement('[data-translate="twoFA"]', translations[lang].twoFA);
-            updateElement('[data-translate="settings"]', translations[lang].settings);
-            updateElement('[data-translate="profilePreferences"]', translations[lang].profilePreferences);
-            
-            // Update promo content
-            updateElement('[data-translate="promoHighRisk"]', translations[lang].promoHighRisk);
-            updateElement('[data-translate="promoTitle"]', translations[lang].promoTitle);
-            updateElement('[data-translate="promoSubtitle"]', translations[lang].promoSubtitle);
-            updateElement('[data-translate="promoCTA"]', translations[lang].promoCTA);
-            
-            // Update profile dropdown
-            updateElement('[data-translate="profile"]', translations[lang].profile);
-            updateElement('[data-translate="logout"]', translations[lang].logout);
-            
-            // Update welcome section
-            updateElement('[data-translate="welcomeTitle"]', translations[lang].welcomeTitle);
-            updateElement('[data-translate="welcomeText"]', translations[lang].welcomeText);
-            updateElement('[data-translate="activeProperties"]', translations[lang].activeProperties);
-            updateElement('[data-translate="inPortfolio"]', translations[lang].inPortfolio);
-            updateElement('[data-translate="averageOccupancy"]', translations[lang].averageOccupancy);
-            updateElement('[data-translate="monthPerformance"]', translations[lang].monthPerformance);
-            updateElement('[data-translate="activeInvestor"]', translations[lang].activeInvestor);
-            updateElement('[data-translate="yourStatus"]', translations[lang].yourStatus);
-            
-            // Update stats cards
-            updateElement('[data-translate="currentAccountValue"]', translations[lang].currentAccountValue);
-            updateElement('[data-translate="thisMonth"]', translations[lang].thisMonth);
-            updateElement('[data-translate="totalPropertyValue"]', translations[lang].totalPropertyValue);
-            updateElement('[data-translate="totalTokens"]', translations[lang].totalTokens);
-            updateElement('[data-translate="totalRentEarned"]', translations[lang].totalRentEarned);
-            updateElement('[data-translate="annualizedReturn"]', translations[lang].annualizedReturn);
-            updateElement('[data-translate="availableBalance"]', translations[lang].availableBalance);
-            
-            // Update buttons and actions
-            updateElement('[data-translate="quickActions"]', translations[lang].quickActions);
-            updateElement('[data-translate="buyTokens"]', translations[lang].buyTokens);
-            updateElement('[data-translate="sellTokens"]', translations[lang].sellTokens);
-            updateElement('[data-translate="viewDividends"]', translations[lang].viewDividends);
-            updateElement('[data-translate="bookStay"]', translations[lang].bookStay);
-            updateElement('[data-translate="propertyPortfolio"]', translations[lang].propertyPortfolio);
-            updateElement('[data-translate="viewAll"]', translations[lang].viewAll);
-            updateElement('[data-translate="viewDetails"]', translations[lang].viewDetails);
-            
-            // Update property details
-            updateElement('[data-translate="yourTokens"]', translations[lang].yourTokens);
-            updateElement('[data-translate="monthlyRent"]', translations[lang].monthlyRent);
-            updateElement('[data-translate="totalValue"]', translations[lang].totalValue);
-            updateElement('[data-translate="annualYield"]', translations[lang].annualYield);
-            
-            // Update chart section
-            updateElement('[data-translate="performanceChart"]', translations[lang].performanceChart);
-            updateElement('[data-translate="performanceSubtitle"]', translations[lang].performanceSubtitle);
-            
-            // Update recent activity
-            updateElement('[data-translate="recentActivity"]', translations[lang].recentActivity);
-            updateElement('[data-translate="rentReceived"]', translations[lang].rentReceived);
-            updateElement('[data-translate="tokensAcquired"]', translations[lang].tokensAcquired);
-            updateElement('[data-translate="from"]', translations[lang].from);
-            updateElement('[data-translate="for"]', translations[lang].for);
-            
-            // Show toast notification
-            showToast(`Language switched to ${lang.toUpperCase()}`, 'info');
-        }
-
-        function updateElement(selector, text) {
-            const element = document.querySelector(selector);
-            if (element) {
-                element.textContent = text;
-            }
-        }
-
+        // Toast notification function
         function showToast(message, type = 'info') {
             const toast = document.createElement('div');
             toast.className = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'info'} position-fixed`;
@@ -2047,26 +1687,39 @@ sidebar.classList.remove('show');
             }, 3000);
         }
 
-        function initializeCrowdfundingPromo() {
-           const crowdfundingPromo = document.querySelector('.crowdfunding-promo');
-           if (crowdfundingPromo) {
-               crowdfundingPromo.addEventListener('click', function() {
-                   // Track analytics event if needed
-                   if (typeof gtag !== 'undefined') {
-                       gtag('event', 'crowdfunding_promo_click', {
-                           event_category: 'engagement',
-                           event_label: 'dashboard_sidebar_promo'
-                       });
-                   }
-                   
-                   // Add click animation
-                   this.style.transform = 'scale(0.98)';
-                   setTimeout(() => {
-                       this.style.transform = '';
-                   }, 150);
-               });
-           }
-       });
-   </script>
+        // Close sidebar when clicking outside (mobile)
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.querySelector('.sidebar-toggle');
+            
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+                    sidebar.classList.remove('show');
+                }
+            }
+        });
+
+        // Add click tracking for crowdfunding promo
+        document.addEventListener('DOMContentLoaded', function() {
+            const crowdfundingPromo = document.querySelector('.crowdfunding-promo');
+            if (crowdfundingPromo) {
+                crowdfundingPromo.addEventListener('click', function() {
+                    // Track analytics event if needed
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'crowdfunding_promo_click', {
+                            event_category: 'engagement',
+                            event_label: 'dashboard_sidebar_promo'
+                        });
+                    }
+                    
+                    // Add click animation
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
