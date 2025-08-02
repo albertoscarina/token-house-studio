@@ -298,6 +298,33 @@
             border-bottom: 1px solid var(--border-color);
         }
 
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            background: #f1f5f9;
+            border-radius: 6px;
+            padding: 2px;
+            margin-right: 1rem;
+        }
+
+        .lang-btn {
+            padding: 0.25rem 0.75rem;
+            background: none;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
         .profile-avatar {
             width: 40px;
             height: 40px;
@@ -971,6 +998,12 @@
                     <h5 class="mb-0">Dashboard Overview</h5>
                 </div>
                 <div class="d-flex align-items-center">
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="id">ID</button>
+                    </div>
+                    
                     <div class="dropdown">
                         <button class="btn btn-link dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown">
                             <img src="images/people.jpg" alt="Profile" class="profile-avatar me-2">
