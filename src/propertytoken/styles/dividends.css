@@ -29,38 +29,58 @@
     --info: #3b82f6;
 }
 
-/* Dashboard Base Styles */
-.dashboard-body {
-    background: var(--gray-50);
-    overflow-x: hidden;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+/* Base Body Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.dashboard-body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
     margin: 0;
     padding: 0;
 }
 
-/* Sidebar Styles */
+/* Sidebar Styles - Same as dashboard.html */
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 280px;
     height: 100vh;
-    background: white;
-    border-right: 1px solid var(--gray-200);
-    z-index: 1000;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    width: 280px;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: white;
     overflow-y: auto;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
 }
 
 .sidebar-content {
-    padding: 1.5rem 0;
+    padding: 0;
 }
 
 .sidebar-logo {
-    padding: 0 1.5rem 1.5rem;
-    border-bottom: 1px solid var(--gray-200);
-    text-align: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 .logo-img {
@@ -76,18 +96,24 @@
     display: flex;
     align-items: center;
     padding: 0.75rem 1.5rem;
-    color: var(--gray-700);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     transition: all 0.2s ease;
     border: none;
     background: none;
     width: 100%;
     text-align: left;
+    position: relative;
 }
 
 .nav-link:hover {
-    background: var(--gray-100);
-    color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.nav-link.active {
+    background: var(--primary-color);
+    color: white;
 }
 
 .nav-link.has-submenu {
@@ -97,34 +123,40 @@
 .nav-icon {
     width: 20px;
     margin-right: 0.75rem;
+    text-align: center;
 }
 
 .menu-arrow {
     transition: transform 0.2s ease;
+    font-size: 0.8rem;
 }
 
 .submenu {
-    background: var(--gray-50);
-    padding: 0.5rem 0;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0;
 }
 
 .submenu-link {
     display: block;
     padding: 0.5rem 3rem;
-    color: var(--gray-600);
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     font-size: 0.9rem;
     transition: all 0.2s ease;
 }
 
-.submenu-link:hover,
+.submenu-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
 .submenu-link.active {
-    background: var(--primary-light);
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: white;
 }
 
 .sidebar-promo {
-    margin: 2rem 1.5rem 0;
+    margin: 2rem 1.5rem 1rem;
     padding: 1rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border-radius: 8px;
@@ -135,6 +167,7 @@
 .promo-content h4 {
     margin: 0 0 0.5rem;
     font-size: 0.9rem;
+    font-weight: 600;
 }
 
 .promo-content p {
@@ -145,7 +178,7 @@
 
 /* Main Content */
 .main-content {
-    margin-left: 0;
+    margin-left: 280px; /* Fixed margin for desktop */
     min-height: 100vh;
     transition: margin-left 0.3s ease;
 }
@@ -154,7 +187,10 @@
 .dashboard-navbar {
     background: white;
     border-bottom: 1px solid var(--gray-200);
-    padding: 1rem 1.5rem;
+    padding: 0 1.5rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -994,16 +1030,30 @@
 /* Desktop Styles */
 @media (min-width: 1024px) {
     .sidebar {
-        position: static;
-        transform: translateX(0);
+        position: fixed; /* Keep fixed positioning */
     }
     
     .main-content {
-        margin-left: 280px;
+        margin-left: 280px; /* Already set above */
     }
     
     .mobile-menu-toggle {
         display: none;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 1023px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
     }
 }
 
