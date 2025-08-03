@@ -8,6 +8,7 @@ class MarketplaceBrowseListing {
         this.sortDirection = 'asc';
         this.filteredData = [];
         this.allData = [];
+        this.currentLanguage = 'en';
         
         this.init();
     }
@@ -17,6 +18,7 @@ class MarketplaceBrowseListing {
         this.setupEventListeners();
         this.setupSidebar();
         this.setupLanguage();
+        this.setupBootstrapComponents();
     }
 
     // Load mock property data
@@ -368,9 +370,12 @@ class MarketplaceBrowseListing {
     // Setup event listeners
     setupEventListeners() {
         // Filter button
-        document.getElementById('applyFilter').addEventListener('click', () => {
-            this.applyFilters();
-        });
+        const applyFilterBtn = document.getElementById('applyFilter');
+        if (applyFilterBtn) {
+            applyFilterBtn.addEventListener('click', () => {
+                this.applyFilters();
+            });
+        }
 
         // Invest buttons (will be added dynamically)
         document.addEventListener('click', (e) => {
@@ -389,8 +394,21 @@ class MarketplaceBrowseListing {
                     this.currentPage = page;
                     this.renderCards();
                     this.renderPagination();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    this.scrollToTop();
                 }
+            }
+        });
+
+        // Enter key support for filter inputs
+        const filterInputs = ['propertyFilter', 'minIRR', 'maxIRR'];
+        filterInputs.forEach(inputId => {
+            const input = document.getElementById(inputId);
+            if (input) {
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.applyFilters();
+                    }
+                });
             }
         });
     }
@@ -399,12 +417,34 @@ class MarketplaceBrowseListing {
     setupSidebar() {
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
 
         if (sidebarToggle && sidebar) {
             sidebarToggle.addEventListener('click', () => {
                 sidebar.classList.toggle('active');
+                if (sidebarOverlay) {
+                    sidebarOverlay.classList.toggle('active');
+                }
             });
         }
+
+        // Close sidebar when clicking overlay
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        }
+
+        // Close sidebar on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sidebar && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                if (sidebarOverlay) {
+                    sidebarOverlay.classList.remove('active');
+                }
+            }
+        });
     }
 
     // Setup language functionality
@@ -424,8 +464,20 @@ class MarketplaceBrowseListing {
         this.switchLanguage(savedLang);
     }
 
+    // Setup Bootstrap components
+    setupBootstrapComponents() {
+        // Initialize tooltips if any
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        if (window.bootstrap && window.bootstrap.Tooltip) {
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        }
+    }
+
     // Switch language
     switchLanguage(lang) {
+        this.currentLanguage = lang;
         const currentLangElement = document.getElementById('currentLang');
         if (currentLangElement) {
             currentLangElement.textContent = lang.toUpperCase();
@@ -450,9 +502,9 @@ class MarketplaceBrowseListing {
 
     // Apply filters
     applyFilters() {
-        const propertyFilter = document.getElementById('propertyFilter').value.toLowerCase();
-        const minIRR = parseFloat(document.getElementById('minIRR').value) || 0;
-        const maxIRR = parseFloat(document.getElementById('maxIRR').value) || Infinity;
+        const propertyFilter = document.getElementById('propertyFilter')?.value.toLowerCase() || '';
+        const minIRR = parseFloat(document.getElementById('minIRR')?.value) || 0;
+        const maxIRR = parseFloat(document.getElementById('maxIRR')?.value) || Infinity;
 
         this.filteredData = this.allData.filter(property => {
             const matchesType = !propertyFilter || property.type.toLowerCase() === propertyFilter;
@@ -465,12 +517,18 @@ class MarketplaceBrowseListing {
         this.renderCards();
         this.renderPagination();
 
-        this.showToast(`Filter applied. Found ${this.filteredData.length} properties.`, 'success');
+        const message = this.currentLanguage === 'en' 
+            ? `Filter applied. Found ${this.filteredData.length} properties.`
+            : `Filter diterapkan. Ditemukan ${this.filteredData.length} properti.`;
+        
+        this.showToast(message, 'success');
     }
 
     // Render property cards
     renderCards() {
         const grid = document.getElementById('propertiesGrid');
+        if (!grid) return;
+
         const startIndex = (this.currentPage - 1) * this.itemsPerPage;
         const endIndex = startIndex + this.itemsPerPage;
         const pageData = this.filteredData.slice(startIndex, endIndex);
@@ -480,8 +538,8 @@ class MarketplaceBrowseListing {
                 <div class="col-12">
                     <div class="empty-state">
                         <i class="fas fa-home"></i>
-                        <h6 data-en="No properties found" data-id="Tidak ada properti ditemukan">No properties found</h6>
-                        <p class="text-muted" data-en="Try adjusting your filters" data-id="Coba sesuaikan filter Anda">Try adjusting your filters</p>
+                        <h6>${this.currentLanguage === 'en' ? 'No properties found' : 'Tidak ada properti ditemukan'}</h6>
+                        <p class="text-muted">${this.currentLanguage === 'en' ? 'Try adjusting your filters' : 'Coba sesuaikan filter Anda'}</p>
                     </div>
                 </div>
             `;
@@ -490,14 +548,13 @@ class MarketplaceBrowseListing {
 
         grid.innerHTML = pageData.map(property => {
             const progressPercentage = Math.round(((property.totalTokens - property.remainingTokens) / property.totalTokens) * 100);
-            const currentLang = localStorage.getItem('selectedLanguage') || 'en';
             
             return `
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="property-card">
                         <div class="property-image">
-                            <img src="${property.image}" alt="${property.name}" onerror="this.src='images/property-placeholder.jpg'">
-                            <div class="property-status">${currentLang === 'en' ? 'Available' : 'Tersedia'}</div>
+                            <img src="${property.image}" alt="${property.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI0MCIgdmlld0JveD0iMCAwIDMwMCAyNDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjQwIiBmaWxsPSIjZTJlOGYwIi8+CjxwYXRoIGQ9Ik0xMjAgMTIwaDYwdjYwaC02MHoiIGZpbGw9IiM5NGEzYjgiLz4KPHBhdGggZD0iTTkwIDkwaDEyMHY5MEg5MHoiIHN0cm9rZT0iIzY0NzQ4YiIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+Cjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPlByb3BlcnR5IEltYWdlPC90ZXh0Pgo8L3N2Zz4K'">
+                            <div class="property-status">${this.currentLanguage === 'en' ? 'Available' : 'Tersedia'}</div>
                         </div>
                         
                         <div class="property-info">
@@ -507,7 +564,7 @@ class MarketplaceBrowseListing {
                                 ${property.location}
                             </div>
                             
-                            ${this.renderPropertyDetails(property, currentLang)}
+                            ${this.renderPropertyDetails(property)}
                             
                             <div class="financial-metrics">
                                 <div class="metric">
@@ -524,21 +581,21 @@ class MarketplaceBrowseListing {
                                 <div class="token-progress">
                                     <div class="token-stats">
                                         <span class="progress-percentage">${progressPercentage}%</span>
-                                        <span class="tokens-left">${property.remainingTokens.toLocaleString()} ${currentLang === 'en' ? 'tokens left' : 'token tersisa'}</span>
+                                        <span class="tokens-left">${property.remainingTokens.toLocaleString()} ${this.currentLanguage === 'en' ? 'tokens left' : 'token tersisa'}</span>
                                     </div>
                                     <div class="progress">
                                         <div class="progress-bar" style="width: ${progressPercentage}%"></div>
                                     </div>
                                 </div>
                                 <div class="token-details">
-                                    <span>${currentLang === 'en' ? 'Total Tokens' : 'Total Token'}</span>
+                                    <span>${this.currentLanguage === 'en' ? 'Total Tokens' : 'Total Token'}</span>
                                     <span>${property.totalTokens.toLocaleString()}</span>
                                 </div>
                             </div>
                             
                             <button class="btn btn-invest" data-property-id="${property.id}">
                                 <i class="fas fa-coins me-2"></i>
-                                ${currentLang === 'en' ? 'Invest Now' : 'Investasi Sekarang'}
+                                ${this.currentLanguage === 'en' ? 'Invest Now' : 'Investasi Sekarang'}
                             </button>
                         </div>
                     </div>
@@ -548,7 +605,7 @@ class MarketplaceBrowseListing {
     }
 
     // Render property details based on type
-    renderPropertyDetails(property, lang) {
+    renderPropertyDetails(property) {
         if (property.type === 'land') {
             return `
                 <div class="property-details">
@@ -562,8 +619,8 @@ class MarketplaceBrowseListing {
                     <div class="detail-item">
                         <i class="fas fa-seedling"></i>
                         <div>
-                            <div class="detail-value">${lang === 'en' ? 'Land' : 'Tanah'}</div>
-                            <div class="detail-label">${lang === 'en' ? 'Type' : 'Tipe'}</div>
+                            <div class="detail-value">${this.currentLanguage === 'en' ? 'Land' : 'Tanah'}</div>
+                            <div class="detail-label">${this.currentLanguage === 'en' ? 'Type' : 'Tipe'}</div>
                         </div>
                     </div>
                 </div>
@@ -575,7 +632,7 @@ class MarketplaceBrowseListing {
                         <i class="fas fa-toilet"></i>
                         <div>
                             <div class="detail-value">${property.bathrooms}</div>
-                            <div class="detail-label">${lang === 'en' ? 'Bathrooms' : 'Kamar Mandi'}</div>
+                            <div class="detail-label">${this.currentLanguage === 'en' ? 'Bathrooms' : 'Kamar Mandi'}</div>
                         </div>
                     </div>
                     <div class="detail-item">
@@ -595,14 +652,14 @@ class MarketplaceBrowseListing {
                         <i class="fas fa-bed"></i>
                         <div>
                             <div class="detail-value">${property.bedrooms}</div>
-                            <div class="detail-label">${lang === 'en' ? 'Bedrooms' : 'Kamar Tidur'}</div>
+                            <div class="detail-label">${this.currentLanguage === 'en' ? 'Bedrooms' : 'Kamar Tidur'}</div>
                         </div>
                     </div>
                     <div class="detail-item">
                         <i class="fas fa-toilet"></i>
                         <div>
                             <div class="detail-value">${property.bathrooms}</div>
-                            <div class="detail-label">${lang === 'en' ? 'Bathrooms' : 'Kamar Mandi'}</div>
+                            <div class="detail-label">${this.currentLanguage === 'en' ? 'Bathrooms' : 'Kamar Mandi'}</div>
                         </div>
                     </div>
                     <div class="detail-item">
@@ -620,6 +677,8 @@ class MarketplaceBrowseListing {
     // Render pagination
     renderPagination() {
         const pagination = document.getElementById('pagination');
+        if (!pagination) return;
+
         const totalPages = Math.ceil(this.filteredData.length / this.itemsPerPage);
         
         if (totalPages <= 1) {
@@ -638,22 +697,23 @@ class MarketplaceBrowseListing {
             </li>
         `;
 
-        // Page numbers
-        for (let i = 1; i <= totalPages; i++) {
-            if (i === 1 || i === totalPages || (i >= this.currentPage - 1 && i <= this.currentPage + 1)) {
-                paginationHTML += `
-                    <li class="page-item ${i === this.currentPage ? 'active' : ''}">
-                        <a class="page-link" href="#" data-page="${i}">${i}</a>
-                    </li>
-                `;
-            } else if (i === this.currentPage - 2 || i === this.currentPage + 2) {
+        // Page numbers with smart truncation
+        const showPages = this.getPageNumbers(this.currentPage, totalPages);
+        showPages.forEach(page => {
+            if (page === '...') {
                 paginationHTML += `
                     <li class="page-item disabled">
                         <span class="page-link">...</span>
                     </li>
                 `;
+            } else {
+                paginationHTML += `
+                    <li class="page-item ${page === this.currentPage ? 'active' : ''}">
+                        <a class="page-link" href="#" data-page="${page}">${page}</a>
+                    </li>
+                `;
             }
-        }
+        });
 
         // Next button
         paginationHTML += `
@@ -667,16 +727,61 @@ class MarketplaceBrowseListing {
         pagination.innerHTML = paginationHTML;
     }
 
+    // Get page numbers for pagination with smart truncation
+    getPageNumbers(current, total) {
+        const pages = [];
+        
+        if (total <= 7) {
+            // Show all pages if total is 7 or less
+            for (let i = 1; i <= total; i++) {
+                pages.push(i);
+            }
+        } else {
+            // Always show first page
+            pages.push(1);
+            
+            if (current <= 4) {
+                // Show pages 2-5 and ellipsis
+                for (let i = 2; i <= 5; i++) {
+                    pages.push(i);
+                }
+                pages.push('...');
+            } else if (current >= total - 3) {
+                // Show ellipsis and last 4 pages
+                pages.push('...');
+                for (let i = total - 4; i <= total - 1; i++) {
+                    pages.push(i);
+                }
+            } else {
+                // Show ellipsis, current-1, current, current+1, ellipsis
+                pages.push('...');
+                for (let i = current - 1; i <= current + 1; i++) {
+                    pages.push(i);
+                }
+                pages.push('...');
+            }
+            
+            // Always show last page
+            if (total > 1) {
+                pages.push(total);
+            }
+        }
+        
+        return pages;
+    }
+
     // Handle invest action
     handleInvestAction(propertyId) {
         const property = this.allData.find(p => p.id == propertyId);
         if (property) {
-            const currentLang = localStorage.getItem('selectedLanguage') || 'en';
-            const message = currentLang === 'en' 
+            const message = this.currentLanguage === 'en' 
                 ? `Investment action for ${property.name}. This is a demo - no actual investment will be processed.`
                 : `Aksi investasi untuk ${property.name}. Ini adalah demo - tidak ada investasi sebenarnya yang akan diproses.`;
             
             this.showToast(message, 'info');
+            
+            // In a real application, this would redirect to the investment flow
+            // window.location.href = `invest.html?property=${propertyId}`;
         }
     }
 
@@ -688,16 +793,60 @@ class MarketplaceBrowseListing {
         if (toastElement && toastBody) {
             toastBody.textContent = message;
             
-            // Change toast style based on type
-            toastElement.className = `toast ${type === 'success' ? 'bg-success text-white' : type === 'error' ? 'bg-danger text-white' : ''}`;
+            // Reset classes
+            toastElement.className = 'toast';
             
-            const toast = new bootstrap.Toast(toastElement);
-            toast.show();
+            // Add type-specific classes
+            if (type === 'success') {
+                toastElement.classList.add('text-bg-success');
+            } else if (type === 'error') {
+                toastElement.classList.add('text-bg-danger');
+            } else if (type === 'warning') {
+                toastElement.classList.add('text-bg-warning');
+            }
+            
+            // Show toast using Bootstrap
+            if (window.bootstrap && window.bootstrap.Toast) {
+                const toast = new bootstrap.Toast(toastElement);
+                toast.show();
+            }
         }
+    }
+
+    // Scroll to top smoothly
+    scrollToTop() {
+        window.scrollTo({ 
+            top: 0, 
+            behavior: 'smooth' 
+        });
+    }
+
+    // Utility method to format numbers
+    formatNumber(num) {
+        return new Intl.NumberFormat(this.currentLanguage === 'id' ? 'id-ID' : 'en-US').format(num);
+    }
+
+    // Utility method to format currency
+    formatCurrency(amount, currency = 'IDR') {
+        const locale = this.currentLanguage === 'id' ? 'id-ID' : 'en-US';
+        return new Intl.NumberFormat(locale, {
+            style: 'currency',
+            currency: currency,
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(amount);
     }
 }
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new MarketplaceBrowseListing();
+    // Check if we're on the marketplace browse listing page
+    if (document.getElementById('propertiesGrid')) {
+        new MarketplaceBrowseListing();
+    }
 });
+
+// Export for potential use in other modules
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = MarketplaceBrowseListing;
+}
