@@ -261,7 +261,7 @@ class MarketplaceBrowseListing {
                 const page = parseInt(e.target.closest('.page-link').getAttribute('data-page'));
                 if (page && page !== this.currentPage) {
                     this.currentPage = page;
-                    this.renderTable();
+                    this.renderCards();
                     this.renderPagination();
                 }
             }
@@ -312,22 +312,22 @@ class MarketplaceBrowseListing {
         // Save language preference
         localStorage.setItem('selectedLanguage', lang);
         
-        // Re-render table to update language
-        this.renderTable();
+        // Re-render cards to update language
+        this.renderCards();
         this.renderPagination();
     }
 
     // Apply filters
     applyFilters() {
         const propertyFilter = document.getElementById('propertyFilter').value.toLowerCase();
-        const minPrice = parseInt(document.getElementById('minPrice').value) || 0;
-        const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
+        const minIRR = parseInt(document.getElementById('minPrice').value) || 0;
+        const maxIRR = parseInt(document.getElementById('maxPrice').value) || Infinity;
 
         this.filteredData = this.allData.filter(property => {
             const matchesType = !propertyFilter || property.type.toLowerCase().includes(propertyFilter);
-            const matchesPrice = property.pricePerToken >= minPrice && property.pricePerToken <= maxPrice;
+            const matchesIRR = property.irr >= minIRR && property.irr <= maxIRR;
             
-            return matchesType && matchesPrice;
+            return matchesType && (minIRR === 0 && maxIRR === Infinity ? true : matchesIRR);
         });
 
         this.currentPage = 1;
