@@ -3,7 +3,7 @@
 class MarketplaceBrowseListing {
     constructor() {
         this.currentPage = 1;
-        this.itemsPerPage = 10;
+        this.itemsPerPage = 6;
         this.sortColumn = '';
         this.sortDirection = 'asc';
         this.filteredData = [];
@@ -21,208 +21,132 @@ class MarketplaceBrowseListing {
 
     // Load mock property data
     loadPropertyData() {
-        // Array of Unsplash property images
-        const propertyImages = [
-            'https://images.unsplash.com/photo-1487958449943-2429e8be8625',
-            'https://images.unsplash.com/photo-1497604401993-f2e922e5cb0a',
-            'https://images.unsplash.com/photo-1472396961693-142e6e269027',
-            'https://images.unsplash.com/photo-1433086966358-54859d0ed716',
-            'https://images.unsplash.com/photo-1523712999610-f77fbcfc3843',
-            'https://images.unsplash.com/photo-1506744038136-46273834b3fb'
-        ];
-
         this.allData = [
             {
                 id: 1,
                 name: "Villa Serene Bali",
-                type: "Villa",
+                type: "villa",
                 location: "Ubud, Bali",
-                image: propertyImages[0],
+                image: "images/villa-serene-bali.jpg",
                 totalTokens: 500,
                 remainingTokens: 215,
-                irr: 12,
-                ery: 10,
+                irr: 12.5,
+                ery: 10.2,
                 bedrooms: 5,
                 bathrooms: 5,
-                area: 705,
-                seller: "J.D.",
-                sellerRating: 4.8
+                area: 705
             },
             {
                 id: 2,
                 name: "Jakarta City Tower",
-                type: "Apartment",
+                type: "apartment",
                 location: "Sudirman, Jakarta",
-                image: propertyImages[1],
+                image: "images/jakarta-city-tower.jpg",
                 totalTokens: 1000,
                 remainingTokens: 670,
-                irr: 10,
-                ery: 8,
+                irr: 10.8,
+                ery: 8.5,
                 bedrooms: 3,
                 bathrooms: 2,
-                area: 120,
-                seller: "A.S.",
-                sellerRating: 4.6
+                area: 120
             },
             {
                 id: 3,
                 name: "Bassura Apartment",
-                type: "Apartment",
+                type: "apartment",
                 location: "Bassura, Jakarta",
-                image: propertyImages[2],
+                image: "images/bassura-apartment.jpg",
                 totalTokens: 750,
                 remainingTokens: 320,
-                irr: 8,
-                ery: 7,
+                irr: 8.2,
+                ery: 7.1,
                 bedrooms: 2,
                 bathrooms: 2,
-                area: 85,
-                seller: "M.R.",
-                sellerRating: 4.5
+                area: 85
             },
             {
                 id: 4,
                 name: "Mont Blanc Office",
-                type: "Office",
+                type: "office",
                 location: "Kemang, Jakarta",
-                image: propertyImages[3],
+                image: "images/mont-blanc.jpg",
                 totalTokens: 300,
                 remainingTokens: 45,
-                irr: 15,
-                ery: 12,
+                irr: 15.3,
+                ery: 12.7,
                 bedrooms: 0,
                 bathrooms: 4,
-                area: 280,
-                seller: "K.L.",
-                sellerRating: 4.9
+                area: 280
             },
             {
                 id: 5,
                 name: "Ungasan Land Plot",
-                type: "Land",
+                type: "land",
                 location: "Ungasan, Bali",
-                image: propertyImages[4],
+                image: "images/ungasan-land1.jpg",
                 totalTokens: 200,
                 remainingTokens: 180,
-                irr: 18,
+                irr: 18.5,
                 ery: 0,
                 bedrooms: 0,
                 bathrooms: 0,
-                area: 500,
-                seller: "D.P.",
-                sellerRating: 4.7
+                area: 500
             },
             {
                 id: 6,
                 name: "Villa Kulibul Bali",
-                type: "Villa",
+                type: "villa",
                 location: "Canggu, Bali",
-                image: propertyImages[5],
+                image: "images/villa-kulibul.jpg",
                 totalTokens: 400,
                 remainingTokens: 156,
-                irr: 14,
-                ery: 11,
+                irr: 14.2,
+                ery: 11.8,
                 bedrooms: 4,
                 bathrooms: 4,
-                area: 450,
-                seller: "R.H.",
-                sellerRating: 4.8
+                area: 450
             },
             {
                 id: 7,
                 name: "Jakarta Office Center",
-                type: "Office",
+                type: "office",
                 location: "SCBD, Jakarta",
-                image: propertyImages[0],
+                image: "images/jakarta-office.jpg",
                 totalTokens: 600,
                 remainingTokens: 234,
-                irr: 11,
-                ery: 9,
+                irr: 11.7,
+                ery: 9.3,
                 bedrooms: 0,
                 bathrooms: 6,
-                area: 350,
-                seller: "S.W.",
-                sellerRating: 4.6
+                area: 350
             },
             {
                 id: 8,
                 name: "Bali Beachfront Land",
-                type: "Land",
+                type: "land",
                 location: "Sanur, Bali",
-                image: propertyImages[1],
+                image: "images/ungasan-land2.jpg",
                 totalTokens: 150,
                 remainingTokens: 95,
-                irr: 20,
+                irr: 20.1,
                 ery: 0,
                 bedrooms: 0,
                 bathrooms: 0,
-                area: 800,
-                seller: "T.K.",
-                sellerRating: 4.9
+                area: 800
             },
             {
                 id: 9,
                 name: "Menteng Luxury Apartment",
-                type: "Apartment",
+                type: "apartment",
                 location: "Menteng, Jakarta",
-                image: propertyImages[2],
+                image: "images/mont-blanc-apartment.jpg",
                 totalTokens: 800,
                 remainingTokens: 445,
-                irr: 9,
-                ery: 8,
+                irr: 9.6,
+                ery: 8.2,
                 bedrooms: 3,
                 bathrooms: 3,
-                area: 150,
-                seller: "L.M.",
-                sellerRating: 4.7
-            },
-            {
-                id: 10,
-                name: "Seminyak Villa Resort",
-                type: "Villa",
-                location: "Seminyak, Bali",
-                image: propertyImages[3],
-                totalTokens: 350,
-                remainingTokens: 98,
-                irr: 13,
-                ery: 10,
-                bedrooms: 4,
-                bathrooms: 5,
-                area: 380,
-                seller: "N.B.",
-                sellerRating: 4.8
-            },
-            {
-                id: 11,
-                name: "Kelapa Gading Mall Office",
-                type: "Office",
-                location: "Kelapa Gading, Jakarta",
-                image: propertyImages[4],
-                totalTokens: 450,
-                remainingTokens: 267,
-                irr: 7,
-                ery: 6,
-                bedrooms: 0,
-                bathrooms: 3,
-                area: 200,
-                seller: "P.S.",
-                sellerRating: 4.5
-            },
-            {
-                id: 12,
-                name: "Denpasar Commercial Land",
-                type: "Land",
-                location: "Denpasar, Bali",
-                image: propertyImages[5],
-                totalTokens: 250,
-                remainingTokens: 89,
-                irr: 16,
-                ery: 0,
-                bedrooms: 0,
-                bathrooms: 0,
-                area: 600,
-                seller: "G.A.",
-                sellerRating: 4.6
+                area: 150
             }
         ];
 
@@ -236,14 +160,6 @@ class MarketplaceBrowseListing {
         // Filter button
         document.getElementById('applyFilter').addEventListener('click', () => {
             this.applyFilters();
-        });
-
-        // Sort headers
-        document.querySelectorAll('.sortable').forEach(header => {
-            header.addEventListener('click', () => {
-                const column = header.getAttribute('data-column');
-                this.sortTable(column);
-            });
         });
 
         // Invest buttons (will be added dynamically)
@@ -263,6 +179,7 @@ class MarketplaceBrowseListing {
                     this.currentPage = page;
                     this.renderCards();
                     this.renderPagination();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             }
         });
@@ -291,6 +208,10 @@ class MarketplaceBrowseListing {
                 this.switchLanguage(lang);
             });
         });
+
+        // Load saved language
+        const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+        this.switchLanguage(savedLang);
     }
 
     // Switch language
@@ -320,14 +241,14 @@ class MarketplaceBrowseListing {
     // Apply filters
     applyFilters() {
         const propertyFilter = document.getElementById('propertyFilter').value.toLowerCase();
-        const minIRR = parseInt(document.getElementById('minPrice').value) || 0;
-        const maxIRR = parseInt(document.getElementById('maxPrice').value) || Infinity;
+        const minIRR = parseFloat(document.getElementById('minIRR').value) || 0;
+        const maxIRR = parseFloat(document.getElementById('maxIRR').value) || Infinity;
 
         this.filteredData = this.allData.filter(property => {
-            const matchesType = !propertyFilter || property.type.toLowerCase().includes(propertyFilter);
+            const matchesType = !propertyFilter || property.type.toLowerCase() === propertyFilter;
             const matchesIRR = property.irr >= minIRR && property.irr <= maxIRR;
             
-            return matchesType && (minIRR === 0 && maxIRR === Infinity ? true : matchesIRR);
+            return matchesType && matchesIRR;
         });
 
         this.currentPage = 1;
@@ -335,43 +256,6 @@ class MarketplaceBrowseListing {
         this.renderPagination();
 
         this.showToast(`Filter applied. Found ${this.filteredData.length} properties.`, 'success');
-    }
-
-    // Sort table
-    sortTable(column) {
-        if (this.sortColumn === column) {
-            this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
-        } else {
-            this.sortColumn = column;
-            this.sortDirection = 'asc';
-        }
-
-        // Update sort icons
-        document.querySelectorAll('.sortable').forEach(header => {
-            header.classList.remove('asc', 'desc');
-            if (header.getAttribute('data-column') === column) {
-                header.classList.add(this.sortDirection);
-            }
-        });
-
-        // Sort data
-        this.filteredData.sort((a, b) => {
-            let aValue = a[column];
-            let bValue = b[column];
-
-            if (typeof aValue === 'string') {
-                aValue = aValue.toLowerCase();
-                bValue = bValue.toLowerCase();
-            }
-
-            if (this.sortDirection === 'asc') {
-                return aValue > bValue ? 1 : -1;
-            } else {
-                return aValue < bValue ? 1 : -1;
-            }
-        });
-
-        this.renderCards();
     }
 
     // Render property cards
@@ -396,13 +280,14 @@ class MarketplaceBrowseListing {
 
         grid.innerHTML = pageData.map(property => {
             const progressPercentage = Math.round(((property.totalTokens - property.remainingTokens) / property.totalTokens) * 100);
+            const currentLang = localStorage.getItem('selectedLanguage') || 'en';
             
             return `
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="property-card">
                         <div class="property-image">
-                            <img src="${property.image}?w=400&h=240&fit=crop" alt="${property.name}">
-                            <div class="property-status" data-en="Available" data-id="Tersedia">Available</div>
+                            <img src="${property.image}" alt="${property.name}" onerror="this.src='images/property-placeholder.jpg'">
+                            <div class="property-status">${currentLang === 'en' ? 'Available' : 'Tersedia'}</div>
                         </div>
                         
                         <div class="property-info">
@@ -412,7 +297,7 @@ class MarketplaceBrowseListing {
                                 ${property.location}
                             </div>
                             
-                            ${this.renderPropertyDetails(property)}
+                            ${this.renderPropertyDetails(property, currentLang)}
                             
                             <div class="financial-metrics">
                                 <div class="metric">
@@ -429,134 +314,129 @@ class MarketplaceBrowseListing {
                                 <div class="token-progress">
                                     <div class="token-stats">
                                         <span class="progress-percentage">${progressPercentage}%</span>
-                                        <span class="tokens-left">${property.remainingTokens.toLocaleString()} <span data-en="tokens left" data-id="token tersisa">tokens left</span></span>
+                                        <span class="tokens-left">${property.remainingTokens.toLocaleString()} ${currentLang === 'en' ? 'tokens left' : 'token tersisa'}</span>
                                     </div>
                                     <div class="progress">
                                         <div class="progress-bar" style="width: ${progressPercentage}%"></div>
                                     </div>
                                 </div>
                                 <div class="token-details">
-                                    <span data-en="Total Tokens" data-id="Total Token">Total Tokens</span>
+                                    <span>${currentLang === 'en' ? 'Total Tokens' : 'Total Token'}</span>
                                     <span>${property.totalTokens.toLocaleString()}</span>
                                 </div>
                             </div>
                             
                             <button class="btn btn-invest" data-property-id="${property.id}">
                                 <i class="fas fa-coins me-2"></i>
-                                <span data-en="Invest Now" data-id="Investasi Sekarang">Invest Now</span>
+                                ${currentLang === 'en' ? 'Invest Now' : 'Investasi Sekarang'}
                             </button>
                         </div>
                     </div>
                 </div>
             `;
         }).join('');
-
-        // Apply current language to newly rendered content
-        const currentLang = localStorage.getItem('selectedLanguage') || 'en';
-        this.applyLanguageToElements(currentLang);
     }
 
     // Render property details based on type
-    renderPropertyDetails(property) {
-        if (property.type === 'Land') {
+    renderPropertyDetails(property, lang) {
+        if (property.type === 'land') {
             return `
                 <div class="property-details">
                     <div class="detail-item">
                         <i class="fas fa-ruler-combined"></i>
-                        <div class="detail-value">${property.area}</div>
-                        <div class="detail-label">sqm</div>
+                        <div>
+                            <div class="detail-value">${property.area}</div>
+                            <div class="detail-label">sqm</div>
+                        </div>
                     </div>
                     <div class="detail-item">
                         <i class="fas fa-seedling"></i>
-                        <div class="detail-value">${property.type}</div>
-                        <div class="detail-label">Type</div>
+                        <div>
+                            <div class="detail-value">${lang === 'en' ? 'Land' : 'Tanah'}</div>
+                            <div class="detail-label">${lang === 'en' ? 'Type' : 'Tipe'}</div>
+                        </div>
                     </div>
                 </div>
             `;
-        } else if (property.type === 'Office') {
+        } else if (property.type === 'office') {
             return `
                 <div class="property-details">
                     <div class="detail-item">
                         <i class="fas fa-toilet"></i>
-                        <div class="detail-value">${property.bathrooms}</div>
-                        <div class="detail-label">Bathrooms</div>
+                        <div>
+                            <div class="detail-value">${property.bathrooms}</div>
+                            <div class="detail-label">${lang === 'en' ? 'Bathrooms' : 'Kamar Mandi'}</div>
+                        </div>
                     </div>
                     <div class="detail-item">
                         <i class="fas fa-ruler-combined"></i>
-                        <div class="detail-value">${property.area}</div>
-                        <div class="detail-label">sqm</div>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-building"></i>
-                        <div class="detail-value">${property.type}</div>
-                        <div class="detail-label">Type</div>
+                        <div>
+                            <div class="detail-value">${property.area}</div>
+                            <div class="detail-label">sqm</div>
+                        </div>
                     </div>
                 </div>
             `;
         } else {
+            // Villa or Apartment
             return `
                 <div class="property-details">
                     <div class="detail-item">
                         <i class="fas fa-bed"></i>
-                        <div class="detail-value">${property.bedrooms}</div>
-                        <div class="detail-label">Bedrooms</div>
+                        <div>
+                            <div class="detail-value">${property.bedrooms}</div>
+                            <div class="detail-label">${lang === 'en' ? 'Bedrooms' : 'Kamar Tidur'}</div>
+                        </div>
                     </div>
                     <div class="detail-item">
                         <i class="fas fa-toilet"></i>
-                        <div class="detail-value">${property.bathrooms}</div>
-                        <div class="detail-label">Bathrooms</div>
+                        <div>
+                            <div class="detail-value">${property.bathrooms}</div>
+                            <div class="detail-label">${lang === 'en' ? 'Bathrooms' : 'Kamar Mandi'}</div>
+                        </div>
                     </div>
                     <div class="detail-item">
                         <i class="fas fa-ruler-combined"></i>
-                        <div class="detail-value">${property.area}</div>
-                        <div class="detail-label">sqm</div>
+                        <div>
+                            <div class="detail-value">${property.area}</div>
+                            <div class="detail-label">sqm</div>
+                        </div>
                     </div>
                 </div>
             `;
         }
-    }
-
-    // Apply language to specific elements
-    applyLanguageToElements(lang) {
-        document.querySelectorAll('[data-en][data-id]').forEach(element => {
-            if (lang === 'en' && element.getAttribute('data-en')) {
-                element.textContent = element.getAttribute('data-en');
-            } else if (lang === 'id' && element.getAttribute('data-id')) {
-                element.textContent = element.getAttribute('data-id');
-            }
-        });
     }
 
     // Render pagination
     renderPagination() {
         const pagination = document.getElementById('pagination');
         const totalPages = Math.ceil(this.filteredData.length / this.itemsPerPage);
-
+        
         if (totalPages <= 1) {
             pagination.innerHTML = '';
             return;
         }
 
         let paginationHTML = '';
-
+        
         // Previous button
         paginationHTML += `
             <li class="page-item ${this.currentPage === 1 ? 'disabled' : ''}">
-                <a class="page-link" href="#" data-page="${this.currentPage - 1}">
-                    <i class="fas fa-chevron-left"></i>
+                <a class="page-link" href="#" data-page="${this.currentPage - 1}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
         `;
 
         // Page numbers
         for (let i = 1; i <= totalPages; i++) {
-            if (i === 1 || i === totalPages || (i >= this.currentPage - 2 && i <= this.currentPage + 2)) {
+            if (i === 1 || i === totalPages || (i >= this.currentPage - 1 && i <= this.currentPage + 1)) {
                 paginationHTML += `
                     <li class="page-item ${i === this.currentPage ? 'active' : ''}">
                         <a class="page-link" href="#" data-page="${i}">${i}</a>
                     </li>
                 `;
-            } else if (i === this.currentPage - 3 || i === this.currentPage + 3) {
+            } else if (i === this.currentPage - 2 || i === this.currentPage + 2) {
                 paginationHTML += `
                     <li class="page-item disabled">
                         <span class="page-link">...</span>
@@ -568,8 +448,8 @@ class MarketplaceBrowseListing {
         // Next button
         paginationHTML += `
             <li class="page-item ${this.currentPage === totalPages ? 'disabled' : ''}">
-                <a class="page-link" href="#" data-page="${this.currentPage + 1}">
-                    <i class="fas fa-chevron-right"></i>
+                <a class="page-link" href="#" data-page="${this.currentPage + 1}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
         `;
@@ -582,61 +462,32 @@ class MarketplaceBrowseListing {
         const property = this.allData.find(p => p.id == propertyId);
         if (property) {
             const currentLang = localStorage.getItem('selectedLanguage') || 'en';
-            const message = currentLang === 'id' 
-                ? `Anda akan berinvestasi pada ${property.name}. Tersisa ${property.remainingTokens} token.` 
-                : `You are about to invest in ${property.name}. ${property.remainingTokens} tokens remaining.`;
+            const message = currentLang === 'en' 
+                ? `Investment action for ${property.name}. This is a demo - no actual investment will be processed.`
+                : `Aksi investasi untuk ${property.name}. Ini adalah demo - tidak ada investasi sebenarnya yang akan diproses.`;
             
             this.showToast(message, 'info');
-            
-            // Simulate investment process
-            setTimeout(() => {
-                const successMessage = currentLang === 'id' 
-                    ? 'Investasi berhasil! Token telah ditambahkan ke portofolio Anda.' 
-                    : 'Investment successful! Tokens have been added to your portfolio.';
-                this.showToast(successMessage, 'success');
-            }, 1500);
         }
     }
 
     // Show toast notification
     showToast(message, type = 'info') {
-        const toast = document.getElementById('toastNotification');
+        const toastElement = document.getElementById('toastNotification');
         const toastBody = document.getElementById('toastBody');
         
-        if (toast && toastBody) {
+        if (toastElement && toastBody) {
             toastBody.textContent = message;
             
-            // Update toast header icon based on type
-            const toastHeader = toast.querySelector('.toast-header i');
-            toastHeader.className = `fas me-2 ${this.getToastIcon(type)} ${this.getToastColor(type)}`;
+            // Change toast style based on type
+            toastElement.className = `toast ${type === 'success' ? 'bg-success text-white' : type === 'error' ? 'bg-danger text-white' : ''}`;
             
-            const bsToast = new bootstrap.Toast(toast);
-            bsToast.show();
-        }
-    }
-
-    // Get toast icon based on type
-    getToastIcon(type) {
-        switch (type) {
-            case 'success': return 'fa-check-circle';
-            case 'error': return 'fa-exclamation-circle';
-            case 'warning': return 'fa-exclamation-triangle';
-            default: return 'fa-info-circle';
-        }
-    }
-
-    // Get toast color based on type
-    getToastColor(type) {
-        switch (type) {
-            case 'success': return 'text-success';
-            case 'error': return 'text-danger';
-            case 'warning': return 'text-warning';
-            default: return 'text-primary';
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
         }
     }
 }
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    window.marketplaceBrowseListing = new MarketplaceBrowseListing();
+document.addEventListener('DOMContentLoaded', () => {
+    new MarketplaceBrowseListing();
 });
