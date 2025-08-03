@@ -20,183 +20,269 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="styles/marketplace_browselisting.css">
 </head>
-<body>
-    <!-- Sidebar -->
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="d-flex align-items-center">
-                <img src="images/logo.png" alt="PropertyToken" class="sidebar-logo">
+<body class="dashboard-body">
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="dashboard-sidebar" id="sidebar">
+            <div class="sidebar-header">
                 <div class="sidebar-brand">
-                    <h5 class="mb-0" data-en="PropertyToken" data-id="PropertyToken">PropertyToken</h5>
-                    <small class="text-muted" data-en="GapuraPrima" data-id="GapuraPrima">GapuraPrima</small>
+                    <i class="fas fa-building-columns"></i>
+                    <span class="brand-text">PropertyToken</span>
+                </div>
+                <div class="sidebar-subtitle">
+                    <small data-en="Investor Dashboard" data-id="Dashboard Investor">Investor Dashboard</small>
                 </div>
             </div>
-        </div>
 
-        <div class="sidebar-menu">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="dashboard.html">
-                        <i class="fas fa-home me-3"></i>
-                        <span data-en="Dashboard" data-id="Beranda">Dashboard</span>
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#marketplaceMenu" aria-expanded="false">
-                        <i class="fas fa-store me-3"></i>
-                        <span data-en="Marketplace" data-id="Marketplace">Marketplace</span>
-                    </a>
-                    <div class="collapse show" id="marketplaceMenu">
-                        <ul class="nav flex-column ms-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="marketplace_browselisting.html">
-                                    <i class="fas fa-list me-2"></i>
-                                    <span data-en="Browse Listing" data-id="Jelajahi Listing">Browse Listing</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#propertiesMenu" aria-expanded="false">
-                        <i class="fas fa-building me-3"></i>
-                        <span data-en="Properties" data-id="Properti">Properties</span>
-                    </a>
-                    <div class="collapse" id="propertiesMenu">
-                        <ul class="nav flex-column ms-3">
-                            <li class="nav-item">
-                                <a class="nav-link" href="my-properties.html">
-                                    <i class="fas fa-home me-2"></i>
-                                    <span data-en="My Properties" data-id="Properti Saya">My Properties</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="crowdfunding.html">
-                                    <i class="fas fa-users me-2"></i>
-                                    <span data-en="Crowdfunding" data-id="Crowdfunding">Crowdfunding</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#walletMenu" aria-expanded="false">
-                        <i class="fas fa-wallet me-3"></i>
-                        <span data-en="Wallet" data-id="Dompet">Wallet</span>
-                    </a>
-                    <div class="collapse" id="walletMenu">
-                        <ul class="nav flex-column ms-3">
-                            <li class="nav-item">
-                                <a class="nav-link" href="topupwallet.html">
-                                    <i class="fas fa-plus me-2"></i>
-                                    <span data-en="Top Up" data-id="Isi Saldo">Top Up</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="dividends.html">
-                                    <i class="fas fa-chart-line me-2"></i>
-                                    <span data-en="Dividends" data-id="Dividen">Dividends</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-cog me-3"></i>
-                        <span data-en="Settings" data-id="Pengaturan">Settings</span>
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        <i class="fas fa-sign-out-alt me-3"></i>
-                        <span data-en="Logout" data-id="Keluar">Logout</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Top Navigation -->
-        <header class="dashboard-header">
-            <div class="header-left">
-                <button class="btn sidebar-toggle d-lg-none" id="sidebarToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <h4 class="page-title mb-0" data-en="Marketplace - Browse Listing" data-id="Marketplace - Jelajahi Listing">Marketplace - Browse Listing</h4>
-            </div>
-            
-            <div class="header-right">
-                <!-- Language Selector -->
-                <div class="dropdown me-3">
-                    <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown">
-                        <i class="fas fa-globe me-1"></i>
-                        <span id="currentLang">EN</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item language-option" href="#" data-lang="en">English</a></li>
-                        <li><a class="dropdown-item language-option" href="#" data-lang="id">Indonesia</a></li>
-                    </ul>
+            <!-- Profile Section -->
+            <div class="sidebar-profile">
+                <div class="profile-avatar">
+                    <img src="images/avatar-placeholder.jpg" alt="Profile" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMjUiIGZpbGw9IiNlMmU4ZjAiLz4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyMCIgcj0iOCIgZmlsbD0iIzY0NzQ4YiIvPgo8cGF0aCBkPSJNMTAgNDBjMC04IDgtMTIgMTUtMTJzMTUgNCAxNSAxMiIgZmlsbD0iIzY0NzQ4YiIvPgo8L3N2Zz4K'">
                 </div>
-
-                <!-- User Profile -->
-                <div class="dropdown">
-                    <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        <i class="fas fa-user me-1"></i>
-                        <span data-en="John Doe" data-id="John Doe">John Doe</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i><span data-en="Profile" data-id="Profil">Profile</span></a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i><span data-en="Settings" data-id="Pengaturan">Settings</span></a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i><span data-en="Logout" data-id="Keluar">Logout</span></a></li>
-                    </ul>
+                <div class="profile-name" data-en="Albert Oscarina" data-id="Albert Oscarina">Albert Oscarina</div>
+                <div class="profile-status">
+                    <span data-en="Verified" data-id="Terverifikasi">Verified</span>
+                    <i class="fas fa-check-circle status-verified"></i>
                 </div>
             </div>
-        </header>
 
-        <!-- Page Content -->
-        <div class="content-wrapper">
-            <div class="container-fluid">
-                <!-- Filters Section -->
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title mb-3" data-en="Filter Properties" data-id="Filter Properti">Filter Properties</h6>
-                                <div class="row g-3">
-                                    <div class="col-md-4">
-                                        <label class="form-label" data-en="Property Type" data-id="Tipe Properti">Property Type</label>
-                                        <select class="form-select" id="propertyFilter">
-                                            <option value="" data-en="All Properties" data-id="Semua Properti">All Properties</option>
-                                            <option value="villa" data-en="Villa" data-id="Villa">Villa</option>
-                                            <option value="apartment" data-en="Apartment" data-id="Apartemen">Apartment</option>
-                                            <option value="office" data-en="Office" data-id="Kantor">Office</option>
-                                            <option value="land" data-en="Land" data-id="Tanah">Land</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label" data-en="Min IRR (%)" data-id="IRR Min (%)">Min IRR (%)</label>
-                                        <input type="number" class="form-control" id="minIRR" placeholder="5" min="0" max="50">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label" data-en="Max IRR (%)" data-id="IRR Max (%)">Max IRR (%)</label>
-                                        <input type="number" class="form-control" id="maxIRR" placeholder="25" min="0" max="50">
-                                    </div>
-                                    <div class="col-md-2 d-flex align-items-end">
-                                        <button class="btn btn-primary w-100" id="applyFilter">
-                                            <i class="fas fa-filter me-1"></i>
-                                            <span data-en="Apply" data-id="Terapkan">Apply</span>
-                                        </button>
-                                    </div>
+            <!-- Navigation -->
+            <div class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span data-en="Dashboard" data-id="Dashboard">Dashboard</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-briefcase"></i>
+                            <span data-en="Portfolio" data-id="Portfolio">Portfolio</span>
+                            <i class="fas fa-chevron-right ms-auto"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-crown"></i>
+                            <span data-en="Owner Perks" data-id="Keistimewaan Pemilik">Owner Perks</span>
+                            <i class="fas fa-chevron-right ms-auto"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="marketplace_browselisting.html">
+                            <i class="fas fa-store"></i>
+                            <span data-en="Marketplace" data-id="Marketplace">Marketplace</span>
+                            <i class="fas fa-chevron-right ms-auto"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-wallet"></i>
+                            <span data-en="Wallet" data-id="Dompet">Wallet</span>
+                            <i class="fas fa-chevron-right ms-auto"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-users"></i>
+                            <span data-en="Referrals" data-id="Referral">Referrals</span>
+                            <span class="nav-badge">3</span>
+                            <i class="fas fa-chevron-right ms-auto"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span data-en="Education" data-id="Edukasi">Education</span>
+                            <i class="fas fa-chevron-right ms-auto"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span data-en="Events" data-id="Event">Events</span>
+                            <i class="fas fa-chevron-right ms-auto"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-shield-alt"></i>
+                            <span data-en="Security" data-id="Keamanan">Security</span>
+                            <i class="fas fa-chevron-right ms-auto"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-cog"></i>
+                            <span data-en="Settings" data-id="Pengaturan">Settings</span>
+                            <i class="fas fa-chevron-right ms-auto"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- High Opportunity Section -->
+                <div class="nav-bottom">
+                    <div class="high-opportunity-card">
+                        <div class="opportunity-header">
+                            <i class="fas fa-fire"></i>
+                            <span data-en="HIGH OPPORTUNITY" data-id="PELUANG TINGGI">HIGH OPPORTUNITY</span>
+                        </div>
+                        <div class="opportunity-content">
+                            <p data-en="Want higher profits but with more risk?" data-id="Ingin keuntungan lebih tinggi tapi dengan risiko lebih?">Want higher profits but with more risk?</p>
+                            <a href="#" class="opportunity-link" data-en="Click here for development opportunities" data-id="Klik di sini untuk peluang pengembangan">Click here for development opportunities</a>
+                            <div class="opportunity-features">
+                                <div class="feature-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span data-en="Higher Returns" data-id="Keuntungan Lebih Tinggi">Higher Returns</span>
                                 </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span data-en="Development Risk" data-id="Risiko Pengembangan">Development Risk</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-percentage"></i>
+                                    <span data-en="15-20% IRR" data-id="15-20% IRR">15-20% IRR</span>
+                                </div>
+                            </div>
+                            <div class="opportunity-cta">
+                                <span data-en="Crowdfund Villa" data-id="Crowdfund Villa">Crowdfund Villa</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="dashboard-main">
+            <!-- Dashboard Header -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button class="mobile-sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title" data-en="Marketplace Overview" data-id="Gambaran Umum Marketplace">Marketplace Overview</h1>
+                </div>
+                
+                <div class="header-right">
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <button class="language-btn" type="button" id="languageDropdown" data-bs-toggle="dropdown">
+                            <span id="currentLang">EN</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end language-dropdown">
+                            <li><a class="dropdown-item language-option" href="#" data-lang="en">English</a></li>
+                            <li><a class="dropdown-item language-option" href="#" data-lang="id">Indonesia</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="header-notifications">
+                        <button class="notification-btn" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                            <div class="notification-header">
+                                <h6 data-en="Notifications" data-id="Notifikasi">Notifications</h6>
+                                <a href="#" class="mark-read" data-en="Mark all as read" data-id="Tandai semua dibaca">Mark all as read</a>
+                            </div>
+                            <div class="notification-list">
+                                <a href="#" class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-coins text-success"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p data-en="Dividend payment received" data-id="Pembayaran dividen diterima">Dividend payment received</p>
+                                        <small data-en="2 minutes ago" data-id="2 menit yang lalu">2 minutes ago</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-home text-primary"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p data-en="New property available" data-id="Properti baru tersedia">New property available</p>
+                                        <small data-en="1 hour ago" data-id="1 jam yang lalu">1 hour ago</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-chart-line text-warning"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p data-en="Portfolio update available" data-id="Update portfolio tersedia">Portfolio update available</p>
+                                        <small data-en="3 hours ago" data-id="3 jam yang lalu">3 hours ago</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Profile -->
+                    <div class="user-profile">
+                        <button class="profile-btn" type="button" data-bs-toggle="dropdown">
+                            <img src="images/avatar-placeholder.jpg" alt="Profile" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNlMmU4ZjAiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxMiIgcj0iNSIgZmlsbD0iIzY0NzQ4YiIvPgo8cGF0aCBkPSJNNiAyNmMwLTUgNS04IDEwLThzMTAgMyAxMCA4IiBmaWxsPSIjNjQ3NDhiIi8+Cjwvc3ZnPgo='">
+                            <span data-en="Albert Oscarina" data-id="Albert Oscarina">Albert Oscarina</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end profile-dropdown">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i><span data-en="Profile" data-id="Profil">Profile</span></a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i><span data-en="Settings" data-id="Pengaturan">Settings</span></a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i><span data-en="Logout" data-id="Keluar">Logout</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Filters Section -->
+                <div class="section-card mb-4">
+                    <div class="section-header">
+                        <h5 data-en="Filter Properties" data-id="Filter Properti">Filter Properties</h5>
+                    </div>
+                    <div class="filter-form">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label" data-en="Property Type" data-id="Tipe Properti">Property Type</label>
+                                <select class="form-select" id="propertyFilter">
+                                    <option value="" data-en="All Properties" data-id="Semua Properti">All Properties</option>
+                                    <option value="villa" data-en="Villa" data-id="Villa">Villa</option>
+                                    <option value="apartment" data-en="Apartment" data-id="Apartemen">Apartment</option>
+                                    <option value="office" data-en="Office" data-id="Kantor">Office</option>
+                                    <option value="land" data-en="Land" data-id="Tanah">Land</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" data-en="Min IRR (%)" data-id="IRR Min (%)">Min IRR (%)</label>
+                                <input type="number" class="form-control" id="minIRR" placeholder="5" min="0" max="50">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" data-en="Max IRR (%)" data-id="IRR Max (%)">Max IRR (%)</label>
+                                <input type="number" class="form-control" id="maxIRR" placeholder="25" min="0" max="50">
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button class="btn btn-primary w-100" id="applyFilter">
+                                    <i class="fas fa-filter me-1"></i>
+                                    <span data-en="Apply" data-id="Terapkan">Apply</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -208,14 +294,12 @@
                 </div>
 
                 <!-- Pagination -->
-                <div class="row mt-4">
-                    <div class="col-12">
-                        <nav aria-label="Properties pagination">
-                            <ul class="pagination justify-content-center" id="pagination">
-                                <!-- Pagination will be populated by JavaScript -->
-                            </ul>
-                        </nav>
-                    </div>
+                <div class="pagination-section mt-4">
+                    <nav aria-label="Properties pagination">
+                        <ul class="pagination justify-content-center" id="pagination">
+                            <!-- Pagination will be populated by JavaScript -->
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
