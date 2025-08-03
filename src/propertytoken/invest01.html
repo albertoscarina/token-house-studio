@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Properties - PropertyToken GapuraPrima</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo-icon.png">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles/invest.css">
+</head>
+<body class="invest-body">
+    <div class="invest-container">
+        <!-- Header -->
+        <header class="invest-header">
+            <div class="header-content">
+                <button class="back-btn" onclick="window.history.back()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1 class="page-title" data-en="Buy Properties" data-id="Beli Properti">Buy Properties</h1>
+                <div class="header-spacer"></div>
+            </div>
+        </header>
+
+        <!-- Property Card -->
+        <div class="property-container">
+            <div class="property-card">
+                <div class="property-image">
+                    <img src="images/villa-kulibul.jpg" alt="Villa Kulibul" onerror="this.src='images/property-placeholder.jpg'">
+                </div>
+                
+                <div class="property-info">
+                    <div class="property-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span data-en="Canggu, Bali" data-id="Canggu, Bali">Canggu, Bali</span>
+                    </div>
+                    
+                    <h2 class="property-name" data-en="Villa Kulibul" data-id="Villa Kulibul">Villa Kulibul</h2>
+                    
+                    <div class="property-features">
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>3 <small data-en="Bedrooms" data-id="Kamar Tidur">Bedrooms</small></span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bath"></i>
+                            <span>3 <small data-en="Bathrooms" data-id="Kamar Mandi">Bathrooms</small></span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>152 <small>sqm</small></span>
+                        </div>
+                    </div>
+                    
+                    <div class="financial-info">
+                        <div class="returns">
+                            <div class="return-item">
+                                <span class="return-value">13%</span>
+                                <span class="return-label">IRR</span>
+                                <i class="fas fa-info-circle" data-bs-toggle="tooltip" title="Internal Rate of Return"></i>
+                            </div>
+                            <div class="return-item">
+                                <span class="return-value">11%</span>
+                                <span class="return-label">ERY</span>
+                                <i class="fas fa-info-circle" data-bs-toggle="tooltip" title="Expected Rental Yield"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="availability">
+                            <div class="availability-bar">
+                                <div class="availability-fill" style="width: 81%"></div>
+                            </div>
+                            <div class="availability-text">
+                                <span class="percentage">81%</span>
+                                <span class="tokens-left" data-en="56916 tokens left" data-id="56916 token tersisa">56916 tokens left</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Buy Button -->
+            <div class="buy-section">
+                <button class="btn-buy" onclick="proceedToInvest()">
+                    <span data-en="Buy Now" data-id="Beli Sekarang">Buy Now</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="scripts/invest01.js"></script>
+</body>
+</html>

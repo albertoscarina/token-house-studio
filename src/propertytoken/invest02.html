@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Order Details - PropertyToken GapuraPrima</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo-icon.png">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles/invest.css">
+</head>
+<body class="invest-body">
+    <div class="invest-container">
+        <!-- Header -->
+        <header class="invest-header">
+            <div class="header-content">
+                <button class="back-btn" onclick="window.history.back()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1 class="page-title" data-en="Payment" data-id="Pembayaran">Payment</h1>
+                <div class="header-spacer"></div>
+            </div>
+        </header>
+
+        <!-- Progress Steps -->
+        <div class="progress-container">
+            <div class="progress-steps">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <span class="step-label" data-en="Order Details" data-id="Detail Pesanan">Order Details</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <span class="step-label" data-en="Order Summary" data-id="Ringkasan Pesanan">Order Summary</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Content -->
+        <div class="order-container">
+            <!-- Property Info -->
+            <div class="order-property">
+                <div class="property-thumbnail">
+                    <img src="images/villa-kulibul.jpg" alt="Villa Kulibul" onerror="this.src='images/property-placeholder.jpg'">
+                </div>
+                <div class="property-details">
+                    <h3 class="property-name" data-en="Villa Kulibul" data-id="Villa Kulibul">Villa Kulibul</h3>
+                    <p class="property-location" data-en="Canggu, Bali" data-id="Canggu, Bali">Canggu, Bali</p>
+                    <p class="tokens-available" data-en="(56913 tokens available)" data-id="(56913 token tersedia)">(56913 tokens available)</p>
+                </div>
+            </div>
+
+            <!-- Quantity Selector -->
+            <div class="quantity-section">
+                <div class="quantity-selector">
+                    <button class="quantity-btn minus" onclick="adjustQuantity(-1)">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <span class="quantity-display" id="tokenQuantity">1</span>
+                    <button class="quantity-btn plus" onclick="adjustQuantity(1)">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="price-per-token" data-en="IDR10,000/token" data-id="IDR10.000/token">IDR10,000/token</div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <div class="summary-row">
+                    <span class="summary-label" data-en="Order Total" data-id="Total Pesanan">Order Total</span>
+                    <span class="summary-value" id="orderTotal">IDR10,000</span>
+                </div>
+                
+                <div class="balance-option">
+                    <div class="balance-toggle">
+                        <input type="checkbox" id="useBalance" onchange="toggleBalance()">
+                        <label for="useBalance">
+                            <span data-en="Use Balance (IDRO available)" data-id="Gunakan Saldo (IDRO tersedia)">Use Balance (IDRO available)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="total-payment">
+                    <div class="payment-row">
+                        <span class="payment-label" data-en="Total Payment" data-id="Total Pembayaran">Total Payment</span>
+                        <span class="payment-amount" id="totalPayment">IDR10,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Button -->
+            <div class="action-section">
+                <button class="btn-next" onclick="proceedToSummary()">
+                    <span data-en="Next" data-id="Selanjutnya">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="scripts/invest02.js"></script>
+</body>
+</html>
