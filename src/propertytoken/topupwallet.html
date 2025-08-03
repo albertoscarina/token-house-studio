@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Up Wallet - PropertyToken GapuraPrima</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo-icon.png">
+    
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <link href="styles/main.css" rel="stylesheet">
     <link href="styles/dashboard.css" rel="stylesheet">
     <link href="styles/topupwallet.css" rel="stylesheet">
@@ -13,172 +25,226 @@
     <link href="styles/auth-modal.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Mobile Menu Toggle -->
-    <button class="mobile-menu-toggle d-lg-none" id="mobileMenuToggle">
-        <i class="fas fa-bars"></i>
-    </button>
-
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="images/logo.png" alt="PropertyToken" class="sidebar-logo">
+            <div class="sidebar-logo">
+                <img src="images/logo-icon.png" alt="Logo">
+            </div>
+            <div class="sidebar-brand">
+                <h4>PropertyToken</h4>
+                <p>GapuraPrima</p>
+            </div>
         </div>
         
-        <nav class="sidebar-nav">
-            <ul class="nav-list">
-                <li class="nav-item">
-                    <a href="dashboard.html" class="nav-link">
-                        <i class="fas fa-chart-line"></i>
-                        <span data-en="Dashboard" data-id="Dasbor">Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="my-properties.html" class="nav-link">
-                        <i class="fas fa-building"></i>
-                        <span data-en="My Properties" data-id="Properti Saya">My Properties</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="crowdfunding.html" class="nav-link">
-                        <i class="fas fa-users"></i>
-                        <span data-en="Crowdfunding" data-id="Crowdfunding">Crowdfunding</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="dividends.html" class="nav-link">
-                        <i class="fas fa-coins"></i>
-                        <span data-en="Dividends" data-id="Dividen">Dividends</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="topupwallet.html" class="nav-link active">
-                        <i class="fas fa-wallet"></i>
-                        <span data-en="Top Up Wallet" data-id="Isi Dompet">Top Up Wallet</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <div class="sidebar-menu">
+            <!-- Dashboard -->
+            <div class="menu-item">
+                <a href="dashboard.html" class="menu-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="menu-text" data-en="Dashboard" data-id="Dasbor">Dashboard</span>
+                </a>
+            </div>
+
+            <!-- My Properties -->
+            <div class="menu-item">
+                <a href="my-properties.html" class="menu-link">
+                    <i class="fas fa-building"></i>
+                    <span class="menu-text" data-en="My Properties" data-id="Properti Saya">My Properties</span>
+                </a>
+            </div>
+
+            <!-- Crowdfunding -->
+            <div class="menu-item">
+                <a href="crowdfunding.html" class="menu-link">
+                    <i class="fas fa-users"></i>
+                    <span class="menu-text" data-en="Crowdfunding" data-id="Crowdfunding">Crowdfunding</span>
+                </a>
+            </div>
+
+            <!-- Dividends -->
+            <div class="menu-item">
+                <a href="dividends.html" class="menu-link">
+                    <i class="fas fa-coins"></i>
+                    <span class="menu-text" data-en="Dividends" data-id="Dividen">Dividends</span>
+                </a>
+            </div>
+
+            <!-- Wallet - Active -->
+            <div class="menu-item">
+                <a href="topupwallet.html" class="menu-link active">
+                    <i class="fas fa-wallet"></i>
+                    <span class="menu-text" data-en="Top Up Wallet" data-id="Isi Dompet">Top Up Wallet</span>
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Top Header -->
-        <header class="dashboard-header">
-            <div class="header-left">
-                <button class="sidebar-toggle d-lg-none" id="sidebarToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <h1 class="page-title" data-en="Top Up Wallet" data-id="Isi Dompet">Top Up Wallet</h1>
-            </div>
-            
-            <div class="header-right">
-                <!-- Language Switcher -->
-                <div class="language-switcher">
-                    <button class="lang-option active" data-lang="en">EN</button>
-                    <button class="lang-option" data-lang="id">ID</button>
-                </div>
-
-                <!-- Notifications -->
-                <div class="notification-wrapper">
-                    <button class="notification-btn" id="notificationBtn">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
+        <!-- Top Navigation -->
+        <div class="top-navbar">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link d-lg-none me-2" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
                     </button>
+                    <h3 class="mb-0" data-en="Top Up Wallet" data-id="Isi Dompet">Top Up Wallet</h3>
                 </div>
+                
+                <div class="d-flex align-items-center">
+                    <!-- Language Switcher -->
+                    <div class="language-switch">
+                        <span class="lang-option active" data-lang="en">EN</span>
+                        <span class="lang-divider">|</span>
+                        <span class="lang-option" data-lang="id">ID</span>
+                    </div>
 
-                <!-- User Profile -->
-                <div class="user-profile">
-                    <img src="images/people.jpg" alt="User" class="user-avatar">
-                    <span class="user-name">John Doe</span>
+                    <!-- Notifications -->
+                    <div class="dropdown me-3">
+                        <button class="btn btn-link position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell text-muted"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; z-index: 1050;">
+                            <li><h6 class="dropdown-header" data-en="Notifications" data-id="Notifikasi">Notifications</h6></li>
+                            <li><a class="dropdown-item" href="#" data-en="New payment received" data-id="Pembayaran baru diterima">New payment received</a></li>
+                            <li><a class="dropdown-item" href="#" data-en="Property update available" data-id="Update properti tersedia">Property update available</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- User Profile -->
+                    <div class="d-flex align-items-center">
+                        <img src="images/people.jpg" alt="Profile" class="profile-avatar me-2">
+                        <span class="fw-medium">John Doe</span>
+                    </div>
                 </div>
             </div>
-        </header>
+        </div>
 
-        <!-- Top Up Wallet Content -->
-        <div class="topup-container">
+        <!-- Content Area -->
+        <div class="content-area">
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-6">
                         <!-- Wallet Balance Card -->
-                        <div class="wallet-balance-card">
-                            <div class="balance-header">
-                                <h3 data-en="Current Wallet Balance" data-id="Saldo Dompet Saat Ini">Current Wallet Balance</h3>
-                            </div>
-                            <div class="balance-amount">
-                                <span class="currency">IDR</span>
-                                <span class="amount" id="walletBalance">2,500,000</span>
+                        <div class="card mb-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 16px; color: white;">
+                            <div class="card-body text-center p-4">
+                                <h5 class="card-title mb-3" data-en="Current Wallet Balance" data-id="Saldo Dompet Saat Ini">Current Wallet Balance</h5>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="h6 mb-0 me-2">IDR</span>
+                                    <span class="h2 mb-0 fw-bold" id="walletBalance">2,500,000</span>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Top Up Form Card -->
-                        <div class="topup-form-card">
-                            <div class="card-header">
-                                <h3 data-en="Top Up Your Wallet" data-id="Isi Dompet Anda">Top Up Your Wallet</h3>
-                                <p data-en="Choose your preferred payment method and enter the amount" data-id="Pilih metode pembayaran dan masukkan jumlah">Choose your preferred payment method and enter the amount</p>
+                        <div class="card" style="border: none; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                            <div class="card-header text-center" style="background: transparent; border-bottom: 1px solid #f1f5f9; padding: 2rem 2rem 1rem;">
+                                <h4 class="mb-2" data-en="Top Up Your Wallet" data-id="Isi Dompet Anda">Top Up Your Wallet</h4>
+                                <p class="text-muted mb-0" data-en="Choose your preferred payment method and enter the amount" data-id="Pilih metode pembayaran dan masukkan jumlah">Choose your preferred payment method and enter the amount</p>
                             </div>
 
-                            <!-- Payment Method Tabs -->
-                            <div class="payment-methods">
-                                <div class="method-tabs">
-                                    <button class="method-tab active" data-method="bank" data-en="Bank Transfer (IDR)" data-id="Transfer Bank (IDR)">
-                                        <i class="fas fa-university"></i>
-                                        <span data-en="Bank Transfer (IDR)" data-id="Transfer Bank (IDR)">Bank Transfer (IDR)</span>
-                                    </button>
-                                    <button class="method-tab" data-method="usdt" data-en="USDT (TRC20/Polygon)" data-id="USDT (TRC20/Polygon)">
-                                        <i class="fab fa-bitcoin"></i>
-                                        <span data-en="USDT (TRC20/Polygon)" data-id="USDT (TRC20/Polygon)">USDT (TRC20/Polygon)</span>
-                                    </button>
-                                    <button class="method-tab" data-method="btc" data-en="Bitcoin (BTC)" data-id="Bitcoin (BTC)">
-                                        <i class="fab fa-btc"></i>
-                                        <span data-en="Bitcoin (BTC)" data-id="Bitcoin (BTC)">Bitcoin (BTC)</span>
-                                    </button>
+                            <div class="card-body p-4">
+                                <!-- Payment Method Tabs -->
+                                <div class="mb-4">
+                                    <div class="d-flex gap-2 p-2" style="background: #f8f9fa; border-radius: 12px;">
+                                        <button class="flex-fill btn method-tab active" data-method="bank" style="border: none; border-radius: 8px; padding: 1rem; background: #667eea; color: white;">
+                                            <i class="fas fa-university d-block mb-1"></i>
+                                            <small data-en="Bank Transfer (IDR)" data-id="Transfer Bank (IDR)">Bank Transfer (IDR)</small>
+                                        </button>
+                                        <button class="flex-fill btn method-tab" data-method="usdt" style="border: none; border-radius: 8px; padding: 1rem; background: transparent; color: #6c757d;">
+                                            <i class="fab fa-bitcoin d-block mb-1"></i>
+                                            <small data-en="USDT (TRC20/Polygon)" data-id="USDT (TRC20/Polygon)">USDT (TRC20/Polygon)</small>
+                                        </button>
+                                        <button class="flex-fill btn method-tab" data-method="btc" style="border: none; border-radius: 8px; padding: 1rem; background: transparent; color: #6c757d;">
+                                            <i class="fab fa-btc d-block mb-1"></i>
+                                            <small data-en="Bitcoin (BTC)" data-id="Bitcoin (BTC)">Bitcoin (BTC)</small>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- Amount Input -->
-                            <div class="amount-section">
-                                <label for="topupAmount" class="form-label" data-en="Amount (IDR)" data-id="Jumlah (IDR)">Amount (IDR)</label>
-                                <div class="amount-input-wrapper">
-                                    <span class="currency-prefix">IDR</span>
-                                    <input type="text" class="form-control amount-input" id="topupAmount" placeholder="0" inputmode="numeric">
+                                <!-- Amount Input -->
+                                <div class="mb-4">
+                                    <label for="topupAmount" class="form-label fw-medium" data-en="Amount (IDR)" data-id="Jumlah (IDR)">Amount (IDR)</label>
+                                    <div class="position-relative mb-3">
+                                        <span class="position-absolute" style="left: 1rem; top: 50%; transform: translateY(-50%); color: #6c757d; font-weight: 600; z-index: 2;">IDR</span>
+                                        <input type="text" class="form-control" id="topupAmount" placeholder="0" style="padding-left: 4rem; height: 60px; border: 2px solid #e9ecef; border-radius: 12px; font-size: 1.25rem; font-weight: 600;">
+                                    </div>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <button class="btn btn-outline-secondary quick-amount-btn" data-amount="500000" style="border-radius: 8px;">500K</button>
+                                        <button class="btn btn-outline-secondary quick-amount-btn" data-amount="1000000" style="border-radius: 8px;">1M</button>
+                                        <button class="btn btn-outline-secondary quick-amount-btn" data-amount="5000000" style="border-radius: 8px;">5M</button>
+                                        <button class="btn btn-outline-secondary quick-amount-btn" data-amount="10000000" style="border-radius: 8px;">10M</button>
+                                    </div>
                                 </div>
-                                <div class="quick-amounts">
-                                    <button class="quick-amount-btn" data-amount="500000">500K</button>
-                                    <button class="quick-amount-btn" data-amount="1000000">1M</button>
-                                    <button class="quick-amount-btn" data-amount="5000000">5M</button>
-                                    <button class="quick-amount-btn" data-amount="10000000">10M</button>
-                                </div>
-                            </div>
 
-                            <!-- Payment Instructions -->
-                            <div class="payment-instructions" id="paymentInstructions">
-                                <!-- Bank Transfer Instructions (Default) -->
-                                <div class="instruction-content active" id="bankInstructions">
-                                    <h4 data-en="Bank Transfer Details" data-id="Detail Transfer Bank">Bank Transfer Details</h4>
-                                    <div class="bank-details">
-                                        <div class="bank-info">
-                                            <label data-en="Bank Name" data-id="Nama Bank">Bank Name</label>
-                                            <div class="copy-field">
-                                                <span>Bank Mandiri</span>
-                                                <button class="copy-btn" data-copy="Bank Mandiri">
+                                <!-- Payment Instructions -->
+                                <div class="mb-4" id="paymentInstructions">
+                                    <!-- Bank Transfer Instructions (Default) -->
+                                    <div class="instruction-content active" id="bankInstructions" style="background: #f8f9fa; border-radius: 12px; padding: 1.5rem;">
+                                        <h6 class="mb-3" data-en="Bank Transfer Details" data-id="Detail Transfer Bank">Bank Transfer Details</h6>
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <label class="form-label text-muted" data-en="Bank Name" data-id="Nama Bank">Bank Name</label>
+                                                <div class="d-flex justify-content-between align-items-center p-3" style="background: white; border: 2px solid #e9ecef; border-radius: 8px;">
+                                                    <span class="fw-bold">Bank Mandiri</span>
+                                                    <button class="btn btn-sm btn-primary copy-btn" data-copy="Bank Mandiri" style="border-radius: 6px;">
+                                                        <i class="fas fa-copy"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label text-muted" data-en="Account Number" data-id="Nomor Rekening">Account Number</label>
+                                                <div class="d-flex justify-content-between align-items-center p-3" style="background: white; border: 2px solid #e9ecef; border-radius: 8px;">
+                                                    <span class="fw-bold">1230006789012</span>
+                                                    <button class="btn btn-sm btn-primary copy-btn" data-copy="1230006789012" style="border-radius: 6px;">
+                                                        <i class="fas fa-copy"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label text-muted" data-en="Account Name" data-id="Nama Pemilik">Account Name</label>
+                                                <div class="d-flex justify-content-between align-items-center p-3" style="background: white; border: 2px solid #e9ecef; border-radius: 8px;">
+                                                    <span class="fw-bold">PT PropertyToken GapuraPrima</span>
+                                                    <button class="btn btn-sm btn-primary copy-btn" data-copy="PT PropertyToken GapuraPrima" style="border-radius: 6px;">
+                                                        <i class="fas fa-copy"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- USDT Instructions -->
+                                    <div class="instruction-content" id="usdtInstructions" style="background: #f8f9fa; border-radius: 12px; padding: 1.5rem; display: none;">
+                                        <h6 class="mb-3" data-en="USDT Wallet Address" data-id="Alamat Dompet USDT">USDT Wallet Address</h6>
+                                        <div class="mb-3">
+                                            <span class="badge" style="background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 20px;">TRC20 / Polygon</span>
+                                        </div>
+                                        <div>
+                                            <label class="form-label text-muted" data-en="Wallet Address" data-id="Alamat Dompet">Wallet Address</label>
+                                            <div class="d-flex justify-content-between align-items-center p-3" style="background: white; border: 2px solid #e9ecef; border-radius: 8px;">
+                                                <span class="fw-bold" style="font-family: 'Courier New', monospace; word-break: break-all;">TX7GvXh9k2P4mN8qR5tL3vY1zF6wC9eA2sD4hJ7uI0pO3nM5xB8vC1qW6</span>
+                                                <button class="btn btn-sm btn-primary copy-btn ms-2" data-copy="TX7GvXh9k2P4mN8qR5tL3vY1zF6wC9eA2sD4hJ7uI0pO3nM5xB8vC1qW6" style="border-radius: 6px;">
                                                     <i class="fas fa-copy"></i>
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="bank-info">
-                                            <label data-en="Account Number" data-id="Nomor Rekening">Account Number</label>
-                                            <div class="copy-field">
-                                                <span>1230006789012</span>
-                                                <button class="copy-btn" data-copy="1230006789012">
-                                                    <i class="fas fa-copy"></i>
-                                                </button>
-                                            </div>
+                                    </div>
+
+                                    <!-- Bitcoin Instructions -->
+                                    <div class="instruction-content" id="btcInstructions" style="background: #f8f9fa; border-radius: 12px; padding: 1.5rem; display: none;">
+                                        <h6 class="mb-3" data-en="Bitcoin Wallet Address" data-id="Alamat Dompet Bitcoin">Bitcoin Wallet Address</h6>
+                                        <div class="mb-3">
+                                            <span class="badge" style="background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 20px;">Bitcoin Network</span>
                                         </div>
-                                        <div class="bank-info">
-                                            <label data-en="Account Name" data-id="Nama Pemilik">Account Name</label>
-                                            <div class="copy-field">
-                                                <span>PT PropertyToken GapuraPrima</span>
-                                                <button class="copy-btn" data-copy="PT PropertyToken GapuraPrima">
+                                        <div>
+                                            <label class="form-label text-muted" data-en="Wallet Address" data-id="Alamat Dompet">Wallet Address</label>
+                                            <div class="d-flex justify-content-between align-items-center p-3" style="background: white; border: 2px solid #e9ecef; border-radius: 8px;">
+                                                <span class="fw-bold" style="font-family: 'Courier New', monospace; word-break: break-all;">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</span>
+                                                <button class="btn btn-sm btn-primary copy-btn ms-2" data-copy="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" style="border-radius: 6px;">
                                                     <i class="fas fa-copy"></i>
                                                 </button>
                                             </div>
@@ -186,65 +252,27 @@
                                     </div>
                                 </div>
 
-                                <!-- USDT Instructions -->
-                                <div class="instruction-content" id="usdtInstructions">
-                                    <h4 data-en="USDT Wallet Address" data-id="Alamat Dompet USDT">USDT Wallet Address</h4>
-                                    <div class="crypto-details">
-                                        <div class="network-info">
-                                            <span class="network-badge">TRC20 / Polygon</span>
-                                        </div>
-                                        <div class="wallet-address">
-                                            <label data-en="Wallet Address" data-id="Alamat Dompet">Wallet Address</label>
-                                            <div class="copy-field">
-                                                <span class="address-text">TX7GvXh9k2P4mN8qR5tL3vY1zF6wC9eA2sD4hJ7uI0pO3nM5xB8vC1qW6</span>
-                                                <button class="copy-btn" data-copy="TX7GvXh9k2P4mN8qR5tL3vY1zF6wC9eA2sD4hJ7uI0pO3nM5xB8vC1qW6">
-                                                    <i class="fas fa-copy"></i>
-                                                </button>
-                                            </div>
-                                        </div>
+                                <!-- Important Information -->
+                                <div class="alert" style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 12px; color: #856404;" role="alert">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-info-circle me-2" style="color: #f39c12;"></i>
+                                        <strong data-en="Important Information" data-id="Informasi Penting">Important Information</strong>
                                     </div>
+                                    <ul class="mb-0 ps-3">
+                                        <li data-en="Processing time: 1x24 hours after transfer completion" data-id="Waktu proses: 1x24 jam setelah transfer selesai">Processing time: 1x24 hours after transfer completion</li>
+                                        <li data-en="Ensure the transfer amount matches your input for faster confirmation" data-id="Pastikan nominal transfer sesuai dengan input untuk konfirmasi lebih cepat">Ensure the transfer amount matches your input for faster confirmation</li>
+                                        <li data-en="Minimum top up amount is IDR 100,000" data-id="Jumlah top up minimum adalah IDR 100,000">Minimum top up amount is IDR 100,000</li>
+                                        <li data-en="Keep your transfer receipt for verification purposes" data-id="Simpan bukti transfer untuk keperluan verifikasi">Keep your transfer receipt for verification purposes</li>
+                                    </ul>
                                 </div>
 
-                                <!-- Bitcoin Instructions -->
-                                <div class="instruction-content" id="btcInstructions">
-                                    <h4 data-en="Bitcoin Wallet Address" data-id="Alamat Dompet Bitcoin">Bitcoin Wallet Address</h4>
-                                    <div class="crypto-details">
-                                        <div class="network-info">
-                                            <span class="network-badge">Bitcoin Network</span>
-                                        </div>
-                                        <div class="wallet-address">
-                                            <label data-en="Wallet Address" data-id="Alamat Dompet">Wallet Address</label>
-                                            <div class="copy-field">
-                                                <span class="address-text">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</span>
-                                                <button class="copy-btn" data-copy="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh">
-                                                    <i class="fas fa-copy"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <!-- Confirm Button -->
+                                <div class="text-center">
+                                    <button class="btn btn-primary w-100" id="confirmPaymentBtn" disabled style="height: 60px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; font-size: 1.1rem; font-weight: 600;">
+                                        <i class="fas fa-check-circle me-2"></i>
+                                        <span data-en="Confirm Payment" data-id="Konfirmasi Pembayaran">Confirm Payment</span>
+                                    </button>
                                 </div>
-                            </div>
-
-                            <!-- Important Information -->
-                            <div class="important-info">
-                                <div class="info-header">
-                                    <i class="fas fa-info-circle"></i>
-                                    <h4 data-en="Important Information" data-id="Informasi Penting">Important Information</h4>
-                                </div>
-                                <ul class="info-list">
-                                    <li data-en="Processing time: 1x24 hours after transfer completion" data-id="Waktu proses: 1x24 jam setelah transfer selesai">Processing time: 1x24 hours after transfer completion</li>
-                                    <li data-en="Ensure the transfer amount matches your input for faster confirmation" data-id="Pastikan nominal transfer sesuai dengan input untuk konfirmasi lebih cepat">Ensure the transfer amount matches your input for faster confirmation</li>
-                                    <li data-en="Minimum top up amount is IDR 100,000" data-id="Jumlah top up minimum adalah IDR 100,000">Minimum top up amount is IDR 100,000</li>
-                                    <li data-en="Keep your transfer receipt for verification purposes" data-id="Simpan bukti transfer untuk keperluan verifikasi">Keep your transfer receipt for verification purposes</li>
-                                </ul>
-                            </div>
-
-                            <!-- Confirm Button -->
-                            <div class="confirm-section">
-                                <button class="btn btn-primary confirm-payment-btn" id="confirmPaymentBtn" disabled>
-                                    <i class="fas fa-check-circle"></i>
-                                    <span data-en="Confirm Payment" data-id="Konfirmasi Pembayaran">Confirm Payment</span>
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -254,59 +282,26 @@
     </div>
 
     <!-- Bottom Navigation (Mobile) -->
-    <nav class="bottom-nav d-lg-none">
-        <a href="dashboard.html" class="bottom-nav-item">
-            <i class="fas fa-chart-line"></i>
-            <span data-en="Dashboard" data-id="Dasbor">Dashboard</span>
-        </a>
-        <a href="my-properties.html" class="bottom-nav-item">
-            <i class="fas fa-building"></i>
-            <span data-en="Properties" data-id="Properti">Properties</span>
-        </a>
-        <a href="crowdfunding.html" class="bottom-nav-item">
-            <i class="fas fa-users"></i>
-            <span data-en="Funding" data-id="Funding">Funding</span>
-        </a>
-        <a href="topupwallet.html" class="bottom-nav-item active">
-            <i class="fas fa-wallet"></i>
-            <span data-en="Wallet" data-id="Dompet">Wallet</span>
-        </a>
+    <nav class="fixed-bottom d-lg-none" style="background: white; border-top: 1px solid #e2e8f0; padding: 0.5rem 0;">
+        <div class="d-flex justify-content-around">
+            <a href="dashboard.html" class="text-center text-decoration-none" style="color: #64748b;">
+                <i class="fas fa-chart-line d-block"></i>
+                <small data-en="Dashboard" data-id="Dasbor">Dashboard</small>
+            </a>
+            <a href="my-properties.html" class="text-center text-decoration-none" style="color: #64748b;">
+                <i class="fas fa-building d-block"></i>
+                <small data-en="Properties" data-id="Properti">Properties</small>
+            </a>
+            <a href="crowdfunding.html" class="text-center text-decoration-none" style="color: #64748b;">
+                <i class="fas fa-users d-block"></i>
+                <small data-en="Funding" data-id="Funding">Funding</small>
+            </a>
+            <a href="topupwallet.html" class="text-center text-decoration-none" style="color: #2563eb;">
+                <i class="fas fa-wallet d-block"></i>
+                <small data-en="Wallet" data-id="Dompet">Wallet</small>
+            </a>
+        </div>
     </nav>
-
-    <!-- Notification Panel -->
-    <div class="notification-panel" id="notificationPanel">
-        <div class="notification-header">
-            <h3 data-en="Notifications" data-id="Notifikasi">Notifications</h3>
-            <button class="close-notifications" id="closeNotifications">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="notification-list">
-            <div class="notification-item unread">
-                <div class="notification-icon success">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <div class="notification-content">
-                    <h4 data-en="Payment Received" data-id="Pembayaran Diterima">Payment Received</h4>
-                    <p data-en="Your top up of IDR 1,000,000 has been processed" data-id="Top up sebesar IDR 1,000,000 telah diproses">Your top up of IDR 1,000,000 has been processed</p>
-                    <span class="notification-time">2 hours ago</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Auth Modal -->
-    <div class="auth-modal" id="authModal">
-        <div class="auth-modal-content">
-            <div class="auth-modal-header">
-                <h2 id="authModalTitle" data-en="Login" data-id="Masuk">Login</h2>
-                <button class="auth-close" id="authClose">&times;</button>
-            </div>
-            <div class="auth-modal-body" id="authModalBody">
-                <!-- Auth content will be loaded here -->
-            </div>
-        </div>
-    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

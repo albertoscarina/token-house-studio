@@ -114,11 +114,16 @@ class TopUpWallet {
     switchPaymentMethod(method) {
         this.currentMethod = method;
 
-        // Update active tab
+        // Update active tab appearance
         document.querySelectorAll('.method-tab').forEach(tab => {
-            tab.classList.remove('active');
+            if (tab.getAttribute('data-method') === method) {
+                tab.style.background = '#667eea';
+                tab.style.color = 'white';
+            } else {
+                tab.style.background = 'transparent';
+                tab.style.color = '#6c757d';
+            }
         });
-        document.querySelector(`[data-method="${method}"]`).classList.add('active');
 
         // Show corresponding instructions
         this.showPaymentInstructions(method);
@@ -140,14 +145,14 @@ class TopUpWallet {
     showPaymentInstructions(method) {
         // Hide all instruction contents
         document.querySelectorAll('.instruction-content').forEach(content => {
-            content.classList.remove('active');
+            content.style.display = 'none';
         });
 
         // Show selected method instructions
         const instructionId = method + 'Instructions';
         const instructionElement = document.getElementById(instructionId);
         if (instructionElement) {
-            instructionElement.classList.add('active');
+            instructionElement.style.display = 'block';
         }
     }
 
