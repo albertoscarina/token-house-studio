@@ -164,180 +164,184 @@
     font-size: var(--font-size-xs);
 }
 
-/* Navigation */
-.sidebar-nav {
-    flex: 1;
-    padding: var(--space-4) 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: calc(100vh - 200px);
+/* Sidebar Menu */
+.sidebar-menu {
+    padding: 1rem 0;
 }
 
-.nav-menu {
-    list-style: none;
-    padding: 0 var(--space-4);
-    margin: 0;
+.menu-item {
+    margin-bottom: 0.25rem;
 }
 
-.nav-item {
-    margin-bottom: var(--space-1);
-}
-
-.nav-link {
+.menu-link {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-3) var(--space-4);
+    padding: 0.75rem 1.5rem;
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    border-radius: var(--radius-md);
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     position: relative;
 }
 
-.nav-link:hover {
+.menu-link:hover,
+.menu-link.active {
+    color: white;
     background: rgba(255, 255, 255, 0.1);
-    color: var(--white);
 }
 
-.nav-link.active {
-    background: var(--primary);
-    color: var(--white);
-}
-
-.nav-link i {
+.menu-link i {
     width: 20px;
-    text-align: center;
-    font-size: var(--font-size-base);
+    margin-right: 0.75rem;
+    font-size: 1rem;
 }
 
-.nav-badge {
-    background: var(--primary);
-    color: var(--white);
-    font-size: var(--font-size-xs);
-    padding: 2px 6px;
-    border-radius: var(--radius-full);
-    margin-left: auto;
-    margin-right: var(--space-2);
+.menu-text {
+    flex: 1;
+    font-weight: 500;
 }
 
-/* Submenu Styles */
-.nav-submenu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-md);
-    margin: var(--space-2) var(--space-4) 0;
-}
-
-.nav-submenu.show {
-    max-height: 200px;
-    padding: var(--space-2) 0;
-}
-
-.nav-submenu-link {
-    display: block;
-    padding: var(--space-2) var(--space-4);
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
-    border-radius: var(--radius);
-    margin: 0 var(--space-2);
-    transition: all 0.2s ease;
-}
-
-.nav-submenu-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--white);
-}
-
-.nav-submenu-link.active {
-    background: var(--primary);
-    color: var(--white);
-}
-
-.nav-chevron {
+.menu-arrow {
     transition: transform 0.3s ease;
 }
 
-.nav-chevron.rotated {
+.menu-arrow.rotated {
     transform: rotate(90deg);
 }
 
-/* High Opportunity Card */
-.nav-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: var(--space-4);
-    margin-top: auto;
-    padding-left: var(--space-4);
-    padding-right: var(--space-4);
+.submenu {
+    background: rgba(0, 0, 0, 0.2);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
-.high-opportunity-card {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-    border-radius: var(--radius-lg);
-    padding: var(--space-4);
-    color: var(--white);
-    margin-bottom: var(--space-4);
+.submenu.show {
+    max-height: 300px;
 }
 
-.opportunity-header {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--font-size-xs);
+.submenu-link {
+    display: block;
+    padding: 0.6rem 1.5rem 0.6rem 3.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.submenu-link:hover,
+.submenu-link.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Crowdfunding Promo */
+.crowdfunding-promo {
+    background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+    color: white;
+    margin: 0.5rem 1rem;
+    border-radius: 12px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.crowdfunding-promo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.crowdfunding-promo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.crowdfunding-promo:hover::before {
+    left: 100%;
+}
+
+.promo-content {
+    position: relative;
+    z-index: 2;
+}
+
+.promo-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: var(--space-3);
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    backdrop-filter: blur(10px);
 }
 
-.opportunity-header i {
-    font-size: var(--font-size-sm);
+.promo-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.25rem;
 }
 
-.opportunity-content p {
-    font-size: var(--font-size-sm);
-    margin-bottom: var(--space-3);
-    line-height: 1.4;
+.promo-subtitle {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin-bottom: 0.75rem;
 }
 
-.opportunity-link {
-    color: var(--white);
-    text-decoration: underline;
-    font-size: var(--font-size-sm);
-    display: block;
-    margin-bottom: var(--space-3);
-}
-
-.opportunity-features {
-    margin-bottom: var(--space-3);
-}
-
-.feature-item {
+.promo-features {
     display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--font-size-xs);
-    margin-bottom: var(--space-1);
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
 }
 
-.feature-item i {
-    font-size: var(--font-size-xs);
-    width: 12px;
+.promo-feature {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
 }
 
-.opportunity-cta {
+.promo-cta {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-weight: 600;
-    font-size: var(--font-size-sm);
-    margin-top: var(--space-2);
-    padding-top: var(--space-2);
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.promo-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.promo-arrow {
+    background: rgba(255, 255, 255, 0.2);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.crowdfunding-promo:hover .promo-arrow {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(3px);
 }
 
 /* Main Content */
@@ -1059,6 +1063,10 @@
 @media (max-width: 1023px) {
     .dashboard-sidebar {
         transform: translateX(-100%);
+    }
+    
+    .dashboard-sidebar.show {
+        transform: translateX(0);
     }
     
     .dashboard-main {
