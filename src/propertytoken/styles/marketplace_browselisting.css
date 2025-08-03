@@ -222,6 +222,50 @@
     margin-right: var(--space-2);
 }
 
+/* Submenu Styles */
+.nav-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    margin: var(--space-2) var(--space-4) 0;
+}
+
+.nav-submenu.show {
+    max-height: 200px;
+    padding: var(--space-2) 0;
+}
+
+.nav-submenu-link {
+    display: block;
+    padding: var(--space-2) var(--space-4);
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    border-radius: var(--radius);
+    margin: 0 var(--space-2);
+    transition: all 0.2s ease;
+}
+
+.nav-submenu-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+}
+
+.nav-submenu-link.active {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.nav-chevron {
+    transition: transform 0.3s ease;
+}
+
+.nav-chevron.rotated {
+    transform: rotate(90deg);
+}
+
 /* High Opportunity Card */
 .nav-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -351,29 +395,38 @@
     gap: var(--space-4);
 }
 
-/* Language Selector */
-.language-selector {
-    position: relative;
+/* Language Toggle */
+.language-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
 }
 
-.language-btn {
+.lang-btn {
     background: none;
-    border: 1px solid var(--gray-300);
-    color: var(--gray-700);
-    padding: var(--space-2) var(--space-3);
-    border-radius: var(--radius);
+    border: none;
+    color: var(--gray-600);
     font-size: var(--font-size-sm);
+    font-weight: 500;
     cursor: pointer;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius);
     transition: all 0.2s ease;
 }
 
-.language-btn:hover {
+.lang-btn:hover {
+    color: var(--primary);
     background: var(--gray-100);
-    border-color: var(--gray-400);
 }
 
-.language-dropdown {
-    min-width: 120px;
+.lang-btn.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.lang-separator {
+    color: var(--gray-400);
+    font-size: var(--font-size-sm);
 }
 
 /* Notifications */

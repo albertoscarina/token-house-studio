@@ -61,11 +61,15 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="#" onclick="toggleSubmenu(this)">
                             <i class="fas fa-briefcase"></i>
                             <span data-en="Portfolio" data-id="Portfolio">Portfolio</span>
-                            <i class="fas fa-chevron-right ms-auto"></i>
+                            <i class="fas fa-chevron-right ms-auto nav-chevron"></i>
                         </a>
+                        <div class="nav-submenu">
+                            <a href="my-properties.html" class="nav-submenu-link" data-en="My Properties" data-id="Properti Saya">My Properties</a>
+                            <a href="#" class="nav-submenu-link" data-en="Performance" data-id="Performa">Performance</a>
+                        </div>
                     </li>
 
                     <li class="nav-item">
@@ -77,19 +81,27 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="marketplace_browselisting.html">
+                        <a class="nav-link active" href="marketplace_browselisting.html" onclick="toggleSubmenu(this)">
                             <i class="fas fa-store"></i>
                             <span data-en="Marketplace" data-id="Marketplace">Marketplace</span>
-                            <i class="fas fa-chevron-right ms-auto"></i>
+                            <i class="fas fa-chevron-right ms-auto nav-chevron rotated"></i>
                         </a>
+                        <div class="nav-submenu show">
+                            <a href="marketplace_browselisting.html" class="nav-submenu-link active" data-en="Browse Listings" data-id="Jelajahi Listing">Browse Listings</a>
+                            <a href="#" class="nav-submenu-link" data-en="Saved Properties" data-id="Properti Tersimpan">Saved Properties</a>
+                        </div>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="#" onclick="toggleSubmenu(this)">
                             <i class="fas fa-wallet"></i>
                             <span data-en="Wallet" data-id="Dompet">Wallet</span>
-                            <i class="fas fa-chevron-right ms-auto"></i>
+                            <i class="fas fa-chevron-right ms-auto nav-chevron"></i>
                         </a>
+                        <div class="nav-submenu">
+                            <a href="topupwallet.html" class="nav-submenu-link" data-en="Top Up" data-id="Top Up">Top Up</a>
+                            <a href="#" class="nav-submenu-link" data-en="Transactions" data-id="Transaksi">Transactions</a>
+                        </div>
                     </li>
 
                     <li class="nav-item">
@@ -181,14 +193,10 @@
                 
                 <div class="header-right">
                     <!-- Language Selector -->
-                    <div class="language-selector">
-                        <button class="language-btn" type="button" id="languageDropdown" data-bs-toggle="dropdown">
-                            <span id="currentLang">EN</span>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end language-dropdown">
-                            <li><a class="dropdown-item language-option" href="#" data-lang="en">English</a></li>
-                            <li><a class="dropdown-item language-option" href="#" data-lang="id">Indonesia</a></li>
-                        </ul>
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="en" id="langEn">EN</button>
+                        <span class="lang-separator">|</span>
+                        <button class="lang-btn" data-lang="id" id="langId">ID</button>
                     </div>
 
                     <!-- Notifications -->

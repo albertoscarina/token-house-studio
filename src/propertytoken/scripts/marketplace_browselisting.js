@@ -445,23 +445,45 @@ class MarketplaceBrowseListing {
                 }
             }
         });
+
+        // Add submenu toggle functionality
+        window.toggleSubmenu = function(element) {
+            const submenu = element.parentNode.querySelector('.nav-submenu');
+            const chevron = element.querySelector('.nav-chevron');
+            
+            if (submenu) {
+                submenu.classList.toggle('show');
+                if (chevron) {
+                    chevron.classList.toggle('rotated');
+                }
+            }
+        };
     }
 
     // Setup language functionality
     setupLanguage() {
-        const languageOptions = document.querySelectorAll('.language-option');
+        const langButtons = document.querySelectorAll('.lang-btn');
         
-        languageOptions.forEach(option => {
-            option.addEventListener('click', (e) => {
+        langButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
                 e.preventDefault();
-                const lang = option.getAttribute('data-lang');
+                const lang = button.getAttribute('data-lang');
                 this.switchLanguage(lang);
+                
+                // Update active states
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
             });
         });
 
         // Load saved language
         const savedLang = localStorage.getItem('propertytoken_language') || 'en';
         this.switchLanguage(savedLang);
+        
+        // Set active button
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === savedLang);
+        });
     }
 
     // Setup Bootstrap components
