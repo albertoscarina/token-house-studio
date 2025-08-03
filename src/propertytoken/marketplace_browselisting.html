@@ -204,56 +204,19 @@
                     </div>
                 </div>
 
-                <!-- Properties Table -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover" id="propertiesTable">
-                                        <thead class="table-light">
-                                            <tr>
-                                                <th class="sortable" data-column="name">
-                                                    <span data-en="Property Name" data-id="Nama Properti">Property Name</span>
-                                                    <i class="fas fa-sort text-muted"></i>
-                                                </th>
-                                                <th class="sortable" data-column="location">
-                                                    <span data-en="Location" data-id="Lokasi">Location</span>
-                                                    <i class="fas fa-sort text-muted"></i>
-                                                </th>
-                                                <th class="sortable" data-column="tokens">
-                                                    <span data-en="Token Amount" data-id="Jumlah Token">Token Amount</span>
-                                                    <i class="fas fa-sort text-muted"></i>
-                                                </th>
-                                                <th class="sortable" data-column="pricePerToken">
-                                                    <span data-en="Price per Token (IDR)" data-id="Harga per Token (IDR)">Price per Token (IDR)</span>
-                                                    <i class="fas fa-sort text-muted"></i>
-                                                </th>
-                                                <th class="sortable" data-column="totalPrice">
-                                                    <span data-en="Total Price" data-id="Total Harga">Total Price</span>
-                                                    <i class="fas fa-sort text-muted"></i>
-                                                </th>
-                                                <th class="sortable" data-column="seller">
-                                                    <span data-en="Seller" data-id="Penjual">Seller</span>
-                                                    <i class="fas fa-sort text-muted"></i>
-                                                </th>
-                                                <th data-en="Action" data-id="Aksi">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="propertiesTableBody">
-                                            <!-- Table content will be populated by JavaScript -->
-                                        </tbody>
-                                    </table>
-                                </div>
+                <!-- Properties Grid -->
+                <div class="row" id="propertiesGrid">
+                    <!-- Property cards will be populated by JavaScript -->
+                </div>
 
-                                <!-- Pagination -->
-                                <nav aria-label="Properties pagination" class="mt-4">
-                                    <ul class="pagination justify-content-center" id="pagination">
-                                        <!-- Pagination will be populated by JavaScript -->
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+                <!-- Pagination -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <nav aria-label="Properties pagination">
+                            <ul class="pagination justify-content-center" id="pagination">
+                                <!-- Pagination will be populated by JavaScript -->
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
