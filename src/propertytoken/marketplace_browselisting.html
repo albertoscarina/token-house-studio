@@ -51,135 +51,159 @@
             </div>
 
             <!-- Navigation -->
-            <div class="sidebar-nav">
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.html">
-                            <i class="fas fa-home"></i>
-                            <span data-en="Dashboard" data-id="Dashboard">Dashboard</span>
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="toggleSubmenu(this)">
-                            <i class="fas fa-briefcase"></i>
-                            <span data-en="Portfolio" data-id="Portfolio">Portfolio</span>
-                            <i class="fas fa-chevron-right ms-auto nav-chevron"></i>
-                        </a>
-                        <div class="nav-submenu">
-                            <a href="my-properties.html" class="nav-submenu-link" data-en="My Properties" data-id="Properti Saya">My Properties</a>
-                            <a href="dividends.html" class="nav-submenu-link" data-en="Dividends" data-id="Dividen">Dividends</a>
-                            <a href="#" class="nav-submenu-link" data-en="Transactions" data-id="Transaksi">Transactions</a>
-                            <a href="#" class="nav-submenu-link" data-en="Usage Rights" data-id="Hak Penggunaan">Usage Rights</a>
-                        </div>
-                    </li>
+            <div class="sidebar-menu">
+            <!-- Dashboard -->
+            <div class="menu-item">
+                <a href="dashboard.html" class="menu-link">
+                    <i class="fas fa-home"></i>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </div>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-crown"></i>
-                            <span data-en="Owner Perks" data-id="Keistimewaan Pemilik">Owner Perks</span>
-                            <i class="fas fa-chevron-right ms-auto"></i>
-                        </a>
-                    </li>
+            <!-- Portfolio -->
+            <div class="menu-item">
+                <a href="#" class="menu-link active" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="menu-text">Portfolio</span>
+                    <i class="fas fa-chevron-right menu-arrow rotated"></i>
+                </a>
+                <div class="submenu show">
+                    <a href="my-properties.html" class="submenu-link active">My Properties</a>
+                    <a href="dividends.html" class="submenu-link">Dividends</a>
+                    <a href="#" class="submenu-link">Transactions</a>
+                    <a href="#" class="submenu-link">Usage Rights</a>
+                </div>
+            </div>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" href="marketplace_browselisting.html" onclick="toggleSubmenu(this)">
-                            <i class="fas fa-store"></i>
-                            <span data-en="Marketplace" data-id="Marketplace">Marketplace</span>
-                            <i class="fas fa-chevron-right ms-auto nav-chevron rotated"></i>
-                        </a>
-                        <div class="nav-submenu show">
-                            <a href="marketplace_browselisting.html" class="nav-submenu-link active" data-en="Browse Listings" data-id="Jelajahi Listing">Browse Listings</a>
-                            <a href="#" class="nav-submenu-link" data-en="Saved Properties" data-id="Properti Tersimpan">Saved Properties</a>
-                        </div>
-                    </li>
+            <!-- Owner Perks -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-crown"></i>
+                    <span class="menu-text">Owner Perks</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Stay Reservations</a>
+                    <a href="#" class="submenu-link">Redeem Discounts</a>
+                    <a href="#" class="submenu-link">Yield Trade-Off Calculator</a>
+                </div>
+            </div>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="toggleSubmenu(this)">
-                            <i class="fas fa-wallet"></i>
-                            <span data-en="Wallet" data-id="Dompet">Wallet</span>
-                            <i class="fas fa-chevron-right ms-auto nav-chevron"></i>
-                        </a>
-                        <div class="nav-submenu">
-                            <a href="topupwallet.html" class="nav-submenu-link" data-en="Top Up" data-id="Top Up">Top Up</a>
-                            <a href="#" class="nav-submenu-link" data-en="Transactions" data-id="Transaksi">Transactions</a>
-                        </div>
-                    </li>
+            <!-- Marketplace -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-store"></i>
+                    <span class="menu-text">Marketplace</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="marketplace_browselisting.html" class="submenu-link">Browse Listings</a>
+                    <a href="#" class="submenu-link">My Listings</a>
+                    <a href="#" class="submenu-link">Perk-Enhanced Listings</a>
+                </div>
+            </div>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-users"></i>
-                            <span data-en="Referrals" data-id="Referral">Referrals</span>
-                            <span class="nav-badge">3</span>
-                            <i class="fas fa-chevron-right ms-auto"></i>
-                        </a>
-                    </li>
+            <!-- Wallet -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-wallet"></i>
+                    <span class="menu-text">Wallet</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Top Up</a>
+                    <a href="#" class="submenu-link">Withdraw</a>
+                    <a href="#" class="submenu-link">Transaction History</a>
+                </div>
+            </div>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span data-en="Education" data-id="Edukasi">Education</span>
-                            <i class="fas fa-chevron-right ms-auto"></i>
-                        </a>
-                    </li>
+            <!-- Referrals -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-users"></i>
+                    <span class="menu-text">Referrals</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Referral Overview</a>
+                    <a href="#" class="submenu-link">Earnings Report</a>
+                </div>
+            </div>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span data-en="Events" data-id="Event">Events</span>
-                            <i class="fas fa-chevron-right ms-auto"></i>
-                        </a>
-                    </li>
+            <!-- Education -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="menu-text">Education</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">GapuraPrima Academy</a>
+                    <a href="#" class="submenu-link">FAQ</a>
+                </div>
+            </div>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-shield-alt"></i>
-                            <span data-en="Security" data-id="Keamanan">Security</span>
-                            <i class="fas fa-chevron-right ms-auto"></i>
-                        </a>
-                    </li>
+            <!-- Events -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="menu-text">Events</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Upcoming Events</a>
+                    <a href="#" class="submenu-link">My Event Tickets</a>
+                </div>
+            </div>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-cog"></i>
-                            <span data-en="Settings" data-id="Pengaturan">Settings</span>
-                            <i class="fas fa-chevron-right ms-auto"></i>
-                        </a>
-                    </li>
-                </ul>
+            <!-- Security -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="menu-text">Security</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Change Password</a>
+                    <a href="#" class="submenu-link">Change PIN</a>
+                    <a href="#" class="submenu-link">2FA Settings</a>
+                </div>
+            </div>
 
-                <!-- High Opportunity Section -->
-                <div class="nav-bottom">
-                    <div class="high-opportunity-card">
-                        <div class="opportunity-header">
-                            <i class="fas fa-fire"></i>
-                            <span data-en="HIGH OPPORTUNITY" data-id="PELUANG TINGGI">HIGH OPPORTUNITY</span>
-                        </div>
-                        <div class="opportunity-content">
-                            <p data-en="Want higher profits but with more risk?" data-id="Ingin keuntungan lebih tinggi tapi dengan risiko lebih?">Want higher profits but with more risk?</p>
-                            <a href="#" class="opportunity-link" data-en="Click here for development opportunities" data-id="Klik di sini untuk peluang pengembangan">Click here for development opportunities</a>
-                            <div class="opportunity-features">
-                                <div class="feature-item">
-                                    <i class="fas fa-chart-line"></i>
-                                    <span data-en="Higher Returns" data-id="Keuntungan Lebih Tinggi">Higher Returns</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                    <span data-en="Development Risk" data-id="Risiko Pengembangan">Development Risk</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-percentage"></i>
-                                    <span data-en="15-20% IRR" data-id="15-20% IRR">15-20% IRR</span>
-                                </div>
-                            </div>
-                            <div class="opportunity-cta">
-                                <span data-en="Crowdfund Villa" data-id="Crowdfund Villa">Crowdfund Villa</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
+            <!-- Settings -->
+            <div class="menu-item">
+                <a href="#" class="menu-link" onclick="toggleSubmenu(this)">
+                    <i class="fas fa-cog"></i>
+                    <span class="menu-text">Settings</span>
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <a href="#" class="submenu-link">Profile & Preferences</a>
+                </div>
+            </div>
+
+            <!-- Crowdfunding Promo -->
+            <div class="crowdfunding-promo" onclick="window.location.href='crowdfunding.html'">
+                <div class="promo-content">
+                    <div class="promo-badge">🔥 HIGH-RISK</div>
+                    <div class="promo-title">Proyek Crowdfunding Villa Development</div>
+                    <div class="promo-subtitle">Dapatkan keuntungan lebih tinggi dengan risiko pengembangan</div>
+                    <div class="promo-features">
+                        <span class="promo-feature">⚠️ Higher Returns</span>
+                        <span class="promo-feature">🏗️ Development Risk</span>
+                        <span class="promo-feature">🏆 15-20% IRR</span>
+                    </div>
+                    <div class="promo-cta">
+                        <span class="promo-text">Explore Now</span>
+                        <div class="promo-arrow">
+                            <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+             
         </nav>
 
         <!-- Main Content -->
