@@ -422,6 +422,7 @@ class MarketplaceBrowseListing {
         if (sidebarToggle && sidebar) {
             sidebarToggle.addEventListener('click', () => {
                 sidebar.classList.toggle('active');
+                sidebar.classList.toggle('show');
                 if (sidebarOverlay) {
                     sidebarOverlay.classList.toggle('active');
                 }
@@ -432,6 +433,7 @@ class MarketplaceBrowseListing {
         if (sidebarOverlay) {
             sidebarOverlay.addEventListener('click', () => {
                 sidebar.classList.remove('active');
+                sidebar.classList.remove('show');
                 sidebarOverlay.classList.remove('active');
             });
         }
@@ -440,24 +442,70 @@ class MarketplaceBrowseListing {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && sidebar && sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
+                sidebar.classList.remove('show');
                 if (sidebarOverlay) {
                     sidebarOverlay.classList.remove('active');
                 }
             }
         });
 
-        // Add submenu toggle functionality
+        // Toggle Sidebar (Mobile)
+        window.toggleSidebar = function() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('show');
+                sidebar.classList.toggle('active');
+                if (sidebarOverlay) {
+                    sidebarOverlay.classList.toggle('active');
+                }
+                console.log('📱 Sidebar toggled');
+            }
+        }
+
+        // Toggle Submenu
         window.toggleSubmenu = function(element) {
-            const submenu = element.parentNode.querySelector('.nav-submenu');
-            const chevron = element.querySelector('.nav-chevron');
+            const submenu = element.nextElementSibling;
+            const arrow = element.querySelector('.menu-arrow');
             
-            if (submenu) {
-                submenu.classList.toggle('show');
-                if (chevron) {
-                    chevron.classList.toggle('rotated');
+            if (!submenu || !arrow) {
+                console.warn('⚠️ Submenu or arrow not found');
+                return;
+            }
+            
+            // Close other submenus
+            document.querySelectorAll('.submenu.show').forEach(menu => {
+                if (menu !== submenu) {
+                    menu.classList.remove('show');
+                    const otherArrow = menu.previousElementSibling.querySelector('.menu-arrow');
+                    if (otherArrow) {
+                        otherArrow.classList.remove('rotated');
+                    }
+                }
+            });
+            
+            // Toggle current submenu
+            submenu.classList.toggle('show');
+            arrow.classList.toggle('rotated');
+            
+            console.log('📂 Submenu toggled');
+        }
+
+        // Close sidebar when clicking outside (mobile)
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.querySelector('.mobile-sidebar-toggle');
+            
+            if (window.innerWidth <= 768 && sidebar && toggleBtn) {
+                if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+                    sidebar.classList.remove('show');
+                    sidebar.classList.remove('active');
+                    if (sidebarOverlay) {
+                        sidebarOverlay.classList.remove('active');
+                    }
+                    console.log('📱 Sidebar closed (outside click)');
                 }
             }
-        };
+        });
     }
 
     // Setup language functionality
