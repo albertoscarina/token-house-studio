@@ -460,7 +460,7 @@ class MarketplaceBrowseListing {
         });
 
         // Load saved language
-        const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+        const savedLang = localStorage.getItem('propertytoken_language') || 'en';
         this.switchLanguage(savedLang);
     }
 
@@ -485,15 +485,14 @@ class MarketplaceBrowseListing {
 
         // Apply language to all elements with data-en and data-id attributes
         document.querySelectorAll('[data-en][data-id]').forEach(element => {
-            if (lang === 'en' && element.getAttribute('data-en')) {
-                element.textContent = element.getAttribute('data-en');
-            } else if (lang === 'id' && element.getAttribute('data-id')) {
-                element.textContent = element.getAttribute('data-id');
+            const text = lang === 'en' ? element.getAttribute('data-en') : element.getAttribute('data-id');
+            if (text) {
+                element.textContent = text;
             }
         });
 
         // Save language preference
-        localStorage.setItem('selectedLanguage', lang);
+        localStorage.setItem('propertytoken_language', lang);
         
         // Re-render cards to update language
         this.renderCards();
@@ -836,13 +835,21 @@ class MarketplaceBrowseListing {
             maximumFractionDigits: 0
         }).format(amount);
     }
+
+    // Handle image loading errors
+    handleImageError(img) {
+        img.onerror = null; // Prevent infinite loop
+        img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI0MCIgdmlld0JveD0iMCAwIDMwMCAyNDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjQwIiBmaWxsPSIjZTJlOGYwIi8+CjxwYXRoIGQ9Ik0xMjAgMTIwaDYwdjYwaC02MHoiIGZpbGw9IiM5NGEzYjgiLz4KPHBhdGggZD0iTTkwIDkwaDEyMHY5MEg5MHoiIHN0cm9rZT0iIzY0NzQ4YiIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+Cjx0ZXh0IHg9IjE1MCIgeT0iMjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPlByb3BlcnR5IEltYWdlPC90ZXh0Pgo8L3N2Zz4K';
+    }
 }
 
 // Initialize when DOM is loaded
+let marketplace;
 document.addEventListener('DOMContentLoaded', () => {
     // Check if we're on the marketplace browse listing page
     if (document.getElementById('propertiesGrid')) {
-        new MarketplaceBrowseListing();
+        marketplace = new MarketplaceBrowseListing();
+        window.marketplace = marketplace; // Make available globally for image error handling
     }
 });
 

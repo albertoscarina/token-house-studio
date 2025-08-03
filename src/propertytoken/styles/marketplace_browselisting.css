@@ -72,7 +72,6 @@
     height: 100vh;
     overflow-y: auto;
     z-index: 1000;
-    transform: translateX(-100%);
     transition: transform 0.3s ease;
 }
 
@@ -300,7 +299,7 @@
 /* Main Content */
 .dashboard-main {
     flex: 1;
-    margin-left: 0;
+    margin-left: 280px;
     min-height: 100vh;
     background: var(--gray-50);
 }
@@ -990,7 +989,7 @@
 /* Desktop Styles */
 @media (min-width: 1024px) {
     .dashboard-sidebar {
-        position: static;
+        position: fixed;
         transform: translateX(0);
     }
     
@@ -1000,6 +999,21 @@
     
     .mobile-sidebar-toggle {
         display: none;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 1023px) {
+    .dashboard-sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .dashboard-main {
+        margin-left: 0;
+    }
+    
+    .mobile-sidebar-toggle {
+        display: block;
     }
 }
 
